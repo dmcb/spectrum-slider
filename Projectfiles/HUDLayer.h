@@ -10,8 +10,13 @@
 #import "SneakyJoystick.h"
 #import "SneakyJoystickSkinnedBase.h"
 #import "ColoredCircleSprite.h"
+#import "Updateable.h"
 
-@interface HUDLayer : CCLayer {
+@interface HUDLayer : CCLayer <Updateable> {
+    //create an instance of the SneakyJoystick class
+   SneakyJoystick* joystick;
 
+   //create an instance of the SneakyJoystickSkinnedBase class
+   SneakyJoystickSkinnedBase* skinnedJoystick;
 }
 @end

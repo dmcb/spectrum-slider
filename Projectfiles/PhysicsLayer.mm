@@ -10,6 +10,7 @@
 #import "GameContext.h"
 #import "Player.h"
 #import "GameWorldLayer.h"
+#import "HUDLayer.h"
 
 
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
@@ -38,8 +39,11 @@ const float PTM_RATIO = 32.0f;
 
         [[GameContext sharedContext] setCurrentLevel:level];
 
+        HUDLayer *hudLayer = [HUDLayer new];
+        [[[GameContext sharedContext] currentLevel] setHudLayer:hudLayer];
         GameWorldLayer *gameWorldLayer = [[[GameContext sharedContext] currentLevel] gameWorldLayer];
 
+        [self addChild:hudLayer];
         [self addChild:gameWorldLayer.redLayer];
         [self addChild:gameWorldLayer.blueLayer];
         [self addChild:gameWorldLayer.yellowLayer];

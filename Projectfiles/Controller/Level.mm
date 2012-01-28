@@ -10,11 +10,17 @@
 #import "ObjectManager.h"
 #import "GameWorldLayer.h"
 #import "Displayable.h"
+#import "Player.h"
+#import "HUDLayer.h"
 
 
 @implementation Level {
 
 }
+
+@synthesize hudLayer;
+@synthesize player;
+
 
 - (GameWorldLayer *) gameWorldLayer {
     return gameWorldLayer;
@@ -41,6 +47,7 @@
 }
 
 - (void) update:(ccTime)delta {
+    [hudLayer update:delta];
     [collisionManager update:delta];
     [objectManager update:delta];
 }

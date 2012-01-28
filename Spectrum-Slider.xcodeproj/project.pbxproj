@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330810D314D4783700DBBBDC /* HUDLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 330810D214D4783700DBBBDC /* HUDLayer.mm */; };
+		3323B13714D46ADF009A20C2 /* MoveAction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3323B13614D46ADF009A20C2 /* MoveAction.mm */; };
 		84B414E814D3E980001AE794 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414CD14D3E980001AE794 /* AppDelegate.mm */; };
 		84B414E914D3E980001AE794 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414CF14D3E980001AE794 /* ContactListener.mm */; };
 		84B414EA14D3E980001AE794 /* GameContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414D214D3E980001AE794 /* GameContext.mm */; };
@@ -60,9 +62,9 @@
 		DCF95CD213A97EC500AE3B80 /* libcocos2d-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF95CC913A97EC500AE3B80 /* libcocos2d-mac.a */; };
 		DCF95CD413A97EC500AE3B80 /* libkobold2d-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF95CCB13A97EC500AE3B80 /* libkobold2d-mac.a */; };
 		DCF95CD513A97EC500AE3B80 /* libwax-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF95CCC13A97EC500AE3B80 /* libwax-mac.a */; };
-		DCFA90F013B4F811009DD384 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD383 /* player.png */; };
 		DCFA90F013B4F811009DD386 /* GameWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD385 /* GameWorldLayer.m */; };
-		DCFA90F013B4F811009DD38C /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD38B /* HUDLayer.m */; };
+		DCFA90F013B4F811009DD38F /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD38E /* player.png */; };
+		DCFA90F013B4F811009DD391 /* shittyDPad.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD390 /* shittyDPad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +204,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		330810D114D4783700DBBBDC /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
+		330810D214D4783700DBBBDC /* HUDLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HUDLayer.mm; sourceTree = "<group>"; };
+		3323B13514D46ADF009A20C2 /* MoveAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveAction.h; sourceTree = "<group>"; };
+		3323B13614D46ADF009A20C2 /* MoveAction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MoveAction.mm; sourceTree = "<group>"; };
 		84B414CC14D3E980001AE794 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84B414CD14D3E980001AE794 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		84B414CE14D3E980001AE794 /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -278,12 +284,11 @@
 		DCFA90EF13B4F6F7009DD35A /* BuildSettings-Debug-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Debug-iOS.xcconfig"; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD35A /* BuildSettings-Release-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Release-iOS.xcconfig"; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD35B /* Kobold2D-Libraries.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Kobold2D-Libraries.xcodeproj"; path = "../__Kobold2D__/Kobold2D-Libraries.xcodeproj"; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD383 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = "Projectfiles-iOS/Resources/Sprites/player.png"; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD385 /* GameWorldLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameWorldLayer.m; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD387 /* GameWorldLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameWorldLayer.h; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD38A /* Displayable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Displayable.h; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD38B /* HUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDLayer.m; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD38D /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
+		DCFA90F013B4F811009DD38E /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = "Projectfiles-iOS/Resources/Sprites/player.png"; sourceTree = "<group>"; };
+		DCFA90F013B4F811009DD390 /* shittyDPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shittyDPad.png; path = "Projectfiles-iOS/Resources/Sprites/shittyDPad.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +342,8 @@
 		84B414D514D3E980001AE794 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				3323B13514D46ADF009A20C2 /* MoveAction.h */,
+				3323B13614D46ADF009A20C2 /* MoveAction.mm */,
 				84B414D614D3E980001AE794 /* CollisionVolume.h */,
 				84B414D714D3E980001AE794 /* CollisionVolume.mm */,
 				84B414D814D3E980001AE794 /* Player.h */,
@@ -390,7 +397,8 @@
 		DCC1A0D613A94EC0005BD75D = {
 			isa = PBXGroup;
 			children = (
-				DCFA90F013B4F811009DD383 /* player.png */,
+				DCFA90F013B4F811009DD390 /* shittyDPad.png */,
+				DCFA90F013B4F811009DD38E /* player.png */,
 				DCFA90F013B4F811009DD35B /* Kobold2D-Libraries.xcodeproj */,
 				DCC1A38C13A94F1A005BD75D /* Projectfiles */,
 				DCC1A0F713A94ED5005BD75D /* Projectfiles-iOS */,
@@ -475,8 +483,8 @@
 		DCC1A38C13A94F1A005BD75D /* Projectfiles */ = {
 			isa = PBXGroup;
 			children = (
-				DCFA90F013B4F811009DD38D /* HUDLayer.h */,
-				DCFA90F013B4F811009DD38B /* HUDLayer.m */,
+				330810D114D4783700DBBBDC /* HUDLayer.h */,
+				330810D214D4783700DBBBDC /* HUDLayer.mm */,
 				DCFA90F013B4F811009DD387 /* GameWorldLayer.h */,
 				DCFA90F013B4F811009DD385 /* GameWorldLayer.m */,
 				84B414CC14D3E980001AE794 /* AppDelegate.h */,
@@ -782,7 +790,8 @@
 				84B4151214D3F075001AE794 /* blocks.png in Resources */,
 				84B4151314D3F075001AE794 /* level01.tmx in Resources */,
 				84B4151914D3F588001AE794 /* NEUROPOL.ttf in Resources */,
-				DCFA90F013B4F811009DD384 /* player.png in Resources */,
+				DCFA90F013B4F811009DD38F /* player.png in Resources */,
+				DCFA90F013B4F811009DD391 /* shittyDPad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,7 +828,8 @@
 				84B414F214D3E980001AE794 /* PhysicsLayer.mm in Sources */,
 				84B4151614D3F49F001AE794 /* Menu.mm in Sources */,
 				DCFA90F013B4F811009DD386 /* GameWorldLayer.m in Sources */,
-				DCFA90F013B4F811009DD38C /* HUDLayer.m in Sources */,
+				3323B13714D46ADF009A20C2 /* MoveAction.mm in Sources */,
+				330810D314D4783700DBBBDC /* HUDLayer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,7 +885,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../__Kobold2D__/libs/GoogleAdMobAdsSDK\"",
 				);
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(KOBOLD2D) $(CHIPSPACE) $(COCOS2D) $(COCOS2D_REST) $COCOS2D_EXTENSIONS $(COCOS3D) $(COCOSDENSHION) $(CHIPMUNK) $(OBJECTAL) $(VTPG) $(WAX) $(SNEAKYINPUT) $(ADMOB) $(FONTLABEL) \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/**";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(KOBOLD2D) $(CHIPSPACE) $(COCOS2D) $(COCOS2D_REST) $COCOS2D_EXTENSIONS $(COCOS3D) $(COCOSDENSHION) $(CHIPMUNK) $(OBJECTAL) $(VTPG) $(WAX) $(SNEAKYINPUT) $(ADMOB) $(FONTLABEL) \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/**";
 			};
 			name = Debug;
 		};

@@ -12,8 +12,8 @@
 
     CCNode *gameObject;
 
-    b2Body *body;
-    b2Fixture *fixture;
+    __unsafe_unretained struct b2Body *body;
+    __unsafe_unretained struct b2Fixture *fixture;
 
 }
 @property(nonatomic, assign) b2Body *body;

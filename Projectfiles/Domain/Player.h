@@ -19,6 +19,12 @@
     CCSprite *sprite;
 }
 
+@property(nonatomic, strong) CollisionVolume *collisionVolume;
+
 - (void) spawn;
+
+- (void) moveInDirection:(CGPoint) directionVector;
+
+- (float) moveSpeed;
 
 @end
