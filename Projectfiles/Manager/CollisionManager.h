@@ -19,4 +19,7 @@
 
 
 - (b2Body *)initBody:(b2BodyDef *)def;
+
+- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(int)collisionGroupId;
+
 @end

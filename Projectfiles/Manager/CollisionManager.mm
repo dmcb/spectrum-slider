@@ -68,4 +68,40 @@ const float PTM_RATIO = 32.0f;
     return world->CreateBody(def);
 }
 
+
+- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(int)collisionGroupId {
+
+    CCTMXObjectGroup *collisionGroup = [map objectGroupNamed:clLayer];
+
+    if (collisionGroup) {
+        for (NSMutableDictionary *object in [collisionGroup objects]) {
+
+            float width = [[object valueForKey:@"width"] floatValue];
+            float height = [[object valueForKey:@"height"] floatValue];
+
+            b2BodyDef bodyDef;
+            bodyDef.type = b2_staticBody    ;
+            bodyDef.position.Set(([[object valueForKey:@"x"] floatValue] / PTM_RATIO) + (width / 2.0 / PTM_RATIO),
+            ([[object valueForKey:@"y"] floatValue] / PTM_RATIO) + (height / 2.0 / PTM_RATIO));
+
+            b2Body *body = world->CreateBody(&bodyDef);
+
+            b2PolygonShape collisionShape;
+            collisionShape.SetAsBox(width / 2.0 / PTM_RATIO ,
+                    height / 2.0 / PTM_RATIO );
+
+
+            b2Fixture *fixture = body->CreateFixture(&collisionShape, 0.0f);
+
+            b2Filter filter = fixture->GetFilterData();
+
+            filter.groupIndex = collisionGroupId;
+
+            fixture->SetFilterData(filter);
+        }
+
+    }
+
+}
+
 @end

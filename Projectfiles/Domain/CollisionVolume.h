@@ -22,4 +22,6 @@
 
 - (id)initWithGameObject:(CCNode *)aGameObject collisionGroupId:(int)collisionId width:(float)width height:(float)height;
 
+- (void)setCollisionGroupId:(int16)newCollisionGroup;
+
 @end

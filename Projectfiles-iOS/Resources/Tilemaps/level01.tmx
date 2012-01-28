@@ -3,19 +3,34 @@
  <tileset firstgid="1" name="blocks" tilewidth="32" tileheight="32">
   <image source="blocks.png" width="64" height="128"/>
  </tileset>
+ <objectgroup name="Collision_ALL" width="32" height="24">
+  <object x="1" y="161" width="1023" height="63"/>
+ </objectgroup>
+ <objectgroup name="Collision_RED" width="32" height="24">
+  <object x="192" y="0" width="61" height="156"/>
+  <object x="771" y="1" width="60" height="165"/>
+ </objectgroup>
+ <objectgroup name="Collision_BLUE" width="32" height="24">
+  <object x="193" y="3" width="60" height="160"/>
+  <object x="479" y="-1" width="63" height="159"/>
+ </objectgroup>
+ <objectgroup name="Collision_YELLOW" width="32" height="24">
+  <object x="481" y="3" width="61" height="159"/>
+  <object x="769" y="3" width="61" height="160"/>
+ </objectgroup>
  <layer name="Yellow" width="32" height="24">
   <data encoding="base64" compression="zlib">
-   eJxjYCAfsEIxPsACxbQAo/YPffvZRjgeBaNgFIyCUTAKRsEooDcAAFKTAds=
+   eJxjYCAfsEIxPsACxbQAo/YPffsZRzgeBaNgFIyCUTAKRsEooDcAAA9uAJs=
   </data>
  </layer>
  <layer name="Red" width="32" height="24">
   <data encoding="base64" compression="zlib">
-   eJxjYMAOmKGYUsACxaSCUftHhv1sIxyPglEwCkbBKBgFo2AU0BsAAH+UAcc=
+   eJxjYMAOmKGYUsACxaSCUftHhv1MIxyPglEwCkbBKBgFo2AU0BsAAH0NAMc=
   </data>
  </layer>
  <layer name="Blue" width="32" height="24">
   <data encoding="base64" compression="zlib">
-   eJxjYMAOmKEYH2CFYlqAUftHhv1sIxyPglEwCkbBKBgFo2AU0BsAAPDIAdE=
+   eJxjYMAOmKEYH2CFYlqAUftHhv3sIxyPglEwCkbBKBgFo2AU0BsAADF1AhE=
   </data>
  </layer>
 </map>

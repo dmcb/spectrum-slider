@@ -61,4 +61,11 @@ const float PTM_RATIO = 32.0f;
     gameObject.rotation = -1 * CC_RADIANS_TO_DEGREES(body->GetAngle());
 }
 
+- (void)setCollisionGroupId:(int16)newCollisionGroup {
+    b2Filter myFilterData=fixture->GetFilterData();
+
+    myFilterData.groupIndex = newCollisionGroup;
+
+    fixture->SetFilterData(myFilterData);
+}
 @end

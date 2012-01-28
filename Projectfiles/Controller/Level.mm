@@ -30,8 +30,12 @@
     return [collisionManager initBody:fixture];
 }
 
+- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(int)collisionGroupId {
+    return [collisionManager initStaticBodies:map collisionLayer:clLayer collisionGroupId:collisionGroupId];
+}
+
 - (void)spawn:(id <Updateable, Displayable>)objectToSpawn {
-    [gameWorldLayer addObjectToGame:[objectToSpawn display]];
+    [[gameWorldLayer playerLayer] addChild:[objectToSpawn display]];
     [objectManager addObjectToPlay:objectToSpawn];
 }
 
