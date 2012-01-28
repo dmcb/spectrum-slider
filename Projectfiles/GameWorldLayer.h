@@ -9,17 +9,21 @@
 
 
 @interface GameWorldLayer : CCLayer {
-    CCTMXLayer *redLayer;
-    CCTMXLayer *blueLayer;
-    CCTMXLayer *yellowLayer;
+    CCLayer *redLayer;
+    CCLayer *blueLayer;
+    CCLayer *yellowLayer;
 
-    CCTMXLayer *currentLayer;
+    CCLayer *currentLayer;
+
+    CCTMXTiledMap *tiledMap;
 }
 
 
-@property(nonatomic, strong) CCTMXLayer *redLayer;
-@property(nonatomic, strong) CCTMXLayer *blueLayer;
-@property(nonatomic, strong) CCTMXLayer *yellowLayer;
+@property(nonatomic, strong) CCLayer *redLayer;
+@property(nonatomic, strong) CCLayer *blueLayer;
+@property(nonatomic, strong) CCLayer *yellowLayer;
+
+@property(nonatomic, retain) CCTMXTiledMap *tiledMap;
 
 - (id)initWithTileMap:(NSString *)tileMapString;
 

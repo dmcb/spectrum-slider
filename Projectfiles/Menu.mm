@@ -59,13 +59,12 @@
     return self;
 }
 
-- (id)goToGameplay:(id)sender {
+- (void)goToGameplay:(id)sender {
 
     [[CCDirector sharedDirector]
             replaceScene:[CCTransitionFade
                                  transitionWithDuration:0.5
-                                                  scene:[PhysicsLayer node]
-                         ]];
+                                                  scene:[PhysicsLayer node]]];
 }
 
 @end

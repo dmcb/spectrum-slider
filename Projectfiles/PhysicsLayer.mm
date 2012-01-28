@@ -43,6 +43,7 @@ const float PTM_RATIO = 32.0f;
         GameWorldLayer *gameWorldLayer = [[[GameContext sharedContext] currentLevel] gameWorldLayer];
 
         [self addChild:hudLayer];
+        [self addChild:gameWorldLayer.tiledMap];
         [self addChild:gameWorldLayer.redLayer];
         [self addChild:gameWorldLayer.blueLayer];
         [self addChild:gameWorldLayer.yellowLayer];

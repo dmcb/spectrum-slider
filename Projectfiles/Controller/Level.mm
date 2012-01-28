@@ -40,7 +40,7 @@
     if (self) {
         collisionManager = [CollisionManager new];
         objectManager = [ObjectManager new];
-        gameWorldLayer = [[GameWorldLayer alloc] init];
+        gameWorldLayer = [[GameWorldLayer alloc] initWithTileMap:@"level01.tmx"];
     }
 
     return self;
