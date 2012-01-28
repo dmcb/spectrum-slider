@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE map SYSTEM "http://mapeditor.org/dtd/1.0/map.dtd">
 <map version="1.0" orientation="orthogonal" width="32" height="24" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="blocks" tilewidth="32" tileheight="32">
   <image source="blocks.png" width="64" height="128"/>
  </tileset>
  <layer name="Yellow" width="32" height="24">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3DsQ0AAAgDoE7+f7Jf1EFISODOPA8A0LZSx/oMAAwAAA==
+  <data encoding="base64" compression="zlib">
+   eJxjYCAfsEIxPsACxbQAo/YPffvZRjgeBaNgFIyCUTAKRsEooDcAAFKTAds=
   </data>
  </layer>
  <layer name="Red" width="32" height="24">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3NMQoAMAgEQSEm/3+yzZXhwMbGHdh6I/6Ocq5yUnXx3/F/ywMAAJhWJpgjagAMAAA=
+  <data encoding="base64" compression="zlib">
+   eJxjYMAOmKGYUsACxaSCUftHhv1sIxyPglEwCkbBKBgFo2AU0BsAAH+UAcc=
   </data>
  </layer>
  <layer name="Blue" width="32" height="24">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3DsQ0AAAgDoE7+f7Jf1EFISODOPA8A0LZSx/oMAAwAAA==
+  <data encoding="base64" compression="zlib">
+   eJxjYMAOmKEYH2CFYlqAUftHhv1sIxyPglEwCkbBKBgFo2AU0BsAAPDIAdE=
   </data>
  </layer>
 </map>
