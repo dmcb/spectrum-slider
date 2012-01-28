@@ -57,21 +57,7 @@ const float PTM_RATIO = 32.0f;
 }
 
 - (void)update:(ccTime)delta {
-    CCDirector *director = [CCDirector sharedDirector];
-
-    if (director.currentPlatformIsIOS) {
-
-        KKInput *input = [KKInput sharedInput];
-
-        if (director.currentDeviceIsSimulator == NO) {
-            KKAcceleration *acceleration = input.acceleration;
-            b2Vec2 gravity = 10.0f * b2Vec2(acceleration.rawX, acceleration.rawY);
-            world->SetGravity(gravity);
-        }
-
-    }
-
-    float timeStep = 1.0f / 60.0f;
+    float timeStep = 0.03f;
     int32 velocityIterations = 8;
     int32 positionIterations = 1;
     world->Step(timeStep, velocityIterations, positionIterations);

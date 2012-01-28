@@ -8,5 +8,6 @@
 #import <Foundation/Foundation.h>
 
 
-@interface Displayable : NSObject
+@protocol Displayable
+- (CCSprite *)display;
 @end

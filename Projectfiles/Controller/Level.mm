@@ -8,14 +8,25 @@
 #import "Level.h"
 #import "CollisionManager.h"
 #import "ObjectManager.h"
+#import "GameWorldLayer.h"
+#import "Displayable.h"
 
 
 @implementation Level {
 
 }
 
+- (GameWorldLayer *) gameWorldLayer {
+    return gameWorldLayer;
+}
+
 - (b2Body *)initBody:(b2BodyDef *)fixture {
     return [collisionManager initBody:fixture];
+}
+
+- (void)spawn:(id <Updateable, Displayable>)objectToSpawn {
+    [gameWorldLayer addObjectToGame:[objectToSpawn display]];
+    [objectManager addObjectToPlay:objectToSpawn];
 }
 
 - (id)init {
@@ -23,18 +34,15 @@
     if (self) {
         collisionManager = [CollisionManager new];
         objectManager = [ObjectManager new];
+        gameWorldLayer = [[GameWorldLayer alloc] init];
     }
 
     return self;
 }
 
 - (void) update:(ccTime)delta {
-
-    for (id object in [objectManager objectsInPlay]) {
-        [object update:delta];
-    }
-
-
+    [collisionManager update:delta];
+    [objectManager update:delta];
 }
 
 @end

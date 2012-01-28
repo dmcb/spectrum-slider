@@ -12,4 +12,26 @@
 
 }
 
+@synthesize yellowLayer;
+@synthesize blueLayer;
+@synthesize redLayer;
+
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        redLayer = [CCLayer new];
+        blueLayer = [CCLayer new];
+        yellowLayer = [CCLayer new];
+
+        currentLayer = redLayer;
+    }
+
+    return self;
+}
+
+- (void) addObjectToGame:(CCNode *)node {
+    [currentLayer addChild:node];
+}
+
 @end

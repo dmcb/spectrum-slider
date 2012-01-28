@@ -7,6 +7,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SneakyJoystick.h"
+#import "SneakyJoystickSkinnedBase.h"
+#import "ColoredCircleSprite.h"
 
-@interface HUDLayer : NSObject
+@interface HUDLayer : CCLayer {
+
+}
 @end

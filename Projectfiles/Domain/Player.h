@@ -7,15 +7,18 @@
 
 #import <Foundation/Foundation.h>
 #import "Updateable.h"
+#import "Displayable.h"
 
 @class PlayerActionContext;
 @class CollisionVolume;
 
 
-@interface Player : CCNode <Updateable> {
+@interface Player : CCNode <Updateable, Displayable> {
     PlayerActionContext *actionContext;
     CollisionVolume *collisionVolume;
     CCSprite *sprite;
 }
+
+- (void) spawn;
 
 @end
