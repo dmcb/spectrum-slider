@@ -47,7 +47,11 @@
 }
 
 - (float)moveSpeed {
-    return 1.0f;
+    return 0.5f;
+}
+
+- (bool)isMoving {
+    return [actionContext isCurrentActionType:[MoveAction class]];
 }
 
 
@@ -55,5 +59,7 @@
     return sprite;
 }
 
-
+- (void)stopXMovement {
+    [actionContext stopAllActions];
+}
 @end

@@ -39,7 +39,7 @@ const float PTM_RATIO = 32.0f;
 
         b2FixtureDef shapeDef;
         shapeDef.shape = &collisionShape;
-        shapeDef.density = 10.0f;
+        shapeDef.density = 15.0f;
         shapeDef.friction = 1.0f;
         shapeDef.restitution = 0.0f;
 //        shapeDef.isSensor = true;
@@ -56,11 +56,9 @@ const float PTM_RATIO = 32.0f;
 }
 
 - (void)update:(ccTime)delta {
-
     b2Vec2 position = body->GetPosition();
     gameObject.position = ccp(position.x * PTM_RATIO, position.y * PTM_RATIO);
     gameObject.rotation = -1 * CC_RADIANS_TO_DEGREES(body->GetAngle());
-
 }
 
 @end

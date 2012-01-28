@@ -36,7 +36,4 @@
 
 - (void)spawn:(id <Updateable, Displayable>) objectToSpawn;
 
-- (void)setPlayer:(Player *)aPlayer;
-
-
 @end

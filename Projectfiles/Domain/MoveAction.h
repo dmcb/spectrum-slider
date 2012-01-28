@@ -12,7 +12,7 @@
 @interface MoveAction : NSObject <PlayerAction> {
     CGPoint direction;
 }
-- (id)initWithDirection:(CGPoint)aDirection;
 
+- (id)initWithDirection:(CGPoint)aDirection;
 
 @end

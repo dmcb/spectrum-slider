@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @protocol PlayerAction;
 @class Player;
 
@@ -29,13 +28,15 @@
 
 - (bool)isNextActionType:(Class)nextActionsClass;
 
+- (bool)isCurrentActionType:(Class)nextActionsClass;
+
 - (void)doAction:(float)delta;
 
 - (void)stopAllActions;
 
 - (Player *)player;
 
-- (void)setPlayer:(Player *)player;
+- (void)setPlayer:(Player *)aPlayer;
 
 - (void)clearQueue;
 @end

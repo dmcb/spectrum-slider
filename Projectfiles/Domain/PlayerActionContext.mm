@@ -1,6 +1,6 @@
-
 #import "PlayerActionContext.h"
 #import "PlayerAction.h"
+#import "MoveAction.h"
 
 @implementation PlayerActionContext {
 
@@ -48,12 +48,19 @@
     return action;
 }
 
-- (bool) isNextActionType:(Class) nextActionsClass {
+- (bool)isNextActionType:(Class)nextActionsClass {
     if (queuedActions.count <= 0) {
         return false;
     }
 
     if ([[queuedActions objectAtIndex:0] isKindOfClass:nextActionsClass]) {
+        return true;
+    }
+    return false;
+}
+
+- (bool)isCurrentActionType:(Class)nextActionsClass {
+    if ([[action class] isKindOfClass:nextActionsClass]) {
         return true;
     }
     return false;

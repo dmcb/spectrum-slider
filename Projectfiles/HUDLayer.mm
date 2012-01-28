@@ -50,8 +50,17 @@
 
 - (void)update:(ccTime)delta {
     CGPoint velocity = ccpMult(joystick.velocity, 100);
+
+    Player *player = [[[GameContext sharedContext] currentLevel] player];
+
     if (velocity.x != 0 && velocity.y != 0) {
-        [[[[GameContext sharedContext] currentLevel] player] moveInDirection:velocity];
+
+        //null out the vertical velocity
+        velocity.y = 0;
+
+        [player moveInDirection:velocity];
+    } else {
+        [player stopXMovement];
     }
 }
 

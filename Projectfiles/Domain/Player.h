@@ -27,4 +27,7 @@
 
 - (float) moveSpeed;
 
+-(bool) isMoving;
+
+- (void)stopXMovement;
 @end

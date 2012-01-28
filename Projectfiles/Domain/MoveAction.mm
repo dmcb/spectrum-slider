@@ -36,7 +36,7 @@
 
 //    movementVector.Normalize();
 
-//    movementVector *= [player moveSpeed];
+    movementVector *= [player moveSpeed];
 
     if (body != nil) {
         body->SetAwake(true);

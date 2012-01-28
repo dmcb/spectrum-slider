@@ -9,7 +9,7 @@
 
 @class PlayerActionContext;
 
-@protocol PlayerAction
+@protocol PlayerAction <NSObject>
 -(bool) isDone;
 -(void) doAction:(PlayerActionContext *) actionContext delta:(float)delta;
 @end
