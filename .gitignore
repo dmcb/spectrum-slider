@@ -1,0 +1,8 @@
+# Ignore source art/media files directory
+# Ignore user specific data and OS X garbage
+
+.DS_Store*
+source/
+*/project.xcworkspace/xcuserdata/*
+*/xcuserdata/*
+.idea/

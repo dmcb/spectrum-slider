@@ -16,11 +16,8 @@ enum
 	kTagBatchNode,
 };
 
-@interface PhysicsLayer : CCLayer
-{
-	b2World* world;
-	ContactListener* contactListener;
-	GLESDebugDraw* debugDraw;
+@interface PhysicsLayer : CCLayer {
+
 }
 
 @end
