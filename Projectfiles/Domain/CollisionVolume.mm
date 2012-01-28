@@ -39,8 +39,8 @@ const float PTM_RATIO = 32.0f;
 
         b2FixtureDef shapeDef;
         shapeDef.shape = &collisionShape;
-        shapeDef.density = 15.0f;
-        shapeDef.friction = 5.0f;
+        shapeDef.density = 4.0f;
+        shapeDef.friction = 3.0f;
         shapeDef.restitution = 0.0f;
 //        shapeDef.isSensor = true;
         shapeDef.userData = (__bridge void *) aGameObject;
