@@ -26,9 +26,9 @@ const float PTM_RATIO = 32.0f;
 
         b2BodyDef bodyDef;
         bodyDef.type = b2_dynamicBody;
-        bodyDef.position.Set(gameObject.position.x/PTM_RATIO, gameObject.position.y/PTM_RATIO);
+        bodyDef.position.Set(gameObject.position.x / PTM_RATIO, gameObject.position.y / PTM_RATIO);
 
-        bodyDef.userData = (__bridge void*) aGameObject;
+        bodyDef.userData = (__bridge void *) aGameObject;
 
         body = [[[GameContext sharedContext] currentLevel] initBody:&bodyDef];
 
@@ -43,7 +43,7 @@ const float PTM_RATIO = 32.0f;
         shapeDef.friction = 1.0f;
         shapeDef.restitution = 0.0f;
 //        shapeDef.isSensor = true;
-        shapeDef.userData = (__bridge void*) aGameObject;
+        shapeDef.userData = (__bridge void *) aGameObject;
         shapeDef.filter.groupIndex = (int16) collisionId;
 
         body->SetAngularDamping(1.0f);

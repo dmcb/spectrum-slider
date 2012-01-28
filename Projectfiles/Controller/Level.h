@@ -30,10 +30,10 @@
 @property(nonatomic, strong) HUDLayer *hudLayer;
 @property(nonatomic, strong) Player *player;
 
+- (GameWorldLayer *)gameWorldLayer;
 
--(GameWorldLayer *) gameWorldLayer;
--(b2Body *) initBody:(b2BodyDef *) fixture;
+- (b2Body *)initBody:(b2BodyDef *)fixture;
 
-- (void)spawn:(id <Updateable, Displayable>) objectToSpawn;
+- (void)spawn:(id <Updateable, Displayable>)objectToSpawn;
 
 @end

@@ -27,7 +27,7 @@
 
 }
 
-- (void) update: (float) delta {
+- (void)update:(float)delta {
     [[[GameContext sharedContext] currentLevel] update:delta];
 }
 

@@ -21,21 +21,20 @@ const float PTM_RATIO = 32.0f;
 
 @interface PhysicsLayer (PrivateMethods)
 //-(void) enableBox2dDebugDrawing;
--(b2Vec2) toMeters:(CGPoint)point;
--(CGPoint) toPixels:(b2Vec2)vec;
+- (b2Vec2)toMeters:(CGPoint)point;
+
+- (CGPoint)toPixels:(b2Vec2)vec;
 @end
 
 @implementation PhysicsLayer
 
--(id) init
-{
-	if ((self = [super init]))
-	{
-		CCLOG(@"%@ init", NSStringFromClass([self class]));
+- (id)init {
+    if ((self = [super init])) {
+        CCLOG(@"%@ init", NSStringFromClass([self class]));
 
-		glClearColor(0.1f, 0.0f, 0.2f, 1.0f);
+        glClearColor(0.1f, 0.0f, 0.2f, 1.0f);
 
-		Level *level = [[Level alloc] init];
+        Level *level = [[Level alloc] init];
 
         [[GameContext sharedContext] setCurrentLevel:level];
 
@@ -58,7 +57,7 @@ const float PTM_RATIO = 32.0f;
 
     }
 
-	return self;
+    return self;
 }
 
 //
@@ -88,28 +87,25 @@ const float PTM_RATIO = 32.0f;
 //}
 
 
--(void) update:(ccTime)delta {
+- (void)update:(ccTime)delta {
     [[GameContext sharedContext] update:delta];
 }
 
 
 // convenience method to convert a CGPoint to a b2Vec2
--(b2Vec2) toMeters:(CGPoint)point
-{
-	return b2Vec2(point.x / PTM_RATIO, point.y / PTM_RATIO);
+- (b2Vec2)toMeters:(CGPoint)point {
+    return b2Vec2(point.x / PTM_RATIO, point.y / PTM_RATIO);
 }
 
 // convenience method to convert a b2Vec2 to a CGPoint
--(CGPoint) toPixels:(b2Vec2)vec
-{
-	return ccpMult(CGPointMake(vec.x, vec.y), PTM_RATIO);
+- (CGPoint)toPixels:(b2Vec2)vec {
+    return ccpMult(CGPointMake(vec.x, vec.y), PTM_RATIO);
 }
 
 
 #if DEBUG
--(void) draw
-{
-	[super draw];
+- (void)draw {
+    [super draw];
 
 //	if (debugDraw)
 //	{

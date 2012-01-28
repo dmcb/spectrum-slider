@@ -42,7 +42,7 @@
     [[[GameContext sharedContext] currentLevel] setPlayer:self];
 }
 
-- (void) moveInDirection:(CGPoint)directionVector {
+- (void)moveInDirection:(CGPoint)directionVector {
     [actionContext setAction:[[MoveAction alloc] initWithDirection:directionVector]];
 }
 

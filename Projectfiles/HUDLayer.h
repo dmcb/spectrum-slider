@@ -14,9 +14,9 @@
 
 @interface HUDLayer : CCLayer <Updateable> {
     //create an instance of the SneakyJoystick class
-   SneakyJoystick* joystick;
+    SneakyJoystick *joystick;
 
-   //create an instance of the SneakyJoystickSkinnedBase class
-   SneakyJoystickSkinnedBase* skinnedJoystick;
+    //create an instance of the SneakyJoystickSkinnedBase class
+    SneakyJoystickSkinnedBase *skinnedJoystick;
 }
 @end

@@ -16,7 +16,8 @@
 
 @property(nonatomic, strong) NSMutableArray *objectsInPlay;
 
--(void) addObjectToPlay:(id<Updateable>)unit;
--(void) removeObjectFromPlay:(id<Updateable>)unit;
+- (void)addObjectToPlay:(id <Updateable>)unit;
+
+- (void)removeObjectFromPlay:(id <Updateable>)unit;
 
 @end

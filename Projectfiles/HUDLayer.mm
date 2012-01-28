@@ -19,23 +19,23 @@
     self = [super init];
     if (self) {
         float stickRadius = 50.0;
-         
+
         joystick = [SneakyJoystick joystickWithRect:CGRectMake(100, 100, stickRadius, stickRadius)];
-         
+
         joystick.deadRadius = 5;
-         
+
         joystick.hasDeadzone = YES;
-         
+
         skinnedJoystick = [SneakyJoystickSkinnedBase skinnedJoystick];
-         
+
         skinnedJoystick.position = CGPointMake(stickRadius * 1.5f, stickRadius * 1.5f);
-         
+
         skinnedJoystick.backgroundSprite = [CCSprite spriteWithFile:@"JoystickButton.png"];
-         
+
         skinnedJoystick.thumbSprite = [CCSprite spriteWithFile:@"shittyDPad.png"];
-         
+
         skinnedJoystick.joystick = joystick;
-         
+
         [self addChild:skinnedJoystick z:1];
 
     }
@@ -44,7 +44,7 @@
 
 }
 
--(void)tick:(float)delta {
+- (void)tick:(float)delta {
 
 }
 

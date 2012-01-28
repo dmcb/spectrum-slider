@@ -9,11 +9,10 @@
 #import "cocos2d.h"
 #import "Box2D.h"
 
-@interface Menu : CCLayer 
-{
-    
+@interface Menu : CCLayer {
+
 }
 
--(id) goToGameplay:(id)sender;
+- (id)goToGameplay:(id)sender;
 
 @end

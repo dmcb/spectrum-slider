@@ -11,9 +11,8 @@
 
 #import "ContactListener.h"
 
-enum
-{
-	kTagBatchNode,
+enum {
+    kTagBatchNode,
 };
 
 @interface PhysicsLayer : CCLayer {

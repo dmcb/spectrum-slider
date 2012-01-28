@@ -21,13 +21,13 @@
 
 @property(nonatomic, strong) CollisionVolume *collisionVolume;
 
-- (void) spawn;
+- (void)spawn;
 
-- (void) moveInDirection:(CGPoint) directionVector;
+- (void)moveInDirection:(CGPoint)directionVector;
 
-- (float) moveSpeed;
+- (float)moveSpeed;
 
--(bool) isMoving;
+- (bool)isMoving;
 
 - (void)stopXMovement;
 @end

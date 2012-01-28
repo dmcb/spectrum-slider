@@ -16,22 +16,30 @@
 @synthesize blueLayer;
 @synthesize redLayer;
 
-
-- (id)init {
+- (id)initWithTileMap:(NSString *)tileMapString {
     self = [super init];
     if (self) {
-        redLayer = [CCLayer new];
-        blueLayer = [CCLayer new];
-        yellowLayer = [CCLayer new];
-
+        [self loadTileMap:tileMapString];
         currentLayer = redLayer;
     }
 
     return self;
 }
 
-- (void) addObjectToGame:(CCNode *)node {
+- (void)addObjectToGame:(CCNode *)node {
     [currentLayer addChild:node];
+}
+
+- (void)loadTileMap:(NSString *)tmxFileName {
+
+    CCTMXTiledMap *tiledMap = [CCTMXTiledMap tiledMapWithTMXFile:tmxFileName];
+
+    blueLayer = [tiledMap layerNamed:@"Blue"];
+
+    redLayer = [tiledMap layerNamed:@"Red"];
+
+    yellowLayer = [tiledMap layerNamed:@"Yellow"];
+
 }
 
 @end

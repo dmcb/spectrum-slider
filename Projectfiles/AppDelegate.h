@@ -7,8 +7,7 @@
 
 #import "KKAppDelegate.h"
 
-@interface AppDelegate : KKAppDelegate
-{
+@interface AppDelegate : KKAppDelegate {
 }
 
 @end

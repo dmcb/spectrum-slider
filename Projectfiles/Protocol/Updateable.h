@@ -6,5 +6,5 @@
 
 
 @protocol Updateable
-- (void) update:(ccTime) delta;
+- (void)update:(ccTime)delta;
 @end

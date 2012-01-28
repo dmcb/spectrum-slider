@@ -9,18 +9,22 @@
 
 
 @interface GameWorldLayer : CCLayer {
-    CCLayer *redLayer;
-    CCLayer *blueLayer;
-    CCLayer *yellowLayer;
+    CCTMXLayer *redLayer;
+    CCTMXLayer *blueLayer;
+    CCTMXLayer *yellowLayer;
 
-    CCLayer *currentLayer;
+    CCTMXLayer *currentLayer;
 }
 
-@property(nonatomic, strong) CCLayer *yellowLayer;
-@property(nonatomic, strong) CCLayer *blueLayer;
-@property(nonatomic, strong) CCLayer *redLayer;
 
+@property(nonatomic, strong) CCTMXLayer *redLayer;
+@property(nonatomic, strong) CCTMXLayer *blueLayer;
+@property(nonatomic, strong) CCTMXLayer *yellowLayer;
 
--(void) addObjectToGame:(CCNode *) node;
+- (id)initWithTileMap:(NSString *)tileMapString;
+
+- (void)addObjectToGame:(CCNode *)node;
+
+- (void)loadTileMap:(NSString *)tmxFileName;
 
 @end

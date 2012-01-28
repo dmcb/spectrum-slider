@@ -22,7 +22,7 @@
 @synthesize player;
 
 
-- (GameWorldLayer *) gameWorldLayer {
+- (GameWorldLayer *)gameWorldLayer {
     return gameWorldLayer;
 }
 
@@ -46,7 +46,7 @@
     return self;
 }
 
-- (void) update:(ccTime)delta {
+- (void)update:(ccTime)delta {
     [hudLayer update:delta];
     [collisionManager update:delta];
     [objectManager update:delta];
