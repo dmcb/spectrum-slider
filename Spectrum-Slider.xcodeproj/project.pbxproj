@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC193EB713B692D100500B56 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EB313B6872600500B56 /* GLES-Render.mm */; };
-		DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EB313B6872600500B56 /* GLES-Render.mm */; };
-		DC193EBC13B6956F00500B56 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EBB13B6956F00500B56 /* ContactListener.mm */; };
-		DC193EBD13B6956F00500B56 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = DC193EBB13B6956F00500B56 /* ContactListener.mm */; };
+		84B414E814D3E980001AE794 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414CD14D3E980001AE794 /* AppDelegate.mm */; };
+		84B414E914D3E980001AE794 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414CF14D3E980001AE794 /* ContactListener.mm */; };
+		84B414EA14D3E980001AE794 /* GameContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414D214D3E980001AE794 /* GameContext.mm */; };
+		84B414EB14D3E980001AE794 /* Level.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414D414D3E980001AE794 /* Level.mm */; };
+		84B414EC14D3E980001AE794 /* CollisionVolume.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414D714D3E980001AE794 /* CollisionVolume.mm */; };
+		84B414ED14D3E980001AE794 /* Player.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414D914D3E980001AE794 /* Player.mm */; };
+		84B414EE14D3E980001AE794 /* PlayerActionContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414DB14D3E980001AE794 /* PlayerActionContext.mm */; };
+		84B414EF14D3E980001AE794 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414DD14D3E980001AE794 /* GLES-Render.mm */; };
+		84B414F014D3E980001AE794 /* CollisionManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414E014D3E980001AE794 /* CollisionManager.mm */; };
+		84B414F114D3E980001AE794 /* ObjectManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414E214D3E980001AE794 /* ObjectManager.mm */; };
+		84B414F214D3E980001AE794 /* PhysicsLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414E414D3E980001AE794 /* PhysicsLayer.mm */; };
 		DC193EC113B6969B00500B56 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		DC193EC313B6969B00500B56 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		DC485B1113AA0E5600F2BC70 /* libchipmunk-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC485B0D13AA0E5600F2BC70 /* libchipmunk-mac.a */; };
@@ -42,10 +49,6 @@
 		DCC1A26C13A94EE6005BD75D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCC1A26A13A94EE6005BD75D /* MainMenu.xib */; };
 		DCC1A26E13A94EE6005BD75D /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = DCC1A26D13A94EE6005BD75D /* fps_images.png */; };
 		DCC1A27013A94EE6005BD75D /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = DCC1A26F13A94EE6005BD75D /* icon.icns */; };
-		DCC1A3A913A94F1A005BD75D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCC1A38E13A94F1A005BD75D /* AppDelegate.mm */; };
-		DCC1A3AA13A94F1A005BD75D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCC1A38E13A94F1A005BD75D /* AppDelegate.mm */; };
-		DCC1A3AB13A94F1A005BD75D /* PhysicsLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCC1A39013A94F1A005BD75D /* PhysicsLayer.mm */; };
-		DCC1A3AC13A94F1A005BD75D /* PhysicsLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCC1A39013A94F1A005BD75D /* PhysicsLayer.mm */; };
 		DCC1A3AD13A94F1A005BD75D /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCC1A39113A94F1A005BD75D /* main.mm */; };
 		DCC1A3AE13A94F1A005BD75D /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCC1A39113A94F1A005BD75D /* main.mm */; };
 		DCC1A3AF13A94F1A005BD75D /* config.lua in Resources */ = {isa = PBXBuildFile; fileRef = DCC1A39513A94F1A005BD75D /* config.lua */; };
@@ -53,20 +56,33 @@
 		DCF95CD213A97EC500AE3B80 /* libcocos2d-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF95CC913A97EC500AE3B80 /* libcocos2d-mac.a */; };
 		DCF95CD413A97EC500AE3B80 /* libkobold2d-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF95CCB13A97EC500AE3B80 /* libkobold2d-mac.a */; };
 		DCF95CD513A97EC500AE3B80 /* libwax-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF95CCC13A97EC500AE3B80 /* libwax-mac.a */; };
-		DCFA90F013B4F811009DD384 /* Player.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD383 /* Player.mm */; };
-		DCFA90F013B4F811009DD388 /* PlayerActionContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD387 /* PlayerActionContext.mm */; };
-		DCFA90F013B4F811009DD38E /* GameContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD38D /* GameContext.mm */; };
-		DCFA90F013B4F811009DD391 /* Level.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD390 /* Level.mm */; };
-		DCFA90F013B4F811009DD394 /* CollisionManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD393 /* CollisionManager.mm */; };
-		DCFA90F013B4F811009DD397 /* ObjectManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD396 /* ObjectManager.mm */; };
-		DCFA90F013B4F811009DD39D /* CollisionVolume.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD39C /* CollisionVolume.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DC193EB213B6872600500B56 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
-		DC193EB313B6872600500B56 /* GLES-Render.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
-		DC193EBA13B6956F00500B56 /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
-		DC193EBB13B6956F00500B56 /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
+		84B414CC14D3E980001AE794 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		84B414CD14D3E980001AE794 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		84B414CE14D3E980001AE794 /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
+		84B414CF14D3E980001AE794 /* ContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ContactListener.mm; sourceTree = "<group>"; };
+		84B414D114D3E980001AE794 /* GameContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameContext.h; sourceTree = "<group>"; };
+		84B414D214D3E980001AE794 /* GameContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameContext.mm; sourceTree = "<group>"; };
+		84B414D314D3E980001AE794 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		84B414D414D3E980001AE794 /* Level.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Level.mm; sourceTree = "<group>"; };
+		84B414D614D3E980001AE794 /* CollisionVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionVolume.h; sourceTree = "<group>"; };
+		84B414D714D3E980001AE794 /* CollisionVolume.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CollisionVolume.mm; sourceTree = "<group>"; };
+		84B414D814D3E980001AE794 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		84B414D914D3E980001AE794 /* Player.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Player.mm; sourceTree = "<group>"; };
+		84B414DA14D3E980001AE794 /* PlayerActionContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerActionContext.h; sourceTree = "<group>"; };
+		84B414DB14D3E980001AE794 /* PlayerActionContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerActionContext.mm; sourceTree = "<group>"; };
+		84B414DC14D3E980001AE794 /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
+		84B414DD14D3E980001AE794 /* GLES-Render.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
+		84B414DF14D3E980001AE794 /* CollisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionManager.h; sourceTree = "<group>"; };
+		84B414E014D3E980001AE794 /* CollisionManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CollisionManager.mm; sourceTree = "<group>"; };
+		84B414E114D3E980001AE794 /* ObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectManager.h; sourceTree = "<group>"; };
+		84B414E214D3E980001AE794 /* ObjectManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ObjectManager.mm; sourceTree = "<group>"; };
+		84B414E314D3E980001AE794 /* PhysicsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsLayer.h; sourceTree = "<group>"; };
+		84B414E414D3E980001AE794 /* PhysicsLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsLayer.mm; sourceTree = "<group>"; };
+		84B414E614D3E980001AE794 /* PlayerAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerAction.h; sourceTree = "<group>"; };
+		84B414E714D3E980001AE794 /* Updateable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Updateable.h; sourceTree = "<group>"; };
 		DC3BE97813B4FB71003739CC /* BuildSettings-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-iOS.xcconfig"; sourceTree = "<group>"; };
 		DC485B0D13AA0E5600F2BC70 /* libchipmunk-mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libchipmunk-mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC485B1613AA0EBB00F2BC70 /* libbox2d-mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libbox2d-mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,10 +120,6 @@
 		DCC1A26D13A94EE6005BD75D /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/fps_images.png; sourceTree = "<group>"; };
 		DCC1A26F13A94EE6005BD75D /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = icon.icns; path = Resources/icon.icns; sourceTree = "<group>"; };
 		DCC1A27113A94EE6005BD75D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
-		DCC1A38D13A94F1A005BD75D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		DCC1A38E13A94F1A005BD75D /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.mm; sourceTree = "<group>"; };
-		DCC1A38F13A94F1A005BD75D /* PhysicsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsLayer.h; sourceTree = "<group>"; };
-		DCC1A39013A94F1A005BD75D /* PhysicsLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsLayer.mm; sourceTree = "<group>"; };
 		DCC1A39113A94F1A005BD75D /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.mm; sourceTree = "<group>"; };
 		DCC1A39213A94F1A005BD75D /* Prefix-iOS.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Prefix-iOS.pch"; sourceTree = "<group>"; };
 		DCC1A39313A94F1A005BD75D /* Prefix-Mac.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Prefix-Mac.pch"; sourceTree = "<group>"; };
@@ -117,22 +129,6 @@
 		DCF95CCC13A97EC500AE3B80 /* libwax-mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libwax-mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCFA90EF13B4F6F7009DD35A /* BuildSettings-Debug-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Debug-iOS.xcconfig"; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD35A /* BuildSettings-Release-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Release-iOS.xcconfig"; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD383 /* Player.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.mm; path = Domain/Player.mm; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD385 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Domain/Player.h; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD386 /* Updateable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Updateable.h; path = Protocol/Updateable.h; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD387 /* PlayerActionContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerActionContext.mm; path = Domain/PlayerActionContext.mm; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD389 /* PlayerActionContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerActionContext.h; path = Domain/PlayerActionContext.h; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD38C /* PlayerAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerAction.h; path = Protocol/PlayerAction.h; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD38D /* GameContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameContext.mm; path = Controller/GameContext.mm; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD38F /* GameContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameContext.h; path = Controller/GameContext.h; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD390 /* Level.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Level.mm; path = Controller/Level.mm; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD392 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level.h; path = Controller/Level.h; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD393 /* CollisionManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollisionManager.mm; path = Manager/CollisionManager.mm; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD395 /* CollisionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollisionManager.h; path = Manager/CollisionManager.h; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD396 /* ObjectManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectManager.mm; path = Manager/ObjectManager.mm; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD398 /* ObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectManager.h; path = Manager/ObjectManager.h; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD39C /* CollisionVolume.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CollisionVolume.mm; path = Domain/CollisionVolume.mm; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD39E /* CollisionVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollisionVolume.h; path = Domain/CollisionVolume.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +168,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84B414D014D3E980001AE794 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				84B414D114D3E980001AE794 /* GameContext.h */,
+				84B414D214D3E980001AE794 /* GameContext.mm */,
+				84B414D314D3E980001AE794 /* Level.h */,
+				84B414D414D3E980001AE794 /* Level.mm */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		84B414D514D3E980001AE794 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				84B414D614D3E980001AE794 /* CollisionVolume.h */,
+				84B414D714D3E980001AE794 /* CollisionVolume.mm */,
+				84B414D814D3E980001AE794 /* Player.h */,
+				84B414D914D3E980001AE794 /* Player.mm */,
+				84B414DA14D3E980001AE794 /* PlayerActionContext.h */,
+				84B414DB14D3E980001AE794 /* PlayerActionContext.mm */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		84B414DE14D3E980001AE794 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				84B414DF14D3E980001AE794 /* CollisionManager.h */,
+				84B414E014D3E980001AE794 /* CollisionManager.mm */,
+				84B414E114D3E980001AE794 /* ObjectManager.h */,
+				84B414E214D3E980001AE794 /* ObjectManager.mm */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		84B414E514D3E980001AE794 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				84B414E614D3E980001AE794 /* PlayerAction.h */,
+				84B414E714D3E980001AE794 /* Updateable.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		DC193EBE13B6969B00500B56 /* David Gervais Tilesets */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,30 +303,18 @@
 		DCC1A38C13A94F1A005BD75D /* Projectfiles */ = {
 			isa = PBXGroup;
 			children = (
-				DCFA90F013B4F811009DD39E /* CollisionVolume.h */,
-				DCFA90F013B4F811009DD39C /* CollisionVolume.mm */,
-				DCFA90F013B4F811009DD398 /* ObjectManager.h */,
-				DCFA90F013B4F811009DD396 /* ObjectManager.mm */,
-				DCFA90F013B4F811009DD395 /* CollisionManager.h */,
-				DCFA90F013B4F811009DD393 /* CollisionManager.mm */,
-				DCFA90F013B4F811009DD392 /* Level.h */,
-				DCFA90F013B4F811009DD390 /* Level.mm */,
-				DCFA90F013B4F811009DD38F /* GameContext.h */,
-				DCFA90F013B4F811009DD38D /* GameContext.mm */,
-				DCFA90F013B4F811009DD38C /* PlayerAction.h */,
-				DCFA90F013B4F811009DD389 /* PlayerActionContext.h */,
-				DCFA90F013B4F811009DD387 /* PlayerActionContext.mm */,
-				DCFA90F013B4F811009DD386 /* Updateable.h */,
-				DCFA90F013B4F811009DD385 /* Player.h */,
-				DCFA90F013B4F811009DD383 /* Player.mm */,
-				DCC1A38F13A94F1A005BD75D /* PhysicsLayer.h */,
-				DCC1A39013A94F1A005BD75D /* PhysicsLayer.mm */,
-				DC193EBA13B6956F00500B56 /* ContactListener.h */,
-				DC193EBB13B6956F00500B56 /* ContactListener.mm */,
-				DC193EB213B6872600500B56 /* GLES-Render.h */,
-				DC193EB313B6872600500B56 /* GLES-Render.mm */,
-				DCC1A38D13A94F1A005BD75D /* AppDelegate.h */,
-				DCC1A38E13A94F1A005BD75D /* AppDelegate.mm */,
+				84B414CC14D3E980001AE794 /* AppDelegate.h */,
+				84B414CD14D3E980001AE794 /* AppDelegate.mm */,
+				84B414CE14D3E980001AE794 /* ContactListener.h */,
+				84B414CF14D3E980001AE794 /* ContactListener.mm */,
+				84B414D014D3E980001AE794 /* Controller */,
+				84B414D514D3E980001AE794 /* Domain */,
+				84B414DC14D3E980001AE794 /* GLES-Render.h */,
+				84B414DD14D3E980001AE794 /* GLES-Render.mm */,
+				84B414DE14D3E980001AE794 /* Manager */,
+				84B414E314D3E980001AE794 /* PhysicsLayer.h */,
+				84B414E414D3E980001AE794 /* PhysicsLayer.mm */,
+				84B414E514D3E980001AE794 /* Protocol */,
 				DCC1A39413A94F1A005BD75D /* Resources */,
 				DCC1A3CF13A94F2C005BD75D /* Supporting Files */,
 			);
@@ -428,18 +456,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCC1A3A913A94F1A005BD75D /* AppDelegate.mm in Sources */,
-				DCC1A3AB13A94F1A005BD75D /* PhysicsLayer.mm in Sources */,
 				DCC1A3AD13A94F1A005BD75D /* main.mm in Sources */,
-				DC193EB813B692D100500B56 /* GLES-Render.mm in Sources */,
-				DC193EBC13B6956F00500B56 /* ContactListener.mm in Sources */,
-				DCFA90F013B4F811009DD384 /* Player.mm in Sources */,
-				DCFA90F013B4F811009DD388 /* PlayerActionContext.mm in Sources */,
-				DCFA90F013B4F811009DD38E /* GameContext.mm in Sources */,
-				DCFA90F013B4F811009DD391 /* Level.mm in Sources */,
-				DCFA90F013B4F811009DD394 /* CollisionManager.mm in Sources */,
-				DCFA90F013B4F811009DD397 /* ObjectManager.mm in Sources */,
-				DCFA90F013B4F811009DD39D /* CollisionVolume.mm in Sources */,
+				84B414E814D3E980001AE794 /* AppDelegate.mm in Sources */,
+				84B414E914D3E980001AE794 /* ContactListener.mm in Sources */,
+				84B414EA14D3E980001AE794 /* GameContext.mm in Sources */,
+				84B414EB14D3E980001AE794 /* Level.mm in Sources */,
+				84B414EC14D3E980001AE794 /* CollisionVolume.mm in Sources */,
+				84B414ED14D3E980001AE794 /* Player.mm in Sources */,
+				84B414EE14D3E980001AE794 /* PlayerActionContext.mm in Sources */,
+				84B414EF14D3E980001AE794 /* GLES-Render.mm in Sources */,
+				84B414F014D3E980001AE794 /* CollisionManager.mm in Sources */,
+				84B414F114D3E980001AE794 /* ObjectManager.mm in Sources */,
+				84B414F214D3E980001AE794 /* PhysicsLayer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,11 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCC1A3AA13A94F1A005BD75D /* AppDelegate.mm in Sources */,
-				DCC1A3AC13A94F1A005BD75D /* PhysicsLayer.mm in Sources */,
 				DCC1A3AE13A94F1A005BD75D /* main.mm in Sources */,
-				DC193EB713B692D100500B56 /* GLES-Render.mm in Sources */,
-				DC193EBD13B6956F00500B56 /* ContactListener.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
