@@ -78,7 +78,7 @@ const float PTM_RATIO = 32.0f;
 }
 
 
-- (b2Body)initBody:(b2BodyDef *)def {
+- (b2Body *)initBody:(b2BodyDef *)def {
     return world->CreateBody(def);
 }
 

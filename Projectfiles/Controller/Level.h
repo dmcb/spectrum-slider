@@ -19,6 +19,6 @@
 
 }
 
--(b2Body) initBody:(b2BodyDef *) fixture;
+-(b2Body *) initBody:(b2BodyDef *) fixture;
 
 @end

@@ -14,7 +14,7 @@
 
 }
 
-- (b2Body)initBody:(b2BodyDef *)fixture {
+- (b2Body *)initBody:(b2BodyDef *)fixture {
     return [collisionManager initBody:fixture];
 }
 

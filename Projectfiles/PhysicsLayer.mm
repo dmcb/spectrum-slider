@@ -34,6 +34,8 @@ const float PTM_RATIO = 32.0f;
 		
 		Level *level = [[Level alloc] init];
 
+
+
         [[GameContext sharedContext] setCurrentLevel:level];
     }
 

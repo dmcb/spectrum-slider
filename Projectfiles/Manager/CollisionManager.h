@@ -18,5 +18,5 @@
 }
 
 
-- (b2Body)initBody:(b2BodyDef *)def;
+- (b2Body *)initBody:(b2BodyDef *)def;
 @end

@@ -15,6 +15,7 @@
 @interface Player : CCNode <Updateable> {
     PlayerActionContext *actionContext;
     CollisionVolume *collisionVolume;
+    CCSprite *sprite;
 }
 
 @end
