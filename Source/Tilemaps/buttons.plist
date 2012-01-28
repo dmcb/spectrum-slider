@@ -36,11 +36,11 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>buttons.png</string>
+            <string>buttons.pvr.ccz</string>
             <key>size</key>
             <string>{128,256}</string>
             <key>textureFileName</key>
-            <string>buttons.png</string>
+            <string>buttons.pvr.ccz</string>
         </dict>
     </dict>
 </plist>

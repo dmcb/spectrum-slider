@@ -41,7 +41,7 @@
     if (body != nil) {
         body->SetAwake(true);
 //        body->SetAngularDamping(1.0f);   // and this keeps it from spinning wildly
-//        body->SetLinearDamping(5.0f);   // and this keeps it from moving wildly
+        body->SetLinearDamping(5.0f);   // and this keeps it from moving wildly
         body->ApplyLinearImpulse(movementVector, body->GetPosition());
     }
 
