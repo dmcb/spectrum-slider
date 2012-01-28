@@ -16,5 +16,6 @@
     CCSprite *dpad;
     CCSprite *jump;
     int direction;
+    int leap;
 }
 @end
