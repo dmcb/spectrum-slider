@@ -13,10 +13,8 @@
 #import "Updateable.h"
 
 @interface HUDLayer : CCLayer <Updateable> {
-    //create an instance of the SneakyJoystick class
-    SneakyJoystick *joystick;
-
-    //create an instance of the SneakyJoystickSkinnedBase class
-    SneakyJoystickSkinnedBase *skinnedJoystick;
+    CCSprite *dpad;
+    CCSprite *jump;
+    int direction;
 }
 @end
