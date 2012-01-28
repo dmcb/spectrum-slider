@@ -9,10 +9,8 @@
 #import "Updateable.h"
 
 @class Player;
-@protocol ManagedObject;
 
-
-@interface ObjectManager : NSObject {
+@interface ObjectManager : NSObject <Updateable> {
     NSMutableArray *objectsInPlay;
 }
 

@@ -779,10 +779,13 @@
 				DCC1A3AF13A94F1A005BD75D /* config.lua in Resources */,
 				DC193EC113B6969B00500B56 /* (null) in Resources */,
 				DC193EC313B6969B00500B56 /* (null) in Resources */,
+<<<<<<< HEAD
 				84B4151214D3F075001AE794 /* blocks.png in Resources */,
 				84B4151314D3F075001AE794 /* level01.tmx in Resources */,
 				84B4151914D3F588001AE794 /* NEUROPOL.ttf in Resources */,
+=======
 				DCFA90F013B4F811009DD384 /* player.png in Resources */,
+>>>>>>> stuff
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,9 +820,12 @@
 				84B414F014D3E980001AE794 /* CollisionManager.mm in Sources */,
 				84B414F114D3E980001AE794 /* ObjectManager.mm in Sources */,
 				84B414F214D3E980001AE794 /* PhysicsLayer.mm in Sources */,
+<<<<<<< HEAD
 				84B4151614D3F49F001AE794 /* Menu.mm in Sources */,
+=======
 				DCFA90F013B4F811009DD386 /* GameWorldLayer.m in Sources */,
 				DCFA90F013B4F811009DD38C /* HUDLayer.m in Sources */,
+>>>>>>> stuff
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

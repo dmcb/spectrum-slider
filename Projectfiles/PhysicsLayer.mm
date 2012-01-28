@@ -8,6 +8,8 @@
 #import "PhysicsLayer.h"
 #import "Level.h"
 #import "GameContext.h"
+#import "Player.h"
+#import "GameWorldLayer.h"
 
 
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
@@ -31,12 +33,25 @@ const float PTM_RATIO = 32.0f;
 		CCLOG(@"%@ init", NSStringFromClass([self class]));
 
 		glClearColor(0.1f, 0.0f, 0.2f, 1.0f);
-		
+
 		Level *level = [[Level alloc] init];
 
-
-
         [[GameContext sharedContext] setCurrentLevel:level];
+
+        GameWorldLayer *gameWorldLayer = [[[GameContext sharedContext] currentLevel] gameWorldLayer];
+
+        [self addChild:gameWorldLayer.redLayer];
+        [self addChild:gameWorldLayer.blueLayer];
+        [self addChild:gameWorldLayer.yellowLayer];
+
+        Player *player = [[Player alloc] init];
+
+        player.position = ccp(300, 300);
+
+        [player spawn];
+
+        [self scheduleUpdate];
+
     }
 
 	return self;
@@ -70,7 +85,7 @@ const float PTM_RATIO = 32.0f;
 
 
 -(void) update:(ccTime)delta {
-
+    [[GameContext sharedContext] update:delta];
 }
 
 

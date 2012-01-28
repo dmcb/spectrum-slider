@@ -12,12 +12,10 @@
 
     CCNode *gameObject;
 
-    float width;
-    float height;
-
     __unsafe_unretained struct b2Body *body;
     __unsafe_unretained struct b2Fixture *fixture;
 
 }
+- (id)initWithGameObject:(CCNode *)aGameObject collisionGroupId:(int)collisionId width:(float)width height:(float)height;
 
 @end

@@ -15,13 +15,10 @@ const float PTM_RATIO = 32.0f;
 
 }
 
-- (id)initWithGameObject:(CCNode *)aGameObject collisionGroupId:(int)collisionId {
+- (id)initWithGameObject:(CCNode *)aGameObject collisionGroupId:(int)collisionId width:(float)width height:(float)height {
     self = [super init];
     if (self) {
         gameObject = aGameObject;
-
-        width = aGameObject.contentSize.width;
-        height = aGameObject.contentSize.width;
 
         b2BodyDef bodyDef;
         bodyDef.type = b2_dynamicBody;
@@ -49,7 +46,6 @@ const float PTM_RATIO = 32.0f;
 
         fixture = body->CreateFixture(&shapeDef);
 
-        body->SetAwake(false);
     }
 
     return self;
