@@ -56,4 +56,11 @@
     [objectManager update:delta];
 }
 
+-(void) drawDebugData {
+    [collisionManager draw];
+}
+
+- (void)enableDebugDraw:(GLESDebugDraw *)draw {
+    [collisionManager world]->SetDebugDraw(draw);
+}
 @end

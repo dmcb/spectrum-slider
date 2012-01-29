@@ -14,11 +14,13 @@
 @interface CollisionManager : NSObject <Updateable> {
     b2World *world;
     ContactListener *contactListener;
-    GLESDebugDraw *debugDraw;
 }
 
+@property(nonatomic) b2World *world;
 
 - (b2Body *)initBody:(b2BodyDef *)def;
+
+- (void)draw;
 
 - (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(int)collisionGroupId;
 

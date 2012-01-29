@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "Updateable.h"
 #import "Box2D.h"
+#import "GLES-Render.h"
 
 @protocol Displayable;
 @class CollisionManager;
@@ -38,4 +39,7 @@
 
 - (void)spawn:(id <Updateable, Displayable>)objectToSpawn;
 
+- (void)drawDebugData;
+
+- (void)enableDebugDraw:(GLESDebugDraw *)draw;
 @end

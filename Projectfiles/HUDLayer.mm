@@ -107,7 +107,7 @@
 
 - (void)update:(ccTime)delta {
     
-    NSLog(@"Direction: %d. Leap: %d", direction, leap);
+//    NSLog(@"Direction: %d. Leap: %d", direction, leap);
     
     Player *player = [[[GameContext sharedContext] currentLevel] player];
 

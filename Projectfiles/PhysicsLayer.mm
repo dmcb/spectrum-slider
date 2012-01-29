@@ -28,6 +28,11 @@ const float PTM_RATIO = 32.0f;
 - (CGPoint)toPixels:(b2Vec2)vec;
 @end
 
+@interface PhysicsLayer ()
+- (void)enableBox2dDebugDrawing;
+
+@end
+
 @implementation PhysicsLayer
 
 - (id)init {
@@ -68,6 +73,8 @@ const float PTM_RATIO = 32.0f;
 
         [player spawn];
 
+//        [self enableBox2dDebugDrawing];
+
         [self scheduleUpdate];
 
     }
@@ -75,31 +82,30 @@ const float PTM_RATIO = 32.0f;
     return self;
 }
 
-//
-//
-//-(void) enableBox2dDebugDrawing
-//{
-//	float debugDrawScaleFactor = 1.0f;
-//#if KK_PLATFORM_IOS
-//	debugDrawScaleFactor = [[CCDirector sharedDirector] contentScaleFactor];
-//#endif
-//	debugDrawScaleFactor *= PTM_RATIO;
-//
-//	debugDraw = new GLESDebugDraw(debugDrawScaleFactor);
-//
-//	if (debugDraw)
-//	{
-//		UInt32 debugDrawFlags = 0;
-//		debugDrawFlags += b2Draw::e_shapeBit;
-//		debugDrawFlags += b2Draw::e_jointBit;
-//		//debugDrawFlags += b2Draw::e_aabbBit;
-//		//debugDrawFlags += b2Draw::e_pairBit;
-//		//debugDrawFlags += b2Draw::e_centerOfMassBit;
-//
-//		debugDraw->SetFlags(debugDrawFlags);
-//		world->SetDebugDraw(debugDraw);
-//	}
-//}
+
+-(void) enableBox2dDebugDrawing
+{
+	float debugDrawScaleFactor = 1.0f;
+#if KK_PLATFORM_IOS
+	debugDrawScaleFactor = [[CCDirector sharedDirector] contentScaleFactor];
+#endif
+	debugDrawScaleFactor *= PTM_RATIO;
+
+	debugDraw = new GLESDebugDraw(debugDrawScaleFactor);
+
+	if (debugDraw)
+	{
+		UInt32 debugDrawFlags = 0;
+		debugDrawFlags += b2Draw::e_shapeBit;
+		debugDrawFlags += b2Draw::e_jointBit;
+		//debugDrawFlags += b2Draw::e_aabbBit;
+		//debugDrawFlags += b2Draw::e_pairBit;
+		//debugDrawFlags += b2Draw::e_centerOfMassBit;
+
+		debugDraw->SetFlags(debugDrawFlags);
+        [[[GameContext sharedContext] currentLevel] enableDebugDraw:debugDraw];
+    }
+}
 
 
 - (void)update:(ccTime)delta {
@@ -122,21 +128,21 @@ const float PTM_RATIO = 32.0f;
 - (void)draw {
     [super draw];
 
-//	if (debugDraw)
-//	{
-//		// these GL states must be disabled/enabled otherwise drawing debug data will not render and may even crash
-//		glDisable(GL_TEXTURE_2D);
-//		glDisableClientState(GL_COLOR_ARRAY);
-//		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-//		glEnableClientState(GL_VERTEX_ARRAY);
-//
-//		world->DrawDebugData();
-//
-//		glDisableClientState(GL_VERTEX_ARRAY);
-//		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-//		glEnableClientState(GL_COLOR_ARRAY);
-//		glEnable(GL_TEXTURE_2D);
-//	}
+	if (debugDraw)
+	{
+		// these GL states must be disabled/enabled otherwise drawing debug data will not render and may even crash
+		glDisable(GL_TEXTURE_2D);
+		glDisableClientState(GL_COLOR_ARRAY);
+		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+		glEnableClientState(GL_VERTEX_ARRAY);
+
+        [[[GameContext sharedContext] currentLevel] drawDebugData];
+
+        glDisableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+		glEnableClientState(GL_COLOR_ARRAY);
+		glEnable(GL_TEXTURE_2D);
+	}
 }
 #endif
 

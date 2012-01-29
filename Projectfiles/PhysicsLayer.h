@@ -16,7 +16,7 @@ enum {
 };
 
 @interface PhysicsLayer : CCLayer {
-
+    GLESDebugDraw *debugDraw;
 }
 
 @end

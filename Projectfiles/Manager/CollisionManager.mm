@@ -13,6 +13,8 @@ const float PTM_RATIO = 32.0f;
 
 }
 
+@synthesize world;
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -68,6 +70,9 @@ const float PTM_RATIO = 32.0f;
     return world->CreateBody(def);
 }
 
+-(void) draw {
+    world->DrawDebugData();
+}
 
 - (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(int)collisionGroupId {
 
