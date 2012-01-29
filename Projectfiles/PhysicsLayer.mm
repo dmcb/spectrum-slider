@@ -49,7 +49,6 @@ const float PTM_RATIO = 32.0f;
         [[[GameContext sharedContext] currentLevel] setHudLayer:hudLayer];
         GameWorldLayer *gameWorldLayer = [[[GameContext sharedContext] currentLevel] gameWorldLayer];
 
-        [self addChild:hudLayer];
         [self addChild:gameWorldLayer.tiledMap];
         [self addChild:gameWorldLayer.playerLayer];
 
@@ -72,6 +71,8 @@ const float PTM_RATIO = 32.0f;
         player.position = ccp(100, 400);
 
         [player spawn];
+        
+        [self addChild:hudLayer];
 
 //        [self enableBox2dDebugDrawing];
 

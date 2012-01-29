@@ -10,6 +10,9 @@
 @implementation AppDelegate
 
 - (void)initializationComplete {
+    // Enable pre multiplied alpha for PVR textures to avoid artifacts 
+    [CCTexture2D PVRImagesHavePremultipliedAlpha:YES]; 
+    
 #ifdef KK_ARC_ENABLED
 	CCLOG(@"ARC is enabled");
 #else
