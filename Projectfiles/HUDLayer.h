@@ -21,6 +21,5 @@
     CCSprite *rightband;
     
     int direction;
-    int leap;
 }
 @end
