@@ -7,23 +7,29 @@
 
 #import <Foundation/Foundation.h>
 
+@class ColorDimension;
+
 
 @interface GameWorldLayer : CCLayer {
-    CCLayer *redLayer;
-    CCLayer *blueLayer;
-    CCLayer *yellowLayer;
 
-    CCLayer *currentLayer;
+    ColorDimension *currentLayer;
+
+    ColorDimension *redDimension;
+    ColorDimension *blueDimension;
+    ColorDimension *yellowDimension;
 
     CCTMXTiledMap *tiledMap;
+
+    CCLayer *playerLayer;
 }
 
-
-@property(nonatomic, strong) CCLayer *redLayer;
-@property(nonatomic, strong) CCLayer *blueLayer;
-@property(nonatomic, strong) CCLayer *yellowLayer;
-
 @property(nonatomic, retain) CCTMXTiledMap *tiledMap;
+@property(nonatomic, strong) ColorDimension *yellowDimension;
+@property(nonatomic, strong) ColorDimension *blueDimension;
+@property(nonatomic, strong) ColorDimension *redDimension;
+
+
+@property(nonatomic, retain) CCLayer *playerLayer;
 
 - (id)initWithTileMap:(NSString *)tileMapString;
 

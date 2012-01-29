@@ -138,14 +138,14 @@
     {
         [player moveInDirection:(CGPointMake(200,0))];
     }
-    else
+    else if (!leap)
     {
         [player stopXMovement];
     }
     
     if (leap)
     {
-        [player moveInDirection:(CGPointMake(0,200000))];
+        [player jump];
         
         leap = 0; // Jump absorbed
     }

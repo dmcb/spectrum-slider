@@ -11,6 +11,8 @@
 #import "Player.h"
 #import "GameWorldLayer.h"
 #import "HUDLayer.h"
+#import "ColorDimension.h"
+#import "PlayerLayer.h"
 
 
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
@@ -43,13 +45,25 @@ const float PTM_RATIO = 32.0f;
         GameWorldLayer *gameWorldLayer = [[[GameContext sharedContext] currentLevel] gameWorldLayer];
 
         [self addChild:gameWorldLayer.tiledMap];
-        [self addChild:gameWorldLayer.redLayer];
-        [self addChild:gameWorldLayer.blueLayer];
-        [self addChild:gameWorldLayer.yellowLayer];
+        [self addChild:gameWorldLayer.playerLayer];
+
+        [self addChild:gameWorldLayer.redDimension.spriteLayer];
+        [self addChild:gameWorldLayer.blueDimension.spriteLayer];
+        [self addChild:gameWorldLayer.yellowDimension.spriteLayer];
+
+        // Generate Blue static collision
+        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_BLUE" collisionGroupId:1];
+        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_RED" collisionGroupId:2];
+        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_YELLOW" collisionGroupId:3];
+        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_ALL" collisionGroupId:0];
+
+        [gameWorldLayer.redDimension activate];
+        [gameWorldLayer.blueDimension deactivate];
+        [gameWorldLayer.yellowDimension deactivate];
 
         Player *player = [[Player alloc] init];
 
-        player.position = ccp(300, 300);
+        player.position = ccp(100, 400);
 
         [player spawn];
         
