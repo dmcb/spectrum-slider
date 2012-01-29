@@ -52,11 +52,11 @@
         
         // Enable touch and updating
         self.isTouchEnabled = YES;
-        
+
         [self scheduleUpdate];
         
         // Manually add this class as receiver of targeted touch events.
-		[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-1 swallowsTouches:YES];
+//		[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:-1 swallowsTouches:YES];
     }
 
     return self;
@@ -81,7 +81,7 @@
             direction = -1;
         }
     }
-    else
+    else if ([touch tapCount] == 1)
     {
         direction = 0;
     }
@@ -130,24 +130,40 @@
     
     Player *player = [[[GameContext sharedContext] currentLevel] player];
 
-    if (direction < 0)
-    {
-        [player moveInDirection:(CGPointMake(-200,0))];
-    }
-    else if (direction > 0)
-    {
-        [player moveInDirection:(CGPointMake(200,0))];
-    }
-    else if (!leap)
-    {
-        [player stopXMovement];
-    }
+//    if (direction < 0)
+//    {
+//        [player moveInDirection:(CGPointMake(-200,0))];
+//    }
+//    else if (direction > 0)
+//    {
+//        [player moveInDirection:(CGPointMake(200,0))];
+//    }
+//    
+//    if (leap)
+//    {
+//        [player jump];
+//        
+//        leap = 0; // Jump absorbed
+//    }
     
-    if (leap)
-    {
+    KKInput *input = [KKInput sharedInput];
+
+    if ([input isAnyTouchOnNode:dpad touchPhase:KKTouchPhaseAny]) {
+        CGPoint vector;
+
+        CGPoint location = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
+
+        vector = ccpSub(location, [dpad position]);
+
+        if (vector.x < 0) {
+            [player moveInDirection:ccp(-200, 0)];
+        } else if (vector.x > 0) {
+            [player moveInDirection:ccp(200, 0)];
+        }
+    }
+
+    if ([input isAnyTouchOnNode:jump touchPhase:KKTouchPhaseAny]) {
         [player jump];
-        
-        leap = 0; // Jump absorbed
     }
 }
 

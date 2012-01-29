@@ -39,7 +39,7 @@
 
     b2Vec2 vec2;
 
-    vec2.y = 1000;
+    vec2.y = 200;
     vec2.x = 0;
 //    vec2.x = xVelocity;
 
