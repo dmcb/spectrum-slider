@@ -19,6 +19,7 @@
 
 @synthesize collisionVolume;
 
+
 - (id)init {
     self = [super init];
 
@@ -70,4 +71,22 @@
 -(void) jump {
     [actionContext setAction:[[JumpAction alloc] init]];
 }
+
+-(void) setIsOnGround:(NSNumber *) value {
+    isOnGround = [value boolValue];
+}
+
+- (void)setIsOnGroundWithBool:(bool)value {
+    isOnGround = value;
+}
+
+-(NSNumber *) isOnGroundObjectReturnValue {
+    return [NSNumber numberWithBool:isOnGround];
+}
+
+- (bool)isOnGround {
+    return isOnGround;
+}
+
+
 @end

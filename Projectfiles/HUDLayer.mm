@@ -20,34 +20,34 @@
     if (self) {
         // Get dimensions
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
-        
+
         // Add screen buttons
-        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache]; 
-        [frameCache addSpriteFramesWithFile:@"hud.plist"]; 
-        
+        CCSpriteFrameCache *frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
+        [frameCache addSpriteFramesWithFile:@"hud.plist"];
+
         dpad = [CCSprite spriteWithSpriteFrameName:@"button_dpad.png"];
-        dpad.position = CGPointMake(screenSize.width*0.08, screenSize.height*0.08);
+        dpad.position = CGPointMake(screenSize.width * 0.08, screenSize.height * 0.08);
         [self addChild:dpad];
-        
+
         jump = [CCSprite spriteWithSpriteFrameName:@"button_jump.png"];
-        jump.position = CGPointMake(screenSize.width*0.94, screenSize.height*0.08);
+        jump.position = CGPointMake(screenSize.width * 0.94, screenSize.height * 0.08);
         [self addChild:jump];
-        
+
         menu = [CCSprite spriteWithSpriteFrameName:@"button_menu.png"];
-        menu.position = CGPointMake(screenSize.width*0.94, screenSize.height*0.92);
+        menu.position = CGPointMake(screenSize.width * 0.94, screenSize.height * 0.92);
         [self addChild:menu];
-        
+
         // Add sliding bands
         leftband = [CCSprite spriteWithSpriteFrameName:@"leftband.png"];
         leftband.position = CGPointMake(0, 0);
         leftband.anchorPoint = CGPointMake(0, 0);
         [self addChild:leftband];
-        
+
         rightband = [CCSprite spriteWithSpriteFrameName:@"rightband.png"];
-        rightband.position = CGPointMake(screenSize.width-rightband.contentSize.width, 0);
+        rightband.position = CGPointMake(screenSize.width - rightband.contentSize.width, 0);
         rightband.anchorPoint = CGPointMake(0, 0);
         [self addChild:rightband];
-        
+
         // Enable touch and updating
         self.isTouchEnabled = YES;
 
@@ -59,31 +59,29 @@
 }
 
 - (void)update:(ccTime)delta {
-    
-    NSLog(@"Direction: %d.", direction);
-    
+
     Player *player = [[[GameContext sharedContext] currentLevel] player];
-    
+
     KKInput *input = [KKInput sharedInput];
 
-    if ([input isAnyTouchOnNode:dpad touchPhase:KKTouchPhaseAny]) {
-        CGPoint vector;
+    if ([player isOnGround]) {
+        if ([input isAnyTouchOnNode:dpad touchPhase:KKTouchPhaseAny]) {
+            CGPoint vector;
 
-        CGPoint location = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
+            CGPoint location = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
 
-        vector = ccpSub(location, [dpad position]);
+            vector = ccpSub(location, [dpad position]);
 
-        if (vector.x < 0) {
-            [player moveInDirection:ccp(-200, 0)];
-        } else if (vector.x > 0) {
-            [player moveInDirection:ccp(200, 0)];
+            if (vector.x < 0) {
+                [player moveInDirection:ccp(-200, 0)];
+            } else if (vector.x > 0) {
+                [player moveInDirection:ccp(200, 0)];
+            }
         }
-    }
 
-    if ([input isAnyTouchOnNode:jump touchPhase:KKTouchPhaseBegan]) {
-        // NEED KYLE'S HELP!
-        // Want to test if player is on the ground before doing jump
-        [player jump];
+        if ([input isAnyTouchOnNode:jump touchPhase:KKTouchPhaseBegan]) {
+            [player jump];
+        }
     }
 }
 

@@ -17,6 +17,7 @@
     PlayerActionContext *actionContext;
     CollisionVolume *collisionVolume;
     CCSprite *sprite;
+    bool isOnGround;
 }
 
 @property(nonatomic, strong) CollisionVolume *collisionVolume;
@@ -32,5 +33,13 @@
 - (void)stopXMovement;
 
 - (void)jump;
+
+- (void)setIsOnGround:(NSNumber *)value;
+
+- (void)setIsOnGroundWithBool:(bool) value;
+
+- (NSNumber *)isOnGroundObjectReturnValue;
+
+- (bool) isOnGround;
 
 @end

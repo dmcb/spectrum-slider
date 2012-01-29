@@ -33,18 +33,39 @@
 
     Player *player = [actionContext player];
 
+    [player setIsOnGroundWithBool:false];
+
+//    player.setLinearVelocity(vel.x, 0);
+//    System.out.println("jump before: " + player.getLinearVelocity());
+//    player.setTransform(pos.x, pos.y + 0.01f, 0);
+//    player.applyLinearImpulse(0, 30, pos.x, pos.y);
+//    System.out.println("jump, " + player.getLinearVelocity());
+
     b2Body *body = [[player collisionVolume] body];
+
+    b2Fixture *fixture = [[player collisionVolume] fixture];
+
+    fixture->SetFriction(0.0f);
 
     float32 xVelocity = body->GetLinearVelocity().x;
 
-    b2Vec2 vec2;
+    b2Vec2 worldCenter = body->GetPosition();
 
+    b2Vec2 vec2;
     vec2.y = 1000;
-    //vec2.x = 0;
     vec2.x = xVelocity;
 
-    b2Vec2 worldCenter = body->GetWorldCenter();
+    b2Vec2 vec3;
+    vec3.x = xVelocity;
+    vec3.y = 0;
 
+    b2Vec2 vec4;
+    vec4.x = worldCenter.x;
+    vec4.y = worldCenter.y + 0.01f;
+
+
+    body->SetLinearVelocity(vec3);
+    body->SetTransform(vec4, 0);
     body->ApplyLinearImpulse(vec2, worldCenter);
 
     done = true;

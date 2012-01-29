@@ -34,14 +34,14 @@ const float PTM_RATIO = 32.0f;
         body = [[[GameContext sharedContext] currentLevel] initBody:&bodyDef];
 
         b2PolygonShape collisionShape;
-        collisionShape.SetAsBox(width / PTM_RATIO, height / PTM_RATIO);
+        collisionShape.SetAsBox(width / PTM_RATIO * 0.5, height / PTM_RATIO * 0.5);
 
         // todo make these parameters. (density and such)
 
         b2FixtureDef shapeDef;
         shapeDef.shape = &collisionShape;
         shapeDef.density = 4.0f;
-        shapeDef.friction = 3.0f;
+        shapeDef.friction = 1.0f;
         shapeDef.restitution = 0.0f;
 
 //        shapeDef.isSensor = true;
@@ -51,6 +51,18 @@ const float PTM_RATIO = 32.0f;
         body->SetAngularDamping(1.0f);
 
         fixture = body->CreateFixture(&shapeDef);
+
+//        //shape definition for foot
+//        b2PolygonShape polygonShape;
+//        polygonShape.SetAsBox(1, 2); //a 2x4 rectangle
+//
+//        //fixture definition
+//        b2FixtureDef myFixtureDef;
+//        myFixtureDef.shape = &polygonShape;
+//        myFixtureDef.density = 1;
+//
+//        b2Fixture *footSensorFixture = body->CreateFixture(&myFixtureDef);
+//        footSensorFixture->SetUserData((void *) 3);
 
     }
 
@@ -64,7 +76,7 @@ const float PTM_RATIO = 32.0f;
 }
 
 - (void)setCollisionGroupId:(int16)newCollisionGroup {
-    b2Filter myFilterData=fixture->GetFilterData();
+    b2Filter myFilterData = fixture->GetFilterData();
 
     myFilterData.groupIndex = newCollisionGroup;
 
