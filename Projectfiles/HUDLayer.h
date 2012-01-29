@@ -15,6 +15,11 @@
 @interface HUDLayer : CCLayer <Updateable> {
     CCSprite *dpad;
     CCSprite *jump;
+    CCSprite *menu;
+    
+    CCSprite *leftband;
+    CCSprite *rightband;
+    
     int direction;
     int leap;
 }

@@ -18,21 +18,40 @@
 - (id)init {
     self = [super init];
     if (self) {
-        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache]; 
-        [frameCache addSpriteFramesWithFile:@"buttons.plist"]; 
-        
         // Get dimensions
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
         
+        // Add screen buttons
+        CCSpriteFrameCache* frameCache = [CCSpriteFrameCache sharedSpriteFrameCache]; 
+        [frameCache addSpriteFramesWithFile:@"hud.plist"]; 
+        
         dpad = [CCSprite spriteWithSpriteFrameName:@"button_dpad.png"];
-        dpad.position = CGPointMake(screenSize.width*0.15, screenSize.height*0.12);
+        dpad.position = CGPointMake(screenSize.width*0.08, screenSize.height*0.08);
         [self addChild:dpad];
         
         jump = [CCSprite spriteWithSpriteFrameName:@"button_jump.png"];
-        jump.position = CGPointMake(screenSize.width*0.9, screenSize.height*0.12);
+        jump.position = CGPointMake(screenSize.width*0.94, screenSize.height*0.08);
         [self addChild:jump];
         
-         self.isTouchEnabled = YES;
+        menu = [CCSprite spriteWithSpriteFrameName:@"button_menu.png"];
+        menu.position = CGPointMake(screenSize.width*0.94, screenSize.height*0.92);
+        [self addChild:menu];
+        
+        // Add sliding bands
+        leftband = [CCSprite spriteWithSpriteFrameName:@"leftband.png"];
+        leftband.position = CGPointMake(0, 0);
+        leftband.anchorPoint = CGPointMake(0, 0);
+        [self addChild:leftband];
+        
+        rightband = [CCSprite spriteWithSpriteFrameName:@"rightband.png"];
+        rightband.position = CGPointMake(screenSize.width-rightband.contentSize.width, 0);
+        rightband.anchorPoint = CGPointMake(0, 0);
+        [self addChild:rightband];
+        
+        
+        
+        // Enable touch and updating
+        self.isTouchEnabled = YES;
         
         [self scheduleUpdate];
         
@@ -51,7 +70,7 @@
     // Check if touching dpad
     float dpadDistance = sqrt((touchPoint.x - dpad.position.x)*(touchPoint.x - dpad.position.x) + (touchPoint.y - dpad.position.y)*(touchPoint.y - dpad.position.y));
     // 10 px deadzone
-    if (dpadDistance < 100 && dpadDistance > 10)
+    if (dpadDistance < 80 && dpadDistance > 25)
     {
         if (touchPoint.x - dpad.position.x > 0)
         {
@@ -69,7 +88,7 @@
     
     // Check if touching jump
     float jumpDistance = sqrt((touchPoint.x - jump.position.x)*(touchPoint.x - jump.position.x) + (touchPoint.y - jump.position.y)*(touchPoint.y - jump.position.y));
-    if (jumpDistance < 100)
+    if (jumpDistance < 80)
     { 
         leap = 1;
     }
@@ -83,7 +102,7 @@
     
     // Check if touching dpad
     float dpadDistance = sqrt((touchPoint.x - dpad.position.x)*(touchPoint.x - dpad.position.x) + (touchPoint.y - dpad.position.y)*(touchPoint.y - dpad.position.y));
-    if (dpadDistance < 150 && dpadDistance > 25)
+    if (dpadDistance < 80 && dpadDistance > 25)
     {
         if (touchPoint.x - dpad.position.x > 0)
         {

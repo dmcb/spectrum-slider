@@ -9,10 +9,9 @@
 /* Begin PBXBuildFile section */
 		330810D314D4783700DBBBDC /* HUDLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 330810D214D4783700DBBBDC /* HUDLayer.mm */; };
 		3323B13714D46ADF009A20C2 /* MoveAction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3323B13614D46ADF009A20C2 /* MoveAction.mm */; };
+		74949DF714D4C8A700F9BB5C /* hud.png in Resources */ = {isa = PBXBuildFile; fileRef = 74949DF614D4C8A700F9BB5C /* hud.png */; };
 		74B38E4414D48AAD0063B3C9 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B38E4214D48AAD0063B3C9 /* player.png */; };
-		74B38E4514D48AAD0063B3C9 /* shittyDPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B38E4314D48AAD0063B3C9 /* shittyDPad.png */; };
-		74B38E4814D49F5A0063B3C9 /* buttons.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74B38E4614D49F5A0063B3C9 /* buttons.plist */; };
-		74B38E4914D49F5A0063B3C9 /* buttons.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 74B38E4714D49F5A0063B3C9 /* buttons.pvr.ccz */; };
+		74B38E6D14D4C4110063B3C9 /* hud.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74B38E6B14D4C4110063B3C9 /* hud.plist */; };
 		84B414E814D3E980001AE794 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414CD14D3E980001AE794 /* AppDelegate.mm */; };
 		84B414E914D3E980001AE794 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414CF14D3E980001AE794 /* ContactListener.mm */; };
 		84B414EA14D3E980001AE794 /* GameContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414D214D3E980001AE794 /* GameContext.mm */; };
@@ -210,10 +209,9 @@
 		330810D214D4783700DBBBDC /* HUDLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HUDLayer.mm; sourceTree = "<group>"; };
 		3323B13514D46ADF009A20C2 /* MoveAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveAction.h; sourceTree = "<group>"; };
 		3323B13614D46ADF009A20C2 /* MoveAction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MoveAction.mm; sourceTree = "<group>"; };
+		74949DF614D4C8A700F9BB5C /* hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud.png; sourceTree = "<group>"; };
 		74B38E4214D48AAD0063B3C9 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
-		74B38E4314D48AAD0063B3C9 /* shittyDPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shittyDPad.png; sourceTree = "<group>"; };
-		74B38E4614D49F5A0063B3C9 /* buttons.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = buttons.plist; sourceTree = "<group>"; };
-		74B38E4714D49F5A0063B3C9 /* buttons.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; path = buttons.pvr.ccz; sourceTree = "<group>"; };
+		74B38E6B14D4C4110063B3C9 /* hud.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hud.plist; sourceTree = "<group>"; };
 		84B414CC14D3E980001AE794 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		84B414CD14D3E980001AE794 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		84B414CE14D3E980001AE794 /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -335,10 +333,9 @@
 		74B38E4114D48AAD0063B3C9 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
-				74B38E4614D49F5A0063B3C9 /* buttons.plist */,
-				74B38E4714D49F5A0063B3C9 /* buttons.pvr.ccz */,
+				74949DF614D4C8A700F9BB5C /* hud.png */,
+				74B38E6B14D4C4110063B3C9 /* hud.plist */,
 				74B38E4214D48AAD0063B3C9 /* player.png */,
-				74B38E4314D48AAD0063B3C9 /* shittyDPad.png */,
 			);
 			name = Sprites;
 			path = Resources/Sprites;
@@ -806,9 +803,8 @@
 				84B4151314D3F075001AE794 /* level01.tmx in Resources */,
 				84B4151914D3F588001AE794 /* NEUROPOL.ttf in Resources */,
 				74B38E4414D48AAD0063B3C9 /* player.png in Resources */,
-				74B38E4514D48AAD0063B3C9 /* shittyDPad.png in Resources */,
-				74B38E4814D49F5A0063B3C9 /* buttons.plist in Resources */,
-				74B38E4914D49F5A0063B3C9 /* buttons.pvr.ccz in Resources */,
+				74B38E6D14D4C4110063B3C9 /* hud.plist in Resources */,
+				74949DF714D4C8A700F9BB5C /* hud.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
