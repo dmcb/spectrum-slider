@@ -11,6 +11,7 @@
 
 @interface MoveAction : NSObject <PlayerAction> {
     CGPoint direction;
+    bool done;
 }
 
 - (id)initWithDirection:(CGPoint)aDirection;

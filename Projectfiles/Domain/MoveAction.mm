@@ -19,12 +19,13 @@
     self = [super init];
     if (self) {
         direction = aDirection;
+        done = false;
     }
     return self;
 }
 
 - (bool)isDone {
-    return false;
+    return done;
 }
 
 - (void)doAction:(PlayerActionContext *)actionContext delta:(float)delta {
@@ -44,6 +45,8 @@
         body->SetLinearDamping(5.0f);   // and this keeps it from moving wildly
         body->ApplyLinearImpulse(movementVector, body->GetPosition());
     }
+
+    done = true;
 
 }
 @end

@@ -35,11 +35,17 @@
 
     b2Body *body = [[player collisionVolume] body];
 
+    float32 xVelocity = body->GetLinearVelocity().x;
+
     b2Vec2 vec2;
 
     vec2.y = 1000;
+    vec2.x = 0;
+//    vec2.x = xVelocity;
 
-    body->ApplyLinearImpulse(vec2, body->GetWorldCenter());
+    b2Vec2 worldCenter = body->GetWorldCenter();
+
+    body->ApplyLinearImpulse(vec2, worldCenter);
 
     done = true;
 

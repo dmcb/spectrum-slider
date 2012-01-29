@@ -35,6 +35,7 @@
     [collisionVolume update:delta];
     [actionContext doAction:delta];
     [sprite setPosition:[self position]];
+    [sprite setRotation:[self rotation]];
 }
 
 - (void)spawn {

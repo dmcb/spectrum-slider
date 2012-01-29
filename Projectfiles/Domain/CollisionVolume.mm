@@ -27,6 +27,7 @@ const float PTM_RATIO = 32.0f;
         b2BodyDef bodyDef;
         bodyDef.type = b2_dynamicBody;
         bodyDef.position.Set(gameObject.position.x / PTM_RATIO, gameObject.position.y / PTM_RATIO);
+        bodyDef.fixedRotation = true;
 
         bodyDef.userData = (__bridge void *) aGameObject;
 
@@ -42,6 +43,7 @@ const float PTM_RATIO = 32.0f;
         shapeDef.density = 4.0f;
         shapeDef.friction = 3.0f;
         shapeDef.restitution = 0.0f;
+
 //        shapeDef.isSensor = true;
         shapeDef.userData = (__bridge void *) aGameObject;
         shapeDef.filter.groupIndex = (int16) collisionId;
