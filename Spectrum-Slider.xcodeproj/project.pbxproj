@@ -69,6 +69,7 @@
 		DCF95CD513A97EC500AE3B80 /* libwax-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCF95CCC13A97EC500AE3B80 /* libwax-mac.a */; };
 		DCFA90F013B4F811009DD386 /* GameWorldLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD385 /* GameWorldLayer.mm */; };
 		DCFA90F013B4F811009DD38C /* PlayerLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD38B /* PlayerLayer.mm */; };
+		DCFA90F013B4F811009DD38F /* JumpAction.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD38E /* JumpAction.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,6 +300,8 @@
 		DCFA90F013B4F811009DD38A /* Displayable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Displayable.h; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD38B /* PlayerLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerLayer.mm; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD38D /* PlayerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerLayer.h; sourceTree = "<group>"; };
+		DCFA90F013B4F811009DD38E /* JumpAction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JumpAction.mm; sourceTree = "<group>"; };
+		DCFA90F013B4F811009DD390 /* JumpAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpAction.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +367,8 @@
 		84B414D514D3E980001AE794 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				DCFA90F013B4F811009DD390 /* JumpAction.h */,
+				DCFA90F013B4F811009DD38E /* JumpAction.mm */,
 				33397EF314D4B73B003FAF35 /* ColorDimension.h */,
 				33397EF414D4B73B003FAF35 /* ColorDimension.mm */,
 				3323B13514D46ADF009A20C2 /* MoveAction.h */,
@@ -859,6 +864,7 @@
 				330810D314D4783700DBBBDC /* HUDLayer.mm in Sources */,
 				33397EF514D4B73B003FAF35 /* ColorDimension.mm in Sources */,
 				DCFA90F013B4F811009DD38C /* PlayerLayer.mm in Sources */,
+				DCFA90F013B4F811009DD38F /* JumpAction.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

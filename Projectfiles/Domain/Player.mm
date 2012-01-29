@@ -11,6 +11,7 @@
 #import "GameContext.h"
 #import "Level.h"
 #import "MoveAction.h"
+#import "JumpAction.h"
 
 @implementation Player {
 
@@ -60,6 +61,12 @@
 }
 
 - (void)stopXMovement {
-    [actionContext stopAllActions];
+    if ([actionContext isCurrentActionType:[MoveAction class]]) {
+        [actionContext stopAllActions];
+    }
+}
+
+-(void) jump {
+    [actionContext setAction:[[JumpAction alloc] init]];
 }
 @end

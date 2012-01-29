@@ -6,7 +6,10 @@
 
 
 #import <Foundation/Foundation.h>
+#import "PlayerAction.h"
 
 
-@interface JumpAction : NSObject
+@interface JumpAction : NSObject <PlayerAction> {
+    bool done;
+}
 @end

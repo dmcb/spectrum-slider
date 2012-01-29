@@ -30,4 +30,7 @@
 - (bool)isMoving;
 
 - (void)stopXMovement;
+
+- (void)jump;
+
 @end
