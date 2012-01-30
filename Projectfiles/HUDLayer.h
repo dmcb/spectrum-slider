@@ -22,4 +22,7 @@
     
     int direction;
 }
+
+- (void)slideToColour:(NSString *)colour;
+
 @end

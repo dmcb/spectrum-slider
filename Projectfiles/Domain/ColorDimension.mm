@@ -9,6 +9,7 @@
 #import "GameContext.h"
 #import "Level.h"
 #import "Player.h"
+#import "HUDLayer.h"
 #import "CollisionVolume.h"
 
 
@@ -19,9 +20,20 @@
 @synthesize collisionGroupId;
 @synthesize spriteLayer;
 @synthesize tiledLayer;
+@synthesize colour;
+
+- (id)initWithColour:(NSString *)aColour {
+    self = [super init];
+    if (self) {
+        colour = aColour;
+    }
+    return self;
+}
 
 
 - (void)activate {
+    [[[[GameContext sharedContext] currentLevel] hudLayer] slideToColour:colour];
+    
     [spriteLayer setVisible:true];
 
     [tiledLayer setVisible:true];

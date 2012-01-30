@@ -88,5 +88,20 @@
     }
 }
 
+- (void)slideToColour:(NSString *)colour {
+    if ([colour isEqualToString:@"blue"])
+    {
+        
+    }
+    else if ([colour isEqualToString:@"yellow"])
+    {
+        
+    }
+    else {
+        [leftband setColor:(ccc3(0,0,255))];
+        [rightband setColor:(ccc3(255,255,0))];
+    }
+}
+
 
 @end
