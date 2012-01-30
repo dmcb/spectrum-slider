@@ -44,6 +44,8 @@
 
 - (void)frictionizeMotion;
 
+- (void)giveASlightBoost;
+
 - (float)maximumXVelocity;
 
 @end
