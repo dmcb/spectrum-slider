@@ -72,22 +72,22 @@
     
     if ([aDimension.colour isEqualToString:@"red"])
     {
-        [gameWorldLayer.redDimension activate];
-        [gameWorldLayer.yellowDimension deactivate];    
-        [gameWorldLayer.blueDimension deactivate];
+        [[gameWorldLayer redDimension] activate];
+        [[gameWorldLayer yellowDimension] deactivate];    
+        [[gameWorldLayer blueDimension] deactivate];
         
     }
     else if ([aDimension.colour isEqualToString:@"yellow"])
     {
-        [gameWorldLayer.redDimension deactivate];
-        [gameWorldLayer.yellowDimension activate];  
-        [gameWorldLayer.blueDimension deactivate];
+        [[gameWorldLayer redDimension] deactivate];
+        [[gameWorldLayer yellowDimension] activate];  
+        [[gameWorldLayer blueDimension] deactivate];
     }
     else
     {
-        [gameWorldLayer.redDimension deactivate];
-        [gameWorldLayer.yellowDimension deactivate]; 
-        [gameWorldLayer.blueDimension activate];
+        [[gameWorldLayer redDimension] deactivate];
+        [[gameWorldLayer yellowDimension] deactivate]; 
+        [[gameWorldLayer blueDimension] activate];
         
     }
 }
