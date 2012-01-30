@@ -43,4 +43,7 @@
 - (bool) isOnGround;
 
 - (void)frictionizeMotion;
+
+- (float)maximumXVelocity;
+
 @end

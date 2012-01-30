@@ -94,4 +94,24 @@
         fixture->SetFriction(1.0f);
     }
 }
+
+- (void) giveASlightBoost {
+    
+    float32 xVelocity = collisionVolume.body->GetLinearVelocity().x;
+
+    float tinyBoostVelocity = 0;
+    if (xVelocity > 0) {
+        tinyBoostVelocity = 5.0f;
+    } else if (xVelocity < 0) {
+        tinyBoostVelocity = -5.0f;
+    }
+
+    [actionContext setAction:[[MoveAction alloc] initWithDirection:ccp(tinyBoostVelocity, 0)]];
+
+}
+
+- (float) maximumXVelocity {
+    return 5.0f;
+}
+
 @end

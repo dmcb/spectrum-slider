@@ -12,6 +12,7 @@
  <objectgroup name="Collision_RED" width="32" height="24">
   <object x="192" y="0" width="61" height="156"/>
   <object x="771" y="1" width="60" height="165"/>
+  <object x="768" y="512" width="160" height="64"/>
  </objectgroup>
  <objectgroup name="Collision_BLUE" width="32" height="24">
   <object x="193" y="3" width="60" height="160"/>
@@ -21,15 +22,16 @@
  <objectgroup name="Collision_YELLOW" width="32" height="24">
   <object x="481" y="3" width="61" height="159"/>
   <object x="769" y="3" width="61" height="160"/>
+  <object x="512" y="416" width="192" height="64"/>
  </objectgroup>
  <layer name="Yellow" width="32" height="24">
   <data encoding="base64" compression="zlib">
-   eJxjYCAfsEIxPsACxbQAo/YPffsZRzgeBaNgFIyCUTAKRsEooDcAAA9uAJs=
+   eJxjYCAfsEIxPsACxbQAo/YPffsZRzgeBaNgFJAPBjpfDbT9o2AUjIJRQC4AAEr2AKc=
   </data>
  </layer>
  <layer name="Red" width="32" height="24">
   <data encoding="base64" compression="zlib">
-   eJxjYMAOmKGYUsACxaSCUftHhv1MIxyPglEwCkbBKBgFo2AU0BsAAH0NAMc=
+   eJxjYMAOmKGYUsACxaSCUftHhv1MIxyPglEwCkbBcAUDXeYNtP2jYBQMZgAAv+0A2w==
   </data>
  </layer>
  <layer name="Blue" width="32" height="24">

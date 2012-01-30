@@ -28,6 +28,10 @@
     return done;
 }
 
+- (BOOL)isAtMaximumVelocity:(Player *)player body:(b2Body *)body {
+    return fabs(body->GetLinearVelocity().x) < [player maximumXVelocity];
+}
+
 - (void)doAction:(PlayerActionContext *)actionContext delta:(float)delta {
     Player *player = [actionContext player];
 
@@ -36,13 +40,17 @@
 
     b2Vec2 movementVector = b2Vec2(direction.x, direction.y);
 
-    fixture->SetFriction(0.2f);
+    if ([self isAtMaximumVelocity:player body:body]) {
 
-    movementVector *= [player moveSpeed];
+        fixture->SetFriction(0.2f);
 
-    if (body != nil) {
-        body->SetAwake(true);
-        body->ApplyLinearImpulse(movementVector, body->GetPosition());
+        movementVector *= [player moveSpeed];
+
+        if (body != nil) {
+            body->SetAwake(true);
+            body->ApplyLinearImpulse(movementVector, body->GetPosition());
+        }
+
     }
 
     done = true;
