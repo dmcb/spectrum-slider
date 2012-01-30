@@ -63,7 +63,7 @@ const float PTM_RATIO = 32.0f;
         [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_ALL" collisionGroupId:0];
 
         // Level starts with red dimension
-        [[[GameContext sharedContext] currentLevel] setDimension:gameWorldLayer.redDimension];
+        [[[GameContext sharedContext] currentLevel] setDimension:[gameWorldLayer redDimension]];
 
         Player *player = [[Player alloc] init];
 
