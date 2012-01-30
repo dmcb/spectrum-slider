@@ -17,12 +17,12 @@ void setIsOnGround(b2Contact *contact, b2Body *bodyToCheck, CCNode *nodeToCheck)
             b2WorldManifold manifold;
             contact->GetWorldManifold(&manifold);
 
-            NSLog(@"----------------------------------------");
-            NSLog(@" player y=%f", playerPosition.y);
+            //NSLog(@"----------------------------------------");
+            //NSLog(@" player y=%f", playerPosition.y);
 
             bool below = manifold.normal.y >0;
 
-            NSLog(@"----------------------------------------");
+            //NSLog(@"----------------------------------------");
             NSNumber *passedValue = [NSNumber numberWithBool:below];
 
             if (below) {

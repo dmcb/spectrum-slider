@@ -10,6 +10,7 @@
 #import "Level.h"
 #import "Player.h"
 #import "GameWorldLayer.h"
+#import "ColorDimension.h"
 
 
 @implementation HUDLayer {
@@ -64,39 +65,44 @@
     Player *player = [[[GameContext sharedContext] currentLevel] player];
 
     KKInput *input = [KKInput sharedInput];
+    input.gestureSwipeEnabled = YES;
     
     // Detect swipe for colour slide
     KKSwipeGestureDirection dir = input.gestureSwipeDirection;
     switch (dir)
     {
         case KKSwipeGestureDirectionRight:
-            NSLog(@"Swiped right");
-            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
+            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) 
+            {
                 [[[GameContext sharedContext] currentLevel] setDimension:(         
-                                                                          [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension])];
+                [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension])];
             }
-            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
+            else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) 
+            {
                 [[[GameContext sharedContext] currentLevel] setDimension:(         
-                                                                          [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension])];
+                [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension])];
             }
-            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"blue"]) {
+            else // KYLE HELP! I can't get that colour string, so it's always going to this else dealy :(
+            {
                 [[[GameContext sharedContext] currentLevel] setDimension:(         
-                                                                          [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
+                [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
             }
             break;
         case KKSwipeGestureDirectionLeft:
-            NSLog(@"Swiped left");
-            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
+            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) 
+            {
                 [[[GameContext sharedContext] currentLevel] setDimension:(         
-                                                                          [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension])];
+                [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension])];
             }
-            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
+            else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) 
+            {
                 [[[GameContext sharedContext] currentLevel] setDimension:(         
-                                                                          [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
+                [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
             }
-            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"blue"]) {
+            else
+            {
                 [[[GameContext sharedContext] currentLevel] setDimension:(         
-                                                                          [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension])];
+                [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension])];
             }
             break;
         case KKSwipeGestureDirectionUp:
