@@ -24,9 +24,9 @@
 - (id)initWithTileMap:(NSString *)tileMapString {
     self = [super init];
     if (self) {
-        redDimension = [ColorDimension new];
-        blueDimension = [ColorDimension new];
-        yellowDimension = [ColorDimension new];
+        redDimension = [[ColorDimension alloc] initWithColour:@"red"];
+        blueDimension = [[ColorDimension alloc] initWithColour:@"blue"];
+        yellowDimension = [[ColorDimension alloc] initWithColour:@"yellow"];
 
         playerLayer = [CCLayer new];
 

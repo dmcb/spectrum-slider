@@ -12,12 +12,15 @@
     CCTMXLayer *tiledLayer;
     CCLayer *spriteLayer;
     int collisionGroupId;
+    NSString *colour;
 }
 
 @property(nonatomic) int collisionGroupId;
 @property(nonatomic, strong) CCLayer *spriteLayer;
 @property(nonatomic, strong) CCTMXLayer *tiledLayer;
+@property(nonatomic, strong, readonly) NSString *colour;
 
+- (id)initWithColour:(NSString *)aColour;
 -(void) activate;
 -(void) deactivate;
 
