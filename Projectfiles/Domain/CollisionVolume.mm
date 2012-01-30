@@ -28,6 +28,7 @@ const float PTM_RATIO = 32.0f;
         bodyDef.type = b2_dynamicBody;
         bodyDef.position.Set(gameObject.position.x / PTM_RATIO, gameObject.position.y / PTM_RATIO);
         bodyDef.fixedRotation = true;
+        bodyDef.bullet = true;
 
         bodyDef.userData = (__bridge void *) aGameObject;
 

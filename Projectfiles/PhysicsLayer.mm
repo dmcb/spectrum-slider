@@ -66,7 +66,7 @@ const float PTM_RATIO = 32.0f;
 
         Player *player = [[Player alloc] init];
 
-        player.position = ccp(100, 400);
+        player.position = ccp(100, 100);
 
         [player spawn];
         

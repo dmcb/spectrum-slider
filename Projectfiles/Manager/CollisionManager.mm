@@ -37,9 +37,9 @@ const float PTM_RATIO = 32.0f;
 }
 
 - (void)update:(ccTime)delta {
-    float timeStep = 0.03f;
+    float timeStep = 1.0f/60.0f;
     int32 velocityIterations = 8;
-    int32 positionIterations = 1;
+    int32 positionIterations = 10;
     world->Step(timeStep, velocityIterations, positionIterations);
 }
 

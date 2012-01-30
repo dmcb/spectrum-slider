@@ -50,7 +50,7 @@
 }
 
 - (float)moveSpeed {
-    return 10.0f;
+    return 12.0f;
 }
 
 - (bool)isMoving {
