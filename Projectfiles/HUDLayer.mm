@@ -36,7 +36,7 @@
         [self addChild:jump];
 
         menu = [CCSprite spriteWithSpriteFrameName:@"button_menu.png"];
-        menu.position = CGPointMake(screenSize.width * 0.94, screenSize.height * 0.92);
+        menu.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.08);
         [self addChild:menu];
 
         // Add sliding bands
