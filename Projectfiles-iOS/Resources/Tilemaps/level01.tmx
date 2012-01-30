@@ -8,30 +8,31 @@
   <object x="-32" y="0" width="32" height="704"/>
   <object x="1024" y="0" width="32" height="704"/>
   <object x="-32" y="-32" width="1088" height="32"/>
+  <object x="0" y="704" width="1024" height="64"/>
  </objectgroup>
  <objectgroup name="Collision_RED" width="32" height="24">
   <object x="192" y="0" width="61" height="156"/>
   <object x="771" y="1" width="60" height="165"/>
-  <object x="768" y="512" width="160" height="64"/>
+  <object x="768" y="608" width="160" height="32"/>
  </objectgroup>
  <objectgroup name="Collision_BLUE" width="32" height="24">
   <object x="193" y="3" width="60" height="160"/>
   <object x="479" y="-1" width="63" height="159"/>
-  <object x="0" y="640" width="1024" height="64"/>
+  <object x="0" y="160" width="1024" height="64"/>
  </objectgroup>
  <objectgroup name="Collision_YELLOW" width="32" height="24">
   <object x="481" y="3" width="61" height="159"/>
   <object x="769" y="3" width="61" height="160"/>
-  <object x="512" y="416" width="192" height="64"/>
+  <object x="512" y="512" width="192" height="32"/>
  </objectgroup>
  <layer name="Yellow" width="32" height="24">
   <data encoding="base64" compression="zlib">
-   eJxjYCAfsEIxPsACxbQAo/YPffsZRzgeBaNgFJAPBjpfDbT9o2AUjIJRQC4AAEr2AKc=
+   eJxjYCAfsEIxPsACxbQAo/YPffsZRzgeBaNgFIyCoQpGy7VRMAqGLgAAJbIAoQ==
   </data>
  </layer>
  <layer name="Red" width="32" height="24">
   <data encoding="base64" compression="zlib">
-   eJxjYMAOmKGYUsACxaSCUftHhv1MIxyPglEwCkbBcAUDXeYNtP2jYBQMZgAAv+0A2w==
+   eJxjYMAOmKGYUsACxaSCUftHhv1MIxyPglEwCkbBKBgFtACjdc4owAcAkf0A0Q==
   </data>
  </layer>
  <layer name="Blue" width="32" height="24">

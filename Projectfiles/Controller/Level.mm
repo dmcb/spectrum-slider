@@ -31,7 +31,7 @@
     return [collisionManager initBody:fixture];
 }
 
-- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(int)collisionGroupId {
+- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(uint16)collisionGroupId {
     return [collisionManager initStaticBodies:map collisionLayer:clLayer collisionGroupId:collisionGroupId];
 }
 
@@ -67,6 +67,9 @@
 
 
 - (void)setDimension:(ColorDimension *)aDimension {
+    
+    dimension = aDimension;
+    
     if ([aDimension.colour isEqualToString:@"red"])
     {
         [gameWorldLayer.redDimension activate];

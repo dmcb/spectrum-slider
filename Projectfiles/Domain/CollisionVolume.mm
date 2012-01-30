@@ -45,7 +45,6 @@ const float PTM_RATIO = 32.0f;
 
 //        shapeDef.isSensor = true;
         shapeDef.userData = (__bridge void *) aGameObject;
-        shapeDef.filter.groupIndex = (int16) collisionId;
 
         fixture = body->CreateFixture(&shapeDef);
 
@@ -62,10 +61,12 @@ const float PTM_RATIO = 32.0f;
     gameObject.rotation = -1 * CC_RADIANS_TO_DEGREES(body->GetAngle());
 }
 
-- (void)setCollisionGroupId:(int16)newCollisionGroup {
+- (void)setCollisionGroupId:(uint16)newCollisionGroup {
     b2Filter myFilterData = fixture->GetFilterData();
 
-    myFilterData.groupIndex = newCollisionGroup;
+    newCollisionGroup |= 0xf;
+
+    myFilterData.maskBits = newCollisionGroup;
 
     fixture->SetFilterData(myFilterData);
 }

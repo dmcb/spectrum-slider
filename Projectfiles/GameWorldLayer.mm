@@ -52,9 +52,9 @@
     [blueDimension setTiledLayer:[tiledMap layerNamed:@"Blue"]];
     [yellowDimension setTiledLayer:[tiledMap layerNamed:@"Yellow"]];
 
-    [redDimension setCollisionGroupId:1];
-    [blueDimension setCollisionGroupId:2];
-    [yellowDimension setCollisionGroupId:3];
+    [redDimension setCollisionGroupId:0xF0];
+    [blueDimension setCollisionGroupId:0xF00];
+    [yellowDimension setCollisionGroupId:0xF000];
 
 }
 

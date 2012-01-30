@@ -38,7 +38,7 @@
 
 - (b2Body *)initBody:(b2BodyDef *)fixture;
 
-- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(int)collisionGroupId;
+- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(uint16)collisionGroupId;
 
 - (void)spawn:(id <Updateable, Displayable>)objectToSpawn;
 

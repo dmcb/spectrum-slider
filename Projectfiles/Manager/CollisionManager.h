@@ -22,6 +22,6 @@
 
 - (void)draw;
 
-- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(int)collisionGroupId;
+- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(uint16)collisionGroupId;
 
 @end

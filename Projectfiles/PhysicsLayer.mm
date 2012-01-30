@@ -56,11 +56,10 @@ const float PTM_RATIO = 32.0f;
         [self addChild:gameWorldLayer.blueDimension.spriteLayer];
         [self addChild:gameWorldLayer.yellowDimension.spriteLayer];
 
-        // Generate Blue static collision
-        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_BLUE" collisionGroupId:1];
-        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_RED" collisionGroupId:2];
-        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_YELLOW" collisionGroupId:3];
-        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_ALL" collisionGroupId:0];
+        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_ALL" collisionGroupId:0xF];
+        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_RED" collisionGroupId:0xF0];
+        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_BLUE" collisionGroupId:0xF00];
+        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_YELLOW" collisionGroupId:0xF000];
 
         // Level starts with red dimension
         [[[GameContext sharedContext] currentLevel] setDimension:gameWorldLayer.redDimension];

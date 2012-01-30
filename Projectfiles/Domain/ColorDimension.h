@@ -11,11 +11,11 @@
 @interface ColorDimension : NSObject {
     CCTMXLayer *tiledLayer;
     CCLayer *spriteLayer;
-    int collisionGroupId;
+    uint16 collisionGroupId;
     NSString *colour;
 }
 
-@property(nonatomic) int collisionGroupId;
+@property(nonatomic) uint16 collisionGroupId;
 @property(nonatomic, strong) CCLayer *spriteLayer;
 @property(nonatomic, strong) CCTMXLayer *tiledLayer;
 @property(nonatomic, strong, readonly) NSString *colour;

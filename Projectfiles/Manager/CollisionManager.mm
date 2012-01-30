@@ -52,7 +52,7 @@ const float PTM_RATIO = 32.0f;
     world->DrawDebugData();
 }
 
-- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(int)collisionGroupId {
+- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(uint16)collisionGroupId {
 
     CCTMXObjectGroup *collisionGroup = [map objectGroupNamed:clLayer];
 
@@ -78,7 +78,7 @@ const float PTM_RATIO = 32.0f;
 
             b2Filter filter = fixture->GetFilterData();
 
-            filter.groupIndex = collisionGroupId;
+            filter.categoryBits = collisionGroupId;
 
             fixture->SetFilterData(filter);
             fixture->SetFriction(1.0f);

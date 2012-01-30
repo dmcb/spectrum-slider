@@ -68,49 +68,39 @@
     input.gestureSwipeEnabled = YES;
     
     // Detect swipe for colour slide
-    KKSwipeGestureDirection dir = input.gestureSwipeDirection;
-    switch (dir)
-    {
-        case KKSwipeGestureDirectionRight:
-            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) 
-            {
-                [[[GameContext sharedContext] currentLevel] setDimension:(         
-                [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension])];
-            }
-            else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) 
-            {
-                [[[GameContext sharedContext] currentLevel] setDimension:(         
-                [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension])];
-            }
-            else // KYLE HELP! I can't get that colour string, so it's always going to this else dealy :(
-            {
-                [[[GameContext sharedContext] currentLevel] setDimension:(         
-                [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
-            }
-            break;
-        case KKSwipeGestureDirectionLeft:
-            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) 
-            {
-                [[[GameContext sharedContext] currentLevel] setDimension:(         
-                [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension])];
-            }
-            else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) 
-            {
-                [[[GameContext sharedContext] currentLevel] setDimension:(         
-                [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
-            }
-            else
-            {
-                [[[GameContext sharedContext] currentLevel] setDimension:(         
-                [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension])];
-            }
-            break;
-        case KKSwipeGestureDirectionUp:
-            // direction-specific code here
-            break;
-        case KKSwipeGestureDirectionDown:
-            // direction-specific code here
-            break;
+    if (input.gestureSwipeRecognizedThisFrame) {
+        KKSwipeGestureDirection dir = input.gestureSwipeDirection;
+        switch (dir)
+        {
+            case KKSwipeGestureDirectionRight:
+                if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
+                    [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension]];
+                }
+                else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
+                    [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension]];
+                }
+                else  {
+                    [[[GameContext sharedContext] currentLevel] setDimension:([[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
+                }
+                break;
+            case KKSwipeGestureDirectionLeft:
+                if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
+                    [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension]];
+                }
+                else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
+                    [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension]];
+                }
+                else {
+                    [[[GameContext sharedContext] currentLevel] setDimension:([[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension])];
+                }
+                break;
+            case KKSwipeGestureDirectionUp:
+                // direction-specific code here
+                break;
+            case KKSwipeGestureDirectionDown:
+                // direction-specific code here
+                break;
+        }
     }
 
     // Player can't jump or move in mid air
