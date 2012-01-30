@@ -45,15 +45,15 @@
 
     b2Fixture *fixture = [[player collisionVolume] fixture];
 
-    fixture->SetFriction(0.0f);
+    fixture->SetFriction(0.2f);
 
     float32 xVelocity = body->GetLinearVelocity().x;
 
     b2Vec2 worldCenter = body->GetPosition();
 
     b2Vec2 vec2;
-    vec2.y = 1000;
-    vec2.x = xVelocity;
+    vec2.y = 220;
+    vec2.x = 0;
 
     b2Vec2 vec3;
     vec3.x = xVelocity;
@@ -63,9 +63,6 @@
     vec4.x = worldCenter.x;
     vec4.y = worldCenter.y + 0.01f;
 
-
-    body->SetLinearVelocity(vec3);
-    body->SetTransform(vec4, 0);
     body->ApplyLinearImpulse(vec2, worldCenter);
 
     done = true;

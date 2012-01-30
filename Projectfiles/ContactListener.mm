@@ -25,8 +25,13 @@ void setIsOnGround(b2Contact *contact, b2Body *bodyToCheck, CCNode *nodeToCheck)
             NSLog(@"----------------------------------------");
             NSNumber *passedValue = [NSNumber numberWithBool:below];
 
+            if (below) {
+                if (nodeToCheck) {
 
+                }
+            }
 
+            
             [nodeToCheck performSelector:@selector(setIsOnGround:) withObject:passedValue];
         }
     }

@@ -63,7 +63,7 @@ const float PTM_RATIO = 32.0f;
             float height = [[object valueForKey:@"height"] floatValue];
 
             b2BodyDef bodyDef;
-            bodyDef.type = b2_staticBody    ;
+            bodyDef.type = b2_staticBody;
             bodyDef.position.Set(([[object valueForKey:@"x"] floatValue] / PTM_RATIO) + (width / 2.0 / PTM_RATIO),
             ([[object valueForKey:@"y"] floatValue] / PTM_RATIO) + (height / 2.0 / PTM_RATIO));
 
@@ -81,6 +81,7 @@ const float PTM_RATIO = 32.0f;
             filter.groupIndex = collisionGroupId;
 
             fixture->SetFilterData(filter);
+            fixture->SetFriction(1.0f);
         }
 
     }

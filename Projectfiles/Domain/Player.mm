@@ -50,7 +50,7 @@
 }
 
 - (float)moveSpeed {
-    return 0.5f;
+    return 10.0f;
 }
 
 - (bool)isMoving {
@@ -88,5 +88,10 @@
     return isOnGround;
 }
 
-
+- (void)frictionizeMotion {
+    if (isOnGround) {
+        b2Fixture *fixture = collisionVolume.fixture;
+        fixture->SetFriction(1.0f);
+    }
+}
 @end

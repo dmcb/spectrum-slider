@@ -74,7 +74,7 @@ const float PTM_RATIO = 32.0f;
         
         [self addChild:hudLayer];
 
-        [self enableBox2dDebugDrawing];
+//        [self enableBox2dDebugDrawing];
 
         [self scheduleUpdate];
 
@@ -127,7 +127,6 @@ const float PTM_RATIO = 32.0f;
 
 #if DEBUG
 - (void)draw {
-    [super draw];
 
 	if (debugDraw)
 	{
@@ -144,6 +143,8 @@ const float PTM_RATIO = 32.0f;
 		glEnableClientState(GL_COLOR_ARRAY);
 		glEnable(GL_TEXTURE_2D);
 	}
+
+    [super draw];
 }
 #endif
 

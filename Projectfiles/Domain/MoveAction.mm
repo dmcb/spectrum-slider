@@ -32,17 +32,16 @@
     Player *player = [actionContext player];
 
     b2Body *body = player.collisionVolume.body;
+    b2Fixture *fixture = player.collisionVolume.fixture;
 
     b2Vec2 movementVector = b2Vec2(direction.x, direction.y);
 
-//    movementVector.Normalize();
+    fixture->SetFriction(0.2f);
 
     movementVector *= [player moveSpeed];
 
     if (body != nil) {
         body->SetAwake(true);
-//        body->SetAngularDamping(1.0f);   // and this keeps it from spinning wildly
-        body->SetLinearDamping(5.0f);   // and this keeps it from moving wildly
         body->ApplyLinearImpulse(movementVector, body->GetPosition());
     }
 

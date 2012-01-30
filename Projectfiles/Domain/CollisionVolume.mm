@@ -41,28 +41,15 @@ const float PTM_RATIO = 32.0f;
         b2FixtureDef shapeDef;
         shapeDef.shape = &collisionShape;
         shapeDef.density = 4.0f;
-        shapeDef.friction = 1.0f;
         shapeDef.restitution = 0.0f;
 
 //        shapeDef.isSensor = true;
         shapeDef.userData = (__bridge void *) aGameObject;
         shapeDef.filter.groupIndex = (int16) collisionId;
 
-        body->SetAngularDamping(1.0f);
-
         fixture = body->CreateFixture(&shapeDef);
 
-//        //shape definition for foot
-//        b2PolygonShape polygonShape;
-//        polygonShape.SetAsBox(1, 2); //a 2x4 rectangle
-//
-//        //fixture definition
-//        b2FixtureDef myFixtureDef;
-//        myFixtureDef.shape = &polygonShape;
-//        myFixtureDef.density = 1;
-//
-//        b2Fixture *footSensorFixture = body->CreateFixture(&myFixtureDef);
-//        footSensorFixture->SetUserData((void *) 3);
+        fixture->SetFriction(0.2f);
 
     }
 

@@ -42,4 +42,5 @@
 
 - (bool) isOnGround;
 
+- (void)frictionizeMotion;
 @end

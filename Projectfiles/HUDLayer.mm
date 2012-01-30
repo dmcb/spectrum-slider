@@ -73,15 +73,18 @@
             vector = ccpSub(location, [dpad position]);
 
             if (vector.x < 0) {
-                [player moveInDirection:ccp(-200, 0)];
+                [player moveInDirection:ccp(-1, 0)];
             } else if (vector.x > 0) {
-                [player moveInDirection:ccp(200, 0)];
+                [player moveInDirection:ccp(1, 0)];
             }
+        } else {
+            [player frictionizeMotion];
         }
 
         if ([input isAnyTouchOnNode:jump touchPhase:KKTouchPhaseBegan]) {
             [player jump];
         }
+
     }
 }
 
