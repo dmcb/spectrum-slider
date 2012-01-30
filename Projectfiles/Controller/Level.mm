@@ -20,6 +20,7 @@
 
 @synthesize hudLayer;
 @synthesize player;
+@synthesize dimension;
 
 
 - (GameWorldLayer *)gameWorldLayer {
@@ -62,5 +63,29 @@
 
 - (void)enableDebugDraw:(GLESDebugDraw *)draw {
     [collisionManager world]->SetDebugDraw(draw);
+}
+
+
+- (void)setDimension:(ColorDimension *)aDimension {
+    if ([aDimension.colour isEqualToString:@"red"])
+    {
+        [gameWorldLayer.redDimension activate];
+        [gameWorldLayer.yellowDimension deactivate];    
+        [gameWorldLayer.blueDimension deactivate];
+        
+    }
+    else if ([aDimension.colour isEqualToString:@"yellow"])
+    {
+        [gameWorldLayer.redDimension deactivate];
+        [gameWorldLayer.yellowDimension activate];  
+        [gameWorldLayer.blueDimension deactivate];
+    }
+    else
+    {
+        [gameWorldLayer.redDimension deactivate];
+        [gameWorldLayer.yellowDimension deactivate]; 
+        [gameWorldLayer.blueDimension activate];
+        
+    }
 }
 @end

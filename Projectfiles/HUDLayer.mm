@@ -9,6 +9,7 @@
 #import "GameContext.h"
 #import "Level.h"
 #import "Player.h"
+#import "GameWorldLayer.h"
 
 
 @implementation HUDLayer {
@@ -63,7 +64,50 @@
     Player *player = [[[GameContext sharedContext] currentLevel] player];
 
     KKInput *input = [KKInput sharedInput];
+    
+    // Detect swipe for colour slide
+    KKSwipeGestureDirection dir = input.gestureSwipeDirection;
+    switch (dir)
+    {
+        case KKSwipeGestureDirectionRight:
+            NSLog(@"Swiped right");
+            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
+                [[[GameContext sharedContext] currentLevel] setDimension:(         
+                                                                          [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension])];
+            }
+            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
+                [[[GameContext sharedContext] currentLevel] setDimension:(         
+                                                                          [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension])];
+            }
+            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"blue"]) {
+                [[[GameContext sharedContext] currentLevel] setDimension:(         
+                                                                          [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
+            }
+            break;
+        case KKSwipeGestureDirectionLeft:
+            NSLog(@"Swiped left");
+            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
+                [[[GameContext sharedContext] currentLevel] setDimension:(         
+                                                                          [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension])];
+            }
+            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
+                [[[GameContext sharedContext] currentLevel] setDimension:(         
+                                                                          [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
+            }
+            if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"blue"]) {
+                [[[GameContext sharedContext] currentLevel] setDimension:(         
+                                                                          [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension])];
+            }
+            break;
+        case KKSwipeGestureDirectionUp:
+            // direction-specific code here
+            break;
+        case KKSwipeGestureDirectionDown:
+            // direction-specific code here
+            break;
+    }
 
+    // Player can't jump or move in mid air
     if ([player isOnGround]) {
         if ([input isAnyTouchOnNode:dpad touchPhase:KKTouchPhaseAny]) {
             CGPoint vector;
@@ -86,17 +130,21 @@
 }
 
 - (void)slideToColour:(NSString *)colour {
-    if ([colour isEqualToString:@"blue"])
+
+    if ([colour isEqualToString:@"red"])
     {
-        
+        [leftband setColor:(ccc3(0,0,255))];
+        [rightband setColor:(ccc3(255,255,0))];
     }
     else if ([colour isEqualToString:@"yellow"])
     {
-        
+        [leftband setColor:(ccc3(255,0,0))];
+        [rightband setColor:(ccc3(0,0,255))];        
     }
-    else {
-        [leftband setColor:(ccc3(0,0,255))];
-        [rightband setColor:(ccc3(255,255,0))];
+    else
+    {
+        [leftband setColor:(ccc3(255,255,0))];
+        [rightband setColor:(ccc3(255,0,0))];
     }
 }
 

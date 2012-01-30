@@ -9,6 +9,7 @@
 #import "Updateable.h"
 #import "Box2D.h"
 #import "GLES-Render.h"
+#import "ColorDimension.h"
 
 @protocol Displayable;
 @class CollisionManager;
@@ -26,10 +27,12 @@
     HUDLayer *hudLayer;
     GameWorldLayer *gameWorldLayer;
     Player *player;
+    ColorDimension *dimension;
 }
 
 @property(nonatomic, strong) HUDLayer *hudLayer;
 @property(nonatomic, strong) Player *player;
+@property(nonatomic, strong) ColorDimension *dimension;
 
 - (GameWorldLayer *)gameWorldLayer;
 
