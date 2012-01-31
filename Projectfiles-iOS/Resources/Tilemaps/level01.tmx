@@ -6,37 +6,36 @@
  <tileset firstgid="9" name="conceptbackground" tilewidth="281" tileheight="230">
   <image source="conceptbackground.png" width="281" height="230"/>
  </tileset>
- <layer name="concept background" width="32" height="24">
+ <layer name="concept background" width="32" height="24" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRMApGHuAkQoxUPrFyo2AUjHRASd6ihvxIBwBMrwBk
   </data>
  </layer>
- <objectgroup name="Collision_ALL" width="32" height="24">
+ <objectgroup name="Collision_ALL" width="32" height="24" visible="0">
   <object x="-32" y="0" width="32" height="704"/>
   <object x="1024" y="0" width="32" height="704"/>
   <object x="-32" y="-32" width="1088" height="32"/>
-  <object x="0" y="704" width="1024" height="64"/>
+  <object x="-32" y="704" width="1088" height="64"/>
  </objectgroup>
- <objectgroup name="Collision_RED" width="32" height="24">
-  <object x="192" y="0" width="61" height="156"/>
-  <object x="771" y="1" width="60" height="165"/>
+ <objectgroup name="Collision_RED" width="32" height="24" visible="0">
+  <object x="192" y="0" width="64" height="160"/>
+  <object x="768" y="0" width="64" height="160"/>
   <object x="768" y="608" width="160" height="32"/>
   <object x="0" y="384" width="192" height="32"/>
   <object x="192" y="416" width="32" height="32"/>
   <object x="224" y="448" width="32" height="32"/>
   <object x="256" y="480" width="32" height="32"/>
-  <object x="288" y="512" height="32"/>
   <object x="0" y="160" width="1024" height="64"/>
  </objectgroup>
- <objectgroup name="Collision_BLUE" width="32" height="24">
-  <object x="193" y="3" width="60" height="160"/>
-  <object x="479" y="-1" width="63" height="159"/>
+ <objectgroup name="Collision_BLUE" width="32" height="24" visible="0">
+  <object x="192" y="0" width="64" height="160"/>
+  <object x="480" y="0" width="64" height="160"/>
   <object x="0" y="160" width="1024" height="64"/>
   <object x="192" y="480" width="192" height="32"/>
  </objectgroup>
- <objectgroup name="Collision_YELLOW" width="32" height="24">
-  <object x="481" y="3" width="61" height="159"/>
-  <object x="769" y="3" width="61" height="160"/>
+ <objectgroup name="Collision_YELLOW" width="32" height="24" visible="0">
+  <object x="480" y="0" width="64" height="160"/>
+  <object x="768" y="0" width="64" height="160"/>
   <object x="512" y="512" width="192" height="32"/>
   <object x="192" y="480" width="192" height="32"/>
   <object x="0" y="160" width="128" height="64"/>
@@ -45,21 +44,21 @@
   <object x="256" y="288" width="32" height="32"/>
   <object x="288" y="256" width="32" height="32"/>
   <object x="320" y="224" width="32" height="32"/>
-  <object x="352" y="192" width="32"/>
+  <object x="352" y="192" width="32" height="32"/>
   <object x="384" y="160" width="640" height="64"/>
   <object x="0" y="384" width="160" height="32"/>
  </objectgroup>
- <layer name="Yellow" width="32" height="24">
+ <layer name="Yellow" width="32" height="24" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYCAfsEIxPsACxbQAo/YPffsZ0TAhgK6e2pjedhMLSFFLbTBq9/C1mwULHgUDD1hx4MEGKC3XRsEoGAUDBwC7qgDJ
   </data>
  </layer>
- <layer name="Red" width="32" height="24">
+ <layer name="Red" width="32" height="24" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYMAOmKGYUsACxaSCUftHhv1MIxyPglEwkIAFCx4M6XLUDRAw6oZRQAkYrXNGAT4AADpUAO8=
   </data>
  </layer>
- <layer name="Blue" width="32" height="24">
+ <layer name="Blue" width="32" height="24" visible="0">
   <data encoding="base64" compression="zlib">
    eJztzTEKADAIwEBBxP//2MVJtFOdzEHmiPQ0e7FsA/8bfz8eAFQ2BAC/BLR5Ai8=
   </data>
