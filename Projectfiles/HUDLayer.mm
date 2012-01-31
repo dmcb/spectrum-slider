@@ -104,23 +104,33 @@
     }
 
     // Player can't jump or move in mid air
-    if ([player isOnGround]) {
-        if ([input isAnyTouchOnNode:dpad touchPhase:KKTouchPhaseAny]) {
-            CGPoint vector;
 
-            CGPoint location = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
+    if ([input isAnyTouchOnNode:dpad touchPhase:KKTouchPhaseAny]) {
+        CGPoint vector;
 
-            vector = ccpSub(location, [dpad position]);
+        CGPoint location = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
 
+        vector = ccpSub(location, [dpad position]);
+
+        if ([player isOnGround]) {
             if (vector.x < 0) {
                 [player moveInDirection:ccp(-1, 0)];
             } else if (vector.x > 0) {
                 [player moveInDirection:ccp(1, 0)];
             }
-        } else {
-            [player frictionizeMotion];
         }
+        else {
+            if (vector.x < 0) {
+                [player moveInDirection:ccp(-0.25, 0)];
+            } else if (vector.x > 0) {
+                [player moveInDirection:ccp(0.25, 0)];
+            }
+        }
+    } else {
+        [player frictionizeMotion];
+    }
 
+    if ([player isOnGround]) {
         if ([input isAnyTouchOnNode:jump touchPhase:KKTouchPhaseBegan]) {
             [player jump];
         }
