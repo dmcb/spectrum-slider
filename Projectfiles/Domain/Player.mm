@@ -49,10 +49,6 @@
     [actionContext setAction:[[MoveAction alloc] initWithDirection:directionVector]];
 }
 
-- (float)moveSpeed {
-    return 12.0f;
-}
-
 - (bool)isMoving {
     return [actionContext isCurrentActionType:[MoveAction class]];
 }
@@ -91,6 +87,14 @@
 - (void)frictionizeMotion {
     if (isOnGround) {
         b2Fixture *fixture = collisionVolume.fixture;
+
+        b2Vec2 opposingForce;
+
+        opposingForce.x = collisionVolume.body->GetLinearVelocity().x * -0.5;
+        opposingForce.y = 0;
+
+        collisionVolume.body->ApplyLinearImpulse(opposingForce, collisionVolume.body->GetWorldCenter());
+
         fixture->SetFriction(1.0f);
     }
 }
@@ -110,8 +114,16 @@
 
 }
 
+- (float)moveSpeed {
+    return 13.0f;
+}
+
 - (float) maximumXVelocity {
-    return 5.0f;
+    return 10.0f;
+}
+
+- (float) jumpVelocity {
+    return 260;
 }
 
 @end

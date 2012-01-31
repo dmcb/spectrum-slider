@@ -18,7 +18,7 @@ const float PTM_RATIO = 32.0f;
 - (id)init {
     self = [super init];
     if (self) {
-        b2Vec2 gravity = b2Vec2(0.0f, -20.0f);
+        b2Vec2 gravity = b2Vec2(0.0f, -30.0f);
         world = new b2World(gravity);
         world->SetAllowSleeping(YES);
         //world->SetContinuousPhysics(YES);

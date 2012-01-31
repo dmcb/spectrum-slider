@@ -62,7 +62,6 @@
 
 - (void)update:(ccTime)delta {
 
-    NSLog(@"Current colour: %s",[[[[GameContext sharedContext] currentLevel] dimension] colour]);
     Player *player = [[[GameContext sharedContext] currentLevel] player];
 
     KKInput *input = [KKInput sharedInput];

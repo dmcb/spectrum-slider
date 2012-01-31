@@ -3,6 +3,14 @@
  <tileset firstgid="1" name="blocks" tilewidth="32" tileheight="32">
   <image source="blocks.png" width="64" height="128"/>
  </tileset>
+ <tileset firstgid="9" name="conceptbackground" tilewidth="281" tileheight="230">
+  <image source="conceptbackground.png" width="281" height="230"/>
+ </tileset>
+ <layer name="concept background" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGHuAkQoxUPrFyo2AUjHRASd6ihvxIBwBMrwBk
+  </data>
+ </layer>
  <objectgroup name="Collision_ALL" width="32" height="24">
   <object x="-32" y="0" width="32" height="704"/>
   <object x="1024" y="0" width="32" height="704"/>

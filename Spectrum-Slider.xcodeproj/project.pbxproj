@@ -69,6 +69,7 @@
 		DCFA90F013B4F811009DD38C /* PlayerLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD38B /* PlayerLayer.mm */; };
 		DCFA90F013B4F811009DD38F /* JumpAction.mm in Sources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD38E /* JumpAction.mm */; };
 		DCFA90F013B4F811009DD392 /* hud.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD391 /* hud.png */; };
+		DCFA90F013B4F811009DD394 /* conceptbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = DCFA90F013B4F811009DD393 /* conceptbackground.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,6 +301,7 @@
 		DCFA90F013B4F811009DD38E /* JumpAction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JumpAction.mm; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD390 /* JumpAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpAction.h; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD391 /* hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud.png; sourceTree = "<group>"; };
+		DCFA90F013B4F811009DD393 /* conceptbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = conceptbackground.png; path = "Projectfiles-iOS/Resources/Tilemaps/conceptbackground.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +425,7 @@
 		DCC1A0D613A94EC0005BD75D = {
 			isa = PBXGroup;
 			children = (
+				DCFA90F013B4F811009DD393 /* conceptbackground.png */,
 				DCFA90F013B4F811009DD35B /* Kobold2D-Libraries.xcodeproj */,
 				DCC1A38C13A94F1A005BD75D /* Projectfiles */,
 				DCC1A0F713A94ED5005BD75D /* Projectfiles-iOS */,
@@ -820,6 +823,7 @@
 				74B38E4414D48AAD0063B3C9 /* player.png in Resources */,
 				74B38E6D14D4C4110063B3C9 /* hud.plist in Resources */,
 				DCFA90F013B4F811009DD392 /* hud.png in Resources */,
+				DCFA90F013B4F811009DD394 /* conceptbackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

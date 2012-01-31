@@ -49,7 +49,7 @@ const float PTM_RATIO = 32.0f;
 
         fixture = body->CreateFixture(&shapeDef);
 
-        fixture->SetFriction(0.2f);
+        fixture->SetFriction(0.26f);
 
     }
 

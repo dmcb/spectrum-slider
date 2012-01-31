@@ -29,7 +29,7 @@
 }
 
 - (BOOL)isAtMaximumVelocity:(Player *)player body:(b2Body *)body {
-    return fabs(body->GetLinearVelocity().x) < [player maximumXVelocity];
+    return fabs(body->GetLinearVelocity().x) >= [player maximumXVelocity];
 }
 
 - (void)doAction:(PlayerActionContext *)actionContext delta:(float)delta {
@@ -40,9 +40,9 @@
 
     b2Vec2 movementVector = b2Vec2(direction.x, direction.y);
 
-    if ([self isAtMaximumVelocity:player body:body]) {
+    if (![self isAtMaximumVelocity:player body:body]) {
 
-        fixture->SetFriction(0.2f);
+        fixture->SetFriction(0.26f);
 
         movementVector *= [player moveSpeed];
 

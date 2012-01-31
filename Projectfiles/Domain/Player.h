@@ -48,4 +48,6 @@
 
 - (float)maximumXVelocity;
 
+- (float)jumpVelocity;
+
 @end

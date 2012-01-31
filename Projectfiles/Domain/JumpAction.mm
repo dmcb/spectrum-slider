@@ -52,7 +52,7 @@
     b2Vec2 worldCenter = body->GetPosition();
 
     b2Vec2 vec2;
-    vec2.y = 220;
+    vec2.y = [player jumpVelocity];
     vec2.x = 0;
 
     b2Vec2 vec3;
