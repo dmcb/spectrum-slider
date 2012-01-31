@@ -597,9 +597,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DCC1A0E213A94ED5005BD75D /* Spectrum-Slider-iOS */ = {
+		DCC1A0E213A94ED5005BD75D /* Spectrum */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DCC1A25313A94ED7005BD75D /* Build configuration list for PBXNativeTarget "Spectrum-Slider-iOS" */;
+			buildConfigurationList = DCC1A25313A94ED7005BD75D /* Build configuration list for PBXNativeTarget "Spectrum" */;
 			buildPhases = (
 				DCC1A0DF13A94ED5005BD75D /* Sources */,
 				DCC1A0E013A94ED5005BD75D /* Frameworks */,
@@ -609,7 +609,7 @@
 			);
 			dependencies = (
 			);
-			name = "Spectrum-Slider-iOS";
+			name = Spectrum;
 			productName = "Hello-World-iOS";
 			productReference = DCC1A0E313A94ED5005BD75D /* Spectrum-Slider-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -658,7 +658,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				DCC1A0E213A94ED5005BD75D /* Spectrum-Slider-iOS */,
+				DCC1A0E213A94ED5005BD75D /* Spectrum */,
 				DCC1A25913A94EE6005BD75D /* Spectrum-Slider-Mac */,
 			);
 		};
@@ -987,7 +987,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DCC1A25313A94ED7005BD75D /* Build configuration list for PBXNativeTarget "Spectrum-Slider-iOS" */ = {
+		DCC1A25313A94ED7005BD75D /* Build configuration list for PBXNativeTarget "Spectrum" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DCC1A25413A94ED7005BD75D /* Debug */,

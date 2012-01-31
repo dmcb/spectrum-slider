@@ -15,7 +15,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DCC1A0E213A94ED5005BD75D"
                BuildableName = "Spectrum-Slider-iOS.app"
-               BlueprintName = "Spectrum-Slider-iOS"
+               BlueprintName = "Spectrum"
                ReferencedContainer = "container:Spectrum-Slider.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,7 +33,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCC1A0E213A94ED5005BD75D"
             BuildableName = "Spectrum-Slider-iOS.app"
-            BlueprintName = "Spectrum-Slider-iOS"
+            BlueprintName = "Spectrum"
             ReferencedContainer = "container:Spectrum-Slider.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -47,14 +47,13 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
       debugDocumentVersioning = "YES"
-      enablesOpenGLESFrameCapture = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCC1A0E213A94ED5005BD75D"
             BuildableName = "Spectrum-Slider-iOS.app"
-            BlueprintName = "Spectrum-Slider-iOS"
+            BlueprintName = "Spectrum"
             ReferencedContainer = "container:Spectrum-Slider.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,7 +73,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCC1A0E213A94ED5005BD75D"
             BuildableName = "Spectrum-Slider-iOS.app"
-            BlueprintName = "Spectrum-Slider-iOS"
+            BlueprintName = "Spectrum"
             ReferencedContainer = "container:Spectrum-Slider.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
