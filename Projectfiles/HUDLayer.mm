@@ -28,15 +28,15 @@
         [frameCache addSpriteFramesWithFile:@"hud.plist"];
 
         dpad = [CCSprite spriteWithSpriteFrameName:@"button_dpad.png"];
-        dpad.position = CGPointMake(screenSize.width * 0.08, screenSize.height * 0.08);
+        dpad.position = CGPointMake(screenSize.width * 0.11, screenSize.height * 0.09);
         [self addChild:dpad];
 
         jump = [CCSprite spriteWithSpriteFrameName:@"button_jump.png"];
-        jump.position = CGPointMake(screenSize.width * 0.94, screenSize.height * 0.08);
+        jump.position = CGPointMake(screenSize.width * 0.92, screenSize.height * 0.09);
         [self addChild:jump];
 
         menu = [CCSprite spriteWithSpriteFrameName:@"button_menu.png"];
-        menu.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.08);
+        menu.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.09);
         [self addChild:menu];
 
         // Add sliding bands
@@ -104,7 +104,6 @@
     }
 
     // Player can't jump or move in mid air
-
     if ([input isAnyTouchOnNode:dpad touchPhase:KKTouchPhaseAny]) {
         CGPoint vector;
 
