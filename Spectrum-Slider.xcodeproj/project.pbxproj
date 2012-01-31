@@ -301,7 +301,7 @@
 		DCFA90F013B4F811009DD38E /* JumpAction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JumpAction.mm; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD390 /* JumpAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpAction.h; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD391 /* hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud.png; sourceTree = "<group>"; };
-		DCFA90F013B4F811009DD393 /* conceptbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = conceptbackground.png; path = "Projectfiles-iOS/Resources/Tilemaps/conceptbackground.png"; sourceTree = "<group>"; };
+		DCFA90F013B4F811009DD393 /* conceptbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conceptbackground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,6 +406,7 @@
 		84B4150F14D3F075001AE794 /* Tilemaps */ = {
 			isa = PBXGroup;
 			children = (
+				DCFA90F013B4F811009DD393 /* conceptbackground.png */,
 				84B4151014D3F075001AE794 /* blocks.png */,
 				84B4151114D3F075001AE794 /* level01.tmx */,
 			);
@@ -425,7 +426,6 @@
 		DCC1A0D613A94EC0005BD75D = {
 			isa = PBXGroup;
 			children = (
-				DCFA90F013B4F811009DD393 /* conceptbackground.png */,
 				DCFA90F013B4F811009DD35B /* Kobold2D-Libraries.xcodeproj */,
 				DCC1A38C13A94F1A005BD75D /* Projectfiles */,
 				DCC1A0F713A94ED5005BD75D /* Projectfiles-iOS */,
@@ -898,6 +898,31 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		74C12CE314D7B2440064DFB5 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = "";
+			};
+			name = Distribution;
+		};
+		74C12CE414D7B2440064DFB5 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCFA90F013B4F811009DD35A /* BuildSettings-Release-iOS.xcconfig */;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../__Kobold2D__/libs/GoogleAdMobAdsSDK\"",
+				);
+			};
+			name = Distribution;
+		};
+		74C12CE514D7B2440064DFB5 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC9C33E913B5024400931BF2 /* BuildSettings-Release-Mac.xcconfig */;
+			buildSettings = {
+			};
+			name = Distribution;
+		};
 		DCC1A0DD13A94EC0005BD75D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -957,6 +982,7 @@
 			buildConfigurations = (
 				DCC1A0DD13A94EC0005BD75D /* Debug */,
 				DCC1A0DE13A94EC0005BD75D /* Release */,
+				74C12CE314D7B2440064DFB5 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -966,6 +992,7 @@
 			buildConfigurations = (
 				DCC1A25413A94ED7005BD75D /* Debug */,
 				DCC1A25513A94ED7005BD75D /* Release */,
+				74C12CE414D7B2440064DFB5 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -975,6 +1002,7 @@
 			buildConfigurations = (
 				DCC1A38A13A94EE7005BD75D /* Debug */,
 				DCC1A38B13A94EE7005BD75D /* Release */,
+				74C12CE514D7B2440064DFB5 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
