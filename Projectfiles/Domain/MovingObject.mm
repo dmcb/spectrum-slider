@@ -36,7 +36,7 @@
         myFilterData.categoryBits = cid;
     } else {
         myFilterData.categoryBits = cid & newCollisionGroup;
-        myFilterData.maskBits = 0xF | ~(cid & newCollisionGroup);
+        myFilterData.maskBits = 0xF | (cid & newCollisionGroup);
     }
 
     fixture->SetFilterData(myFilterData);

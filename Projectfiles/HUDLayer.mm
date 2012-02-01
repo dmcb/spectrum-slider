@@ -27,6 +27,8 @@
         CCSpriteFrameCache *frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
         [frameCache addSpriteFramesWithFile:@"hud.plist"];
 
+        // Note : I'm using the position of this dpad to build the overflow touch boxes
+        // If you update dpad's anchor point make sure to update that logic.
         dpad = [CCSprite spriteWithSpriteFrameName:@"button_dpad.png"];
         dpad.position = CGPointMake(screenSize.width * 0.11, screenSize.height * 0.09);
         [self addChild:dpad];
@@ -115,11 +117,8 @@
 
     // Player can't jump or move in mid air
     if ([input isAnyTouchOnNode:dpad touchPhase:KKTouchPhaseAny]) {
-        CGPoint vector;
 
-        CGPoint location = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
-
-        vector = ccpSub(location, [dpad position]);
+        CGPoint vector = [dpad convertToNodeSpaceAR:[input locationOfAnyTouchInPhase:KKTouchPhaseAny]];
 
         if ([player isOnGround]) {
             if (vector.x < 0) {
@@ -135,7 +134,7 @@
                 [player moveInDirection:ccp(0.25, 0)];
             }
         }
-    } else {
+    } else if ([player isOnGround]) {
         [player frictionizeMotion];
     }
 
