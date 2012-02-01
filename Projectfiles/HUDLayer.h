@@ -21,6 +21,9 @@
     CCSprite *rightband;
     
     int direction;
+    
+    NSDate *dimensionTransition;
+    double dimensionTransitionDuration;
 }
 
 - (void)slideToColour:(NSString *)colour;

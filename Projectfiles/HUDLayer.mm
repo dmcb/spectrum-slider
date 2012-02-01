@@ -49,6 +49,10 @@
         rightband.position = CGPointMake(screenSize.width - rightband.contentSize.width, 0);
         rightband.anchorPoint = CGPointMake(0, 0);
         [self addChild:rightband];
+        
+        // Set sliding transition time
+        dimensionTransition = [NSDate date];
+        dimensionTransitionDuration = 0.5;
 
         // Enable touch and updating
         self.isTouchEnabled = YES;
@@ -67,12 +71,13 @@
     KKInput *input = [KKInput sharedInput];
     input.gestureSwipeEnabled = YES;
     
-    // Detect swipe for colour slide
-    if (input.gestureSwipeRecognizedThisFrame) {
+    // Detect swipe for colour slide, ensure enough time has passed between slides
+    if (input.gestureSwipeRecognizedThisFrame && fabs([dimensionTransition timeIntervalSinceNow]) > dimensionTransitionDuration) {
         KKSwipeGestureDirection dir = input.gestureSwipeDirection;
         switch (dir)
         {
             case KKSwipeGestureDirectionRight:
+                dimensionTransition = [NSDate date];
                 if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
                     [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension]];
                 }
@@ -84,6 +89,7 @@
                 }
                 break;
             case KKSwipeGestureDirectionLeft:
+                dimensionTransition = [NSDate date];
                 if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
                     [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension]];
                 }
