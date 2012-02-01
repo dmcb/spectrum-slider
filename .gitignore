@@ -2,6 +2,7 @@
 # Ignore user specific data and OS X garbage
 
 .DS_Store*
+Thumbs.db
 */project.xcworkspace/xcuserdata/*
 */xcuserdata/*
 .idea/

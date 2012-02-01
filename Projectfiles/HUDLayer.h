@@ -17,10 +17,14 @@
     CCSprite *jump;
     CCSprite *menu;
     
+    CCSprite *topband;
     CCSprite *leftband;
     CCSprite *rightband;
     
     int direction;
+    
+    NSDate *dimensionTransition;
+    double dimensionTransitionDuration;
 }
 
 - (void)slideToColour:(NSString *)colour;

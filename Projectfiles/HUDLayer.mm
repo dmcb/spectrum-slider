@@ -28,27 +28,35 @@
         [frameCache addSpriteFramesWithFile:@"hud.plist"];
 
         dpad = [CCSprite spriteWithSpriteFrameName:@"button_dpad.png"];
-        dpad.position = CGPointMake(screenSize.width * 0.08, screenSize.height * 0.08);
+        dpad.position = CGPointMake(screenSize.width * 0.11, screenSize.height * 0.09);
         [self addChild:dpad];
 
         jump = [CCSprite spriteWithSpriteFrameName:@"button_jump.png"];
-        jump.position = CGPointMake(screenSize.width * 0.94, screenSize.height * 0.08);
+        jump.position = CGPointMake(screenSize.width * 0.92, screenSize.height * 0.09);
         [self addChild:jump];
 
         menu = [CCSprite spriteWithSpriteFrameName:@"button_menu.png"];
-        menu.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.08);
+        menu.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.09);
         [self addChild:menu];
 
         // Add sliding bands
-        leftband = [CCSprite spriteWithSpriteFrameName:@"leftband.png"];
-        leftband.position = CGPointMake(0, 0);
-        leftband.anchorPoint = CGPointMake(0, 0);
+        topband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
+        topband.position = CGPointMake(topband.contentSize.height/2, screenSize.height-topband.contentSize.width/2);
+        topband.rotation = -90;
+        [self addChild:topband];       
+        
+        leftband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
+        leftband.position = CGPointMake(leftband.contentSize.width/2, leftband.contentSize.height/2);
+        leftband.rotation = 180;
         [self addChild:leftband];
 
-        rightband = [CCSprite spriteWithSpriteFrameName:@"rightband.png"];
-        rightband.position = CGPointMake(screenSize.width - rightband.contentSize.width, 0);
-        rightband.anchorPoint = CGPointMake(0, 0);
+        rightband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
+        rightband.position = CGPointMake(screenSize.width - rightband.contentSize.width/2, rightband.contentSize.height/2);
         [self addChild:rightband];
+        
+        // Set sliding transition time
+        dimensionTransition = [NSDate date];
+        dimensionTransitionDuration = 0.5;
 
         // Enable touch and updating
         self.isTouchEnabled = YES;
@@ -67,12 +75,13 @@
     KKInput *input = [KKInput sharedInput];
     input.gestureSwipeEnabled = YES;
     
-    // Detect swipe for colour slide
-    if (input.gestureSwipeRecognizedThisFrame) {
+    // Detect swipe for colour slide, ensure enough time has passed between slides
+    if (input.gestureSwipeRecognizedThisFrame && fabs([dimensionTransition timeIntervalSinceNow]) > dimensionTransitionDuration) {
         KKSwipeGestureDirection dir = input.gestureSwipeDirection;
         switch (dir)
         {
-            case KKSwipeGestureDirectionRight:
+            case KKSwipeGestureDirectionLeft:
+                dimensionTransition = [NSDate date];
                 if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
                     [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension]];
                 }
@@ -83,7 +92,8 @@
                     [[[GameContext sharedContext] currentLevel] setDimension:([[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
                 }
                 break;
-            case KKSwipeGestureDirectionLeft:
+            case KKSwipeGestureDirectionRight:
+                dimensionTransition = [NSDate date];
                 if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
                     [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension]];
                 }
@@ -104,23 +114,32 @@
     }
 
     // Player can't jump or move in mid air
-    if ([player isOnGround]) {
-        if ([input isAnyTouchOnNode:dpad touchPhase:KKTouchPhaseAny]) {
-            CGPoint vector;
+    if ([input isAnyTouchOnNode:dpad touchPhase:KKTouchPhaseAny]) {
+        CGPoint vector;
 
-            CGPoint location = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
+        CGPoint location = [input locationOfAnyTouchInPhase:KKTouchPhaseAny];
 
-            vector = ccpSub(location, [dpad position]);
+        vector = ccpSub(location, [dpad position]);
 
+        if ([player isOnGround]) {
             if (vector.x < 0) {
                 [player moveInDirection:ccp(-1, 0)];
             } else if (vector.x > 0) {
                 [player moveInDirection:ccp(1, 0)];
             }
-        } else {
-            [player frictionizeMotion];
         }
+        else {
+            if (vector.x < 0) {
+                [player moveInDirection:ccp(-0.25, 0)];
+            } else if (vector.x > 0) {
+                [player moveInDirection:ccp(0.25, 0)];
+            }
+        }
+    } else {
+        [player frictionizeMotion];
+    }
 
+    if ([player isOnGround]) {
         if ([input isAnyTouchOnNode:jump touchPhase:KKTouchPhaseBegan]) {
             [player jump];
         }
@@ -132,16 +151,19 @@
 
     if ([colour isEqualToString:@"red"])
     {
+        [topband setColor:(ccc3(255,0,0))];
         [leftband setColor:(ccc3(0,0,255))];
         [rightband setColor:(ccc3(255,255,0))];
     }
     else if ([colour isEqualToString:@"yellow"])
     {
+        [topband setColor:(ccc3(255,255,0))];
         [leftband setColor:(ccc3(255,0,0))];
         [rightband setColor:(ccc3(0,0,255))];        
     }
     else
     {
+        [topband setColor:(ccc3(0,0,255))];
         [leftband setColor:(ccc3(255,255,0))];
         [rightband setColor:(ccc3(255,0,0))];
     }

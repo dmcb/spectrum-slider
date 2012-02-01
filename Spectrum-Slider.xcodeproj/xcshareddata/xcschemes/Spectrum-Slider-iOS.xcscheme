@@ -14,8 +14,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DCC1A0E213A94ED5005BD75D"
-               BuildableName = "Spectrum-Slider-iOS.app"
-               BlueprintName = "Spectrum-Slider-iOS"
+               BuildableName = "Spectrum.app"
+               BlueprintName = "Spectrum"
                ReferencedContainer = "container:Spectrum-Slider.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,8 +32,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCC1A0E213A94ED5005BD75D"
-            BuildableName = "Spectrum-Slider-iOS.app"
-            BlueprintName = "Spectrum-Slider-iOS"
+            BuildableName = "Spectrum.app"
+            BlueprintName = "Spectrum"
             ReferencedContainer = "container:Spectrum-Slider.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -47,14 +47,13 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
       debugDocumentVersioning = "YES"
-      enablesOpenGLESFrameCapture = "YES"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCC1A0E213A94ED5005BD75D"
-            BuildableName = "Spectrum-Slider-iOS.app"
-            BlueprintName = "Spectrum-Slider-iOS"
+            BuildableName = "Spectrum.app"
+            BlueprintName = "Spectrum"
             ReferencedContainer = "container:Spectrum-Slider.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -73,8 +72,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DCC1A0E213A94ED5005BD75D"
-            BuildableName = "Spectrum-Slider-iOS.app"
-            BlueprintName = "Spectrum-Slider-iOS"
+            BuildableName = "Spectrum.app"
+            BlueprintName = "Spectrum"
             ReferencedContainer = "container:Spectrum-Slider.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
