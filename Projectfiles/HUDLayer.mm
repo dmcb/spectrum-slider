@@ -80,7 +80,7 @@
         KKSwipeGestureDirection dir = input.gestureSwipeDirection;
         switch (dir)
         {
-            case KKSwipeGestureDirectionRight:
+            case KKSwipeGestureDirectionLeft:
                 dimensionTransition = [NSDate date];
                 if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
                     [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension]];
@@ -92,7 +92,7 @@
                     [[[GameContext sharedContext] currentLevel] setDimension:([[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
                 }
                 break;
-            case KKSwipeGestureDirectionLeft:
+            case KKSwipeGestureDirectionRight:
                 dimensionTransition = [NSDate date];
                 if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
                     [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension]];
