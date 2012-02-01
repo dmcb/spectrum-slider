@@ -6,8 +6,10 @@
 
 
 #import "CollisionManager.h"
-
-const float PTM_RATIO = 32.0f;
+#import "CC3Fog.h"
+#import "NSString+HexValue.h"
+#import "Ball.h"
+#import "Crate.h"
 
 @implementation CollisionManager {
 
@@ -73,7 +75,6 @@ const float PTM_RATIO = 32.0f;
             collisionShape.SetAsBox(width / 2.0 / PTM_RATIO ,
                     height / 2.0 / PTM_RATIO );
 
-
             b2Fixture *fixture = body->CreateFixture(&collisionShape, 0.0f);
 
             b2Filter filter = fixture->GetFilterData();
@@ -86,6 +87,49 @@ const float PTM_RATIO = 32.0f;
 
     }
 
+}
+
+- (void)initMovingObjects:(CCTMXTiledMap *)map {
+
+    CCTMXObjectGroup *collisionGroup = [map objectGroupNamed:@"Objects"];
+
+        if (collisionGroup) {
+            for (NSMutableDictionary *object in [collisionGroup objects]) {
+
+                float x = [[object valueForKey:@"x"] floatValue];
+                float y = [[object valueForKey:@"y"] floatValue];
+
+                float width = [[object valueForKey:@"object_width"] floatValue];
+                float height = [[object valueForKey:@"object_height"] floatValue];
+
+                uint16 cid = (uint16) [[object valueForKey:@"object_cid"] hexValue];
+
+                id typeKey = [object valueForKey:@"type"];
+                if ([typeKey isEqualToString:@"Ball"]) {
+                    
+                    float radius = [[object valueForKey:@"object_radius"] floatValue];
+
+                    Ball *ball = [[Ball alloc] initWithRadius:radius height:height width:width];
+
+                    [ball setPosition:ccp(x, y)];
+
+                    [ball spawn];
+
+                    [ball setCollisionGroupId:cid];
+
+                } else if ([typeKey isEqualToString:@"Crate"]) {
+
+                    Crate *crate = [[Crate alloc] initWithHeight:height width:width];
+
+                    [crate setPosition:ccp(x, y)];
+
+                    [crate spawn];
+
+                    [crate setCollisionGroupId:cid];
+                }
+
+            }
+        }
 }
 
 @end

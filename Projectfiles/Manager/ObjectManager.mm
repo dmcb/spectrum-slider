@@ -6,6 +6,9 @@
 
 
 #import "ObjectManager.h"
+#import "Player.h"
+#import "CollisionVolume.h"
+#import "MovingObject.h"
 
 @implementation ObjectManager {
 
@@ -27,6 +30,17 @@
 
 - (void)removeObjectFromPlay:(id <Updateable>)unit {
     [objectsInPlay removeObject:unit];
+}
+
+- (void) changeCollisionGroupIds:(uint16) collisionGroup {
+
+    for (id object in objectsInPlay) {
+        if ([object isKindOfClass:[Player class]]) {
+            [[object collisionVolume] setCollisionGroupId:collisionGroup];
+        } else if ([object isKindOfClass:[MovingObject class]]) {
+            [object setCollisionGroupId:collisionGroup];
+        }
+    }
 }
 
 - (void)update:(ccTime)delta {

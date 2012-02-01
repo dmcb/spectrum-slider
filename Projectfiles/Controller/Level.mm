@@ -35,6 +35,14 @@
     return [collisionManager initStaticBodies:map collisionLayer:clLayer collisionGroupId:collisionGroupId];
 }
 
+- (void)initMovingObjects:(CCTMXTiledMap *)map {
+    [collisionManager initMovingObjects:map];
+}
+
+- (void) changeCollisionGroupForLevel:(uint16) newCollisionGroup {
+    [objectManager changeCollisionGroupIds:newCollisionGroup];
+}
+
 - (void)spawn:(id <Updateable, Displayable>)objectToSpawn {
     [[gameWorldLayer playerLayer] addChild:[objectToSpawn display]];
     [objectManager addObjectToPlay:objectToSpawn];

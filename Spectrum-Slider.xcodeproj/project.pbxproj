@@ -10,6 +10,12 @@
 		330810D314D4783700DBBBDC /* HUDLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 330810D214D4783700DBBBDC /* HUDLayer.mm */; };
 		3323B13714D46ADF009A20C2 /* MoveAction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3323B13614D46ADF009A20C2 /* MoveAction.mm */; };
 		33397EF514D4B73B003FAF35 /* ColorDimension.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33397EF414D4B73B003FAF35 /* ColorDimension.mm */; };
+		33AF90F114D7A062007338D7 /* MovingObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AF90F014D7A062007338D7 /* MovingObject.mm */; };
+		33AF910814D7A0FD007338D7 /* Crate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AF910714D7A0FD007338D7 /* Crate.mm */; };
+		33AF910B14D7A114007338D7 /* Ball.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AF910A14D7A114007338D7 /* Ball.mm */; };
+		33AF911A14D7AA78007338D7 /* NSString+HexValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AF911914D7AA78007338D7 /* NSString+HexValue.m */; };
+		33AF913114D7BF6F007338D7 /* test_circle_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 33AF912F14D7BF6F007338D7 /* test_circle_sprite.png */; };
+		33AF913214D7BF6F007338D7 /* test_crate_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 33AF913014D7BF6F007338D7 /* test_crate_sprite.png */; };
 		74B38E4414D48AAD0063B3C9 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B38E4214D48AAD0063B3C9 /* player.png */; };
 		74B38E6D14D4C4110063B3C9 /* hud.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74B38E6B14D4C4110063B3C9 /* hud.plist */; };
 		84B414E814D3E980001AE794 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414CD14D3E980001AE794 /* AppDelegate.mm */; };
@@ -215,6 +221,16 @@
 		3323B13614D46ADF009A20C2 /* MoveAction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MoveAction.mm; sourceTree = "<group>"; };
 		33397EF314D4B73B003FAF35 /* ColorDimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorDimension.h; sourceTree = "<group>"; };
 		33397EF414D4B73B003FAF35 /* ColorDimension.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ColorDimension.mm; sourceTree = "<group>"; };
+		33AF90EF14D7A062007338D7 /* MovingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingObject.h; sourceTree = "<group>"; };
+		33AF90F014D7A062007338D7 /* MovingObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MovingObject.mm; sourceTree = "<group>"; };
+		33AF910614D7A0FD007338D7 /* Crate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crate.h; sourceTree = "<group>"; };
+		33AF910714D7A0FD007338D7 /* Crate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Crate.mm; sourceTree = "<group>"; };
+		33AF910914D7A114007338D7 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
+		33AF910A14D7A114007338D7 /* Ball.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ball.mm; sourceTree = "<group>"; };
+		33AF911814D7AA78007338D7 /* NSString+HexValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HexValue.h"; sourceTree = "<group>"; };
+		33AF911914D7AA78007338D7 /* NSString+HexValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HexValue.m"; sourceTree = "<group>"; };
+		33AF912F14D7BF6F007338D7 /* test_circle_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_circle_sprite.png; sourceTree = "<group>"; };
+		33AF913014D7BF6F007338D7 /* test_crate_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_crate_sprite.png; sourceTree = "<group>"; };
 		74B38E4214D48AAD0063B3C9 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
 		74B38E6B14D4C4110063B3C9 /* hud.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = hud.plist; sourceTree = "<group>"; };
 		84B414CC14D3E980001AE794 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -344,6 +360,8 @@
 		74B38E4114D48AAD0063B3C9 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				33AF912F14D7BF6F007338D7 /* test_circle_sprite.png */,
+				33AF913014D7BF6F007338D7 /* test_crate_sprite.png */,
 				DCFA90F013B4F811009DD391 /* hud.png */,
 				74B38E6B14D4C4110063B3C9 /* hud.plist */,
 				74B38E4214D48AAD0063B3C9 /* player.png */,
@@ -378,6 +396,14 @@
 				84B414D914D3E980001AE794 /* Player.mm */,
 				84B414DA14D3E980001AE794 /* PlayerActionContext.h */,
 				84B414DB14D3E980001AE794 /* PlayerActionContext.mm */,
+				33AF90EF14D7A062007338D7 /* MovingObject.h */,
+				33AF90F014D7A062007338D7 /* MovingObject.mm */,
+				33AF910614D7A0FD007338D7 /* Crate.h */,
+				33AF910714D7A0FD007338D7 /* Crate.mm */,
+				33AF910914D7A114007338D7 /* Ball.h */,
+				33AF910A14D7A114007338D7 /* Ball.mm */,
+				33AF911814D7AA78007338D7 /* NSString+HexValue.h */,
+				33AF911914D7AA78007338D7 /* NSString+HexValue.m */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -824,6 +850,8 @@
 				74B38E6D14D4C4110063B3C9 /* hud.plist in Resources */,
 				DCFA90F013B4F811009DD392 /* hud.png in Resources */,
 				DCFA90F013B4F811009DD394 /* conceptbackground.png in Resources */,
+				33AF913114D7BF6F007338D7 /* test_circle_sprite.png in Resources */,
+				33AF913214D7BF6F007338D7 /* test_crate_sprite.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -865,6 +893,10 @@
 				33397EF514D4B73B003FAF35 /* ColorDimension.mm in Sources */,
 				DCFA90F013B4F811009DD38C /* PlayerLayer.mm in Sources */,
 				DCFA90F013B4F811009DD38F /* JumpAction.mm in Sources */,
+				33AF90F114D7A062007338D7 /* MovingObject.mm in Sources */,
+				33AF910814D7A0FD007338D7 /* Crate.mm in Sources */,
+				33AF910B14D7A114007338D7 /* Ball.mm in Sources */,
+				33AF911A14D7AA78007338D7 /* NSString+HexValue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,7 +952,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../__Kobold2D__/libs/GoogleAdMobAdsSDK\"",
 				);
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(KOBOLD2D) $(CHIPSPACE) $(COCOS2D) $(COCOS2D_REST) $COCOS2D_EXTENSIONS $(COCOS3D) $(COCOSDENSHION) $(CHIPMUNK) $(OBJECTAL) $(VTPG) $(WAX) $(SNEAKYINPUT) $(ADMOB) $(FONTLABEL) \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/**";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(KOBOLD2D) $(CHIPSPACE) $(COCOS2D) $(COCOS2D_REST) $COCOS2D_EXTENSIONS $(COCOS3D) $(COCOSDENSHION) $(CHIPMUNK) $(OBJECTAL) $(VTPG) $(WAX) $(SNEAKYINPUT) $(ADMOB) $(FONTLABEL) \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/**";
 			};
 			name = Debug;
 		};

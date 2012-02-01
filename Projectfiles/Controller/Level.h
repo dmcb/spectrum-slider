@@ -40,6 +40,10 @@
 
 - (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(uint16)collisionGroupId;
 
+- (void)initMovingObjects:(CCTMXTiledMap *)map;
+
+- (void)changeCollisionGroupForLevel:(uint16)newCollisionGroup;
+
 - (void)spawn:(id <Updateable, Displayable>)objectToSpawn;
 
 - (void)drawDebugData;

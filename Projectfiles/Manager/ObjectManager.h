@@ -20,4 +20,6 @@
 
 - (void)removeObjectFromPlay:(id <Updateable>)unit;
 
+- (void)changeCollisionGroupIds:(uint16)collisionGroup;
+
 @end

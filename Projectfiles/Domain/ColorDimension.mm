@@ -32,13 +32,15 @@
 
 
 - (void)activate {
-    [[[[GameContext sharedContext] currentLevel] hudLayer] slideToColour:colour];
+    Level *currentLevel = [[GameContext sharedContext] currentLevel];
+
+    [[currentLevel hudLayer] slideToColour:colour];
     
     [spriteLayer setVisible:true];
 
     [tiledLayer setVisible:true];
 
-    [[[[[GameContext sharedContext] currentLevel] player] collisionVolume] setCollisionGroupId:collisionGroupId];
+    [currentLevel changeCollisionGroupForLevel:collisionGroupId];
 }
 
 - (void)deactivate {

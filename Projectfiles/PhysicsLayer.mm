@@ -46,8 +46,10 @@ const float PTM_RATIO = 32.0f;
         [[GameContext sharedContext] setCurrentLevel:level];
 
         HUDLayer *hudLayer = [HUDLayer new];
-        [[[GameContext sharedContext] currentLevel] setHudLayer:hudLayer];
-        GameWorldLayer *gameWorldLayer = [[[GameContext sharedContext] currentLevel] gameWorldLayer];
+
+        Level *currentLevel = [[GameContext sharedContext] currentLevel];
+        GameWorldLayer *gameWorldLayer = [currentLevel gameWorldLayer];
+        [currentLevel setHudLayer:hudLayer];
 
         [self addChild:gameWorldLayer.tiledMap];
         [self addChild:gameWorldLayer.playerLayer];
@@ -56,13 +58,15 @@ const float PTM_RATIO = 32.0f;
         [self addChild:gameWorldLayer.blueDimension.spriteLayer];
         [self addChild:gameWorldLayer.yellowDimension.spriteLayer];
 
-        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_ALL" collisionGroupId:0xF];
-        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_RED" collisionGroupId:0xF0];
-        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_BLUE" collisionGroupId:0xF00];
-        [[[GameContext sharedContext] currentLevel] initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_YELLOW" collisionGroupId:0xF000];
+        [currentLevel initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_ALL" collisionGroupId:0xF];
+        [currentLevel initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_RED" collisionGroupId:0xF0];
+        [currentLevel initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_BLUE" collisionGroupId:0xF00];
+        [currentLevel initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_YELLOW" collisionGroupId:0xF000];
+
+        [currentLevel initMovingObjects:gameWorldLayer.tiledMap];
 
         // Level starts with red dimension
-        [[[GameContext sharedContext] currentLevel] setDimension:[gameWorldLayer redDimension]];
+        [currentLevel setDimension:[gameWorldLayer redDimension]];
 
         Player *player = [[Player alloc] init];
 
@@ -72,7 +76,7 @@ const float PTM_RATIO = 32.0f;
         
         [self addChild:hudLayer];
 
-//        [self enableBox2dDebugDrawing];
+        [self enableBox2dDebugDrawing];
 
         [self scheduleUpdate];
 
