@@ -20,41 +20,93 @@
             <key>button_dpad.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{18,0},{120,72}}</string>
+                <string>{{18,246},{121,73}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{120,72}}</string>
+                <string>{{0,0},{121,73}}</string>
                 <key>sourceSize</key>
-                <string>{120,72}</string>
+                <string>{121,73}</string>
+            </dict>
+            <key>button_dpad_pushed_left.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{18,123},{121,73}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{121,73}}</string>
+                <key>sourceSize</key>
+                <string>{121,73}</string>
+            </dict>
+            <key>button_dpad_pushed_right.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{18,0},{121,73}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{121,73}}</string>
+                <key>sourceSize</key>
+                <string>{121,73}</string>
             </dict>
             <key>button_jump.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{18,196},{72,72}}</string>
+                <string>{{18,594},{73,73}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{72,72}}</string>
+                <string>{{0,0},{73,73}}</string>
                 <key>sourceSize</key>
-                <string>{72,72}</string>
+                <string>{73,73}</string>
+            </dict>
+            <key>button_jump_pushed.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{18,444},{73,73}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{73,73}}</string>
+                <key>sourceSize</key>
+                <string>{73,73}</string>
             </dict>
             <key>button_menu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{18,122},{72,72}}</string>
+                <string>{{18,519},{73,73}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{72,72}}</string>
+                <string>{{0,0},{73,73}}</string>
                 <key>sourceSize</key>
-                <string>{72,72}</string>
+                <string>{73,73}</string>
+            </dict>
+            <key>button_menu_pushed.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{18,369},{73,73}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{73,73}}</string>
+                <key>sourceSize</key>
+                <string>{73,73}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -66,7 +118,7 @@
             <key>size</key>
             <string>{128,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d5adbeaa66ce7a6a4b4e238ab5dfbfd7$</string>
+            <string>$TexturePacker:SmartUpdate:b65179e36bbe7ddb52b7b31c212f6d3d$</string>
             <key>textureFileName</key>
             <string>hud.png</string>
         </dict>
