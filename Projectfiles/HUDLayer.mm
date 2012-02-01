@@ -43,19 +43,19 @@
 
         // Add sliding bands
         topband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
-        topband.position = CGPointMake(topband.contentSize.height/2, screenSize.height-topband.contentSize.width/2);
+        topband.position = CGPointMake(topband.contentSize.height / 2, screenSize.height - topband.contentSize.width / 2);
         topband.rotation = -90;
-        [self addChild:topband];       
-        
+        [self addChild:topband];
+
         leftband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
-        leftband.position = CGPointMake(leftband.contentSize.width/2, leftband.contentSize.height/2);
+        leftband.position = CGPointMake(leftband.contentSize.width / 2, leftband.contentSize.height / 2);
         leftband.rotation = 180;
         [self addChild:leftband];
 
         rightband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
-        rightband.position = CGPointMake(screenSize.width - rightband.contentSize.width/2, rightband.contentSize.height/2);
+        rightband.position = CGPointMake(screenSize.width - rightband.contentSize.width / 2, rightband.contentSize.height / 2);
         [self addChild:rightband];
-        
+
         // Set sliding transition time
         dimensionTransition = [NSDate date];
         dimensionTransitionDuration = 0.5;
@@ -76,12 +76,11 @@
 
     KKInput *input = [KKInput sharedInput];
     input.gestureSwipeEnabled = YES;
-    
+
     // Detect swipe for colour slide, ensure enough time has passed between slides
     if (input.gestureSwipeRecognizedThisFrame && fabs([dimensionTransition timeIntervalSinceNow]) > dimensionTransitionDuration) {
         KKSwipeGestureDirection dir = input.gestureSwipeDirection;
-        switch (dir)
-        {
+        switch (dir) {
             case KKSwipeGestureDirectionLeft:
                 dimensionTransition = [NSDate date];
                 if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
@@ -90,7 +89,7 @@
                 else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
                     [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension]];
                 }
-                else  {
+                else {
                     [[[GameContext sharedContext] currentLevel] setDimension:([[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
                 }
                 break;
@@ -120,19 +119,25 @@
 
         CGPoint vector = [dpad convertToNodeSpaceAR:[input locationOfAnyTouchInPhase:KKTouchPhaseAny]];
 
-        if ([player isOnGround]) {
-            if (vector.x < 0) {
-                [player moveInDirection:ccp(-1, 0)];
-            } else if (vector.x > 0) {
-                [player moveInDirection:ccp(1, 0)];
+        // we're grabbing a the jump touch location. I'm not sure how to get the correct one.
+        // Most likely we'll have to use CGRects or something
+        if (vector.x < [[CCDirector sharedDirector] screenCenter].x) {
+
+            if ([player isOnGround]) {
+                if (vector.x < 0) {
+                    [player moveInDirection:ccp(-1, 0)];
+                } else if (vector.x > 0) {
+                    [player moveInDirection:ccp(1, 0)];
+                }
             }
-        }
-        else {
-            if (vector.x < 0) {
-                [player moveInDirection:ccp(-0.25, 0)];
-            } else if (vector.x > 0) {
-                [player moveInDirection:ccp(0.25, 0)];
+            else {
+                if (vector.x < 0) {
+                    [player moveInDirection:ccp(-0.25, 0)];
+                } else if (vector.x > 0) {
+                    [player moveInDirection:ccp(0.25, 0)];
+                }
             }
+
         }
     } else if ([player isOnGround]) {
         [player frictionizeMotion];
@@ -148,23 +153,20 @@
 
 - (void)slideToColour:(NSString *)colour {
 
-    if ([colour isEqualToString:@"red"])
-    {
-        [topband setColor:(ccc3(255,0,0))];
-        [leftband setColor:(ccc3(0,0,255))];
-        [rightband setColor:(ccc3(255,255,0))];
+    if ([colour isEqualToString:@"red"]) {
+        [topband setColor:(ccc3(255, 0, 0))];
+        [leftband setColor:(ccc3(0, 0, 255))];
+        [rightband setColor:(ccc3(255, 255, 0))];
     }
-    else if ([colour isEqualToString:@"yellow"])
-    {
-        [topband setColor:(ccc3(255,255,0))];
-        [leftband setColor:(ccc3(255,0,0))];
-        [rightband setColor:(ccc3(0,0,255))];        
+    else if ([colour isEqualToString:@"yellow"]) {
+        [topband setColor:(ccc3(255, 255, 0))];
+        [leftband setColor:(ccc3(255, 0, 0))];
+        [rightband setColor:(ccc3(0, 0, 255))];
     }
-    else
-    {
-        [topband setColor:(ccc3(0,0,255))];
-        [leftband setColor:(ccc3(255,255,0))];
-        [rightband setColor:(ccc3(255,0,0))];
+    else {
+        [topband setColor:(ccc3(0, 0, 255))];
+        [leftband setColor:(ccc3(255, 255, 0))];
+        [rightband setColor:(ccc3(255, 0, 0))];
     }
 }
 
