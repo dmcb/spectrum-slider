@@ -17,6 +17,7 @@
     CCSprite *jump;
     CCSprite *menu;
     
+    CCSprite *topband;
     CCSprite *leftband;
     CCSprite *rightband;
     

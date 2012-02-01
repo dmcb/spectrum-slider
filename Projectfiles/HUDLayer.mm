@@ -40,14 +40,18 @@
         [self addChild:menu];
 
         // Add sliding bands
-        leftband = [CCSprite spriteWithSpriteFrameName:@"leftband.png"];
-        leftband.position = CGPointMake(0, 0);
-        leftband.anchorPoint = CGPointMake(0, 0);
+        topband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
+        topband.position = CGPointMake(topband.contentSize.height/2, screenSize.height-topband.contentSize.width/2);
+        topband.rotation = -90;
+        [self addChild:topband];       
+        
+        leftband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
+        leftband.position = CGPointMake(leftband.contentSize.width/2, leftband.contentSize.height/2);
+        leftband.rotation = 180;
         [self addChild:leftband];
 
-        rightband = [CCSprite spriteWithSpriteFrameName:@"rightband.png"];
-        rightband.position = CGPointMake(screenSize.width - rightband.contentSize.width, 0);
-        rightband.anchorPoint = CGPointMake(0, 0);
+        rightband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
+        rightband.position = CGPointMake(screenSize.width - rightband.contentSize.width/2, rightband.contentSize.height/2);
         [self addChild:rightband];
         
         // Set sliding transition time
@@ -147,16 +151,19 @@
 
     if ([colour isEqualToString:@"red"])
     {
+        [topband setColor:(ccc3(255,0,0))];
         [leftband setColor:(ccc3(0,0,255))];
         [rightband setColor:(ccc3(255,255,0))];
     }
     else if ([colour isEqualToString:@"yellow"])
     {
+        [topband setColor:(ccc3(255,255,0))];
         [leftband setColor:(ccc3(255,0,0))];
         [rightband setColor:(ccc3(0,0,255))];        
     }
     else
     {
+        [topband setColor:(ccc3(0,0,255))];
         [leftband setColor:(ccc3(255,255,0))];
         [rightband setColor:(ccc3(255,0,0))];
     }
