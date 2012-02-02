@@ -13,11 +13,13 @@
 #import "Domain/PrimaryColourDimension.h"
 
 
-@implementation HUDLayer {
+@implementation HUDLayer
+{
 
 }
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (self) {
         // Get dimensions
@@ -70,7 +72,8 @@
 
 }
 
-- (void)update:(ccTime)delta {
+- (void)update:(ccTime)delta
+{
 
     Player *player = [[[GameContext sharedContext] currentLevel] player];
 
@@ -132,9 +135,9 @@
             }
             else {
                 if (vector.x < 0) {
-                    [player moveInDirection:ccp(-0.25, 0)];
+                    [player moveInDirectionWhileInAir:ccp(-1, 0)];
                 } else if (vector.x > 0) {
-                    [player moveInDirection:ccp(0.25, 0)];
+                    [player moveInDirectionWhileInAir:ccp(1, 0)];
                 }
             }
 
@@ -151,7 +154,8 @@
     }
 }
 
-- (void)slideToColour:(NSString *)colour {
+- (void)slideToColour:(NSString *)colour
+{
 
     if ([colour isEqualToString:@"red"]) {
         [topband setColor:(ccc3(255, 0, 0))];

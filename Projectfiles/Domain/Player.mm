@@ -12,15 +12,18 @@
 #import "Level.h"
 #import "MoveAction.h"
 #import "JumpAction.h"
+#import "MoveInAirAction.h"
 
-@implementation Player {
+@implementation Player
+{
 
 }
 
 @synthesize collisionVolume;
 
 
-- (id)init {
+- (id)init
+{
     self = [super init];
 
     if (self) {
@@ -32,59 +35,75 @@
     return self;
 }
 
-- (void)update:(ccTime)delta {
+- (void)update:(ccTime)delta
+{
     [collisionVolume update:delta];
     [actionContext doAction:delta];
     [sprite setPosition:[self position]];
     [sprite setRotation:[self rotation]];
 }
 
-- (void)spawn {
+- (void)spawn
+{
     collisionVolume = [[CollisionVolume alloc] initWithGameObject:self collisionGroupId:0 width:sprite.contentSize.width height:sprite.contentSize.height];
     [[[GameContext sharedContext] currentLevel] spawn:self];
     [[[GameContext sharedContext] currentLevel] setPlayer:self];
 }
 
-- (void)moveInDirection:(CGPoint)directionVector {
+- (void)moveInDirection:(CGPoint)directionVector
+{
     [actionContext setAction:[[MoveAction alloc] initWithDirection:directionVector]];
 }
 
-- (bool)isMoving {
+- (void)moveInDirectionWhileInAir:(CGPoint)directionVector
+{
+    [actionContext setAction:[[MoveInAirAction alloc] initWithDirection:directionVector]];
+}
+
+- (bool)isMoving
+{
     return [actionContext isCurrentActionType:[MoveAction class]];
 }
 
-
-- (CCSprite *)display {
+- (CCSprite *)display
+{
     return sprite;
 }
 
-- (void)stopXMovement {
+- (void)stopXMovement
+{
     if ([actionContext isCurrentActionType:[MoveAction class]]) {
         [actionContext stopAllActions];
     }
 }
 
--(void) jump {
+- (void)jump
+{
     [actionContext setAction:[[JumpAction alloc] init]];
 }
 
--(void) setIsOnGround:(NSNumber *) value {
+- (void)setIsOnGround:(NSNumber *)value
+{
     isOnGround = [value boolValue];
 }
 
-- (void)setIsOnGroundWithBool:(bool)value {
+- (void)setIsOnGroundWithBool:(bool)value
+{
     isOnGround = value;
 }
 
--(NSNumber *) isOnGroundObjectReturnValue {
+- (NSNumber *)isOnGroundObjectReturnValue
+{
     return [NSNumber numberWithBool:isOnGround];
 }
 
-- (bool)isOnGround {
+- (bool)isOnGround
+{
     return isOnGround;
 }
 
-- (void)frictionizeMotion {
+- (void)frictionizeMotion
+{
     if (isOnGround) {
         b2Fixture *fixture = collisionVolume.fixture;
 
@@ -99,8 +118,9 @@
     }
 }
 
-- (void) giveASlightBoost {
-    
+- (void)giveASlightBoost
+{
+
     float32 xVelocity = collisionVolume.body->GetLinearVelocity().x;
 
     float tinyBoostVelocity = 0;
@@ -114,15 +134,18 @@
 
 }
 
-- (float)moveSpeed {
+- (float)moveSpeed
+{
     return 13.0f;
 }
 
-- (float) maximumXVelocity {
+- (float)maximumXVelocity
+{
     return 10.0f;
 }
 
-- (float) jumpVelocity {
+- (float)jumpVelocity
+{
     return 260;
 }
 

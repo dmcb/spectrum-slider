@@ -11,6 +11,7 @@
 		3323B13714D46ADF009A20C2 /* MoveAction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3323B13614D46ADF009A20C2 /* MoveAction.mm */; };
 		33397EF514D4B73B003FAF35 /* PrimaryColourDimension.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33397EF414D4B73B003FAF35 /* PrimaryColourDimension.mm */; };
 		338E1BBE14DA1F3400676061 /* CombinationColourDimension.mm in Sources */ = {isa = PBXBuildFile; fileRef = 338E1BBD14DA1F3400676061 /* CombinationColourDimension.mm */; };
+		338E1C0514DA47E500676061 /* MoveInAirAction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 338E1C0414DA47E500676061 /* MoveInAirAction.mm */; };
 		33AF90F114D7A062007338D7 /* MovingObject.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AF90F014D7A062007338D7 /* MovingObject.mm */; };
 		33AF910814D7A0FD007338D7 /* Crate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AF910714D7A0FD007338D7 /* Crate.mm */; };
 		33AF910B14D7A114007338D7 /* Ball.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AF910A14D7A114007338D7 /* Ball.mm */; };
@@ -225,6 +226,8 @@
 		338E1BBC14DA1F3400676061 /* CombinationColourDimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CombinationColourDimension.h; sourceTree = "<group>"; };
 		338E1BBD14DA1F3400676061 /* CombinationColourDimension.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CombinationColourDimension.mm; sourceTree = "<group>"; };
 		338E1BDC14DA21CF00676061 /* Dimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dimension.h; sourceTree = "<group>"; };
+		338E1C0314DA47E500676061 /* MoveInAirAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveInAirAction.h; sourceTree = "<group>"; };
+		338E1C0414DA47E500676061 /* MoveInAirAction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MoveInAirAction.mm; sourceTree = "<group>"; };
 		33AF90EF14D7A062007338D7 /* MovingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingObject.h; sourceTree = "<group>"; };
 		33AF90F014D7A062007338D7 /* MovingObject.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MovingObject.mm; sourceTree = "<group>"; };
 		33AF910614D7A0FD007338D7 /* Crate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crate.h; sourceTree = "<group>"; };
@@ -410,6 +413,8 @@
 				33AF911914D7AA78007338D7 /* NSString+HexValue.m */,
 				338E1BBC14DA1F3400676061 /* CombinationColourDimension.h */,
 				338E1BBD14DA1F3400676061 /* CombinationColourDimension.mm */,
+				338E1C0314DA47E500676061 /* MoveInAirAction.h */,
+				338E1C0414DA47E500676061 /* MoveInAirAction.mm */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -905,6 +910,7 @@
 				33AF910B14D7A114007338D7 /* Ball.mm in Sources */,
 				33AF911A14D7AA78007338D7 /* NSString+HexValue.m in Sources */,
 				338E1BBE14DA1F3400676061 /* CombinationColourDimension.mm in Sources */,
+				338E1C0514DA47E500676061 /* MoveInAirAction.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

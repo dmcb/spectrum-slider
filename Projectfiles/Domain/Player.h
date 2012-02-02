@@ -26,6 +26,8 @@
 
 - (void)moveInDirection:(CGPoint)directionVector;
 
+- (void)moveInDirectionWhileInAir:(CGPoint)directionVector;
+
 - (float)moveSpeed;
 
 - (bool)isMoving;

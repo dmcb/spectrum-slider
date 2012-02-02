@@ -35,12 +35,6 @@
 
     [player setIsOnGroundWithBool:false];
 
-//    player.setLinearVelocity(vel.x, 0);
-//    System.out.println("jump before: " + player.getLinearVelocity());
-//    player.setTransform(pos.x, pos.y + 0.01f, 0);
-//    player.applyLinearImpulse(0, 30, pos.x, pos.y);
-//    System.out.println("jump, " + player.getLinearVelocity());
-
     b2Body *body = [[player collisionVolume] body];
 
     b2Fixture *fixture = [[player collisionVolume] fixture];

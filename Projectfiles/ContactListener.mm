@@ -9,7 +9,7 @@
 #import "cocos2d.h"
 #import "Player.h"
 
-void setIsOnGround(b2Contact *contact, b2Body *bodyToCheck, CCNode *nodeToCheck) {
+void setPlayerJustLanded (b2Contact *contact, b2Body *bodyToCheck, CCNode *nodeToCheck) {
     if ([nodeToCheck respondsToSelector:@selector(setIsOnGround:)]) {
         if ([[nodeToCheck performSelector:@selector(isOnGroundObjectReturnValue)] boolValue] == false) {
             b2Vec2 playerPosition = bodyToCheck->GetPosition();
@@ -20,7 +20,7 @@ void setIsOnGround(b2Contact *contact, b2Body *bodyToCheck, CCNode *nodeToCheck)
             //NSLog(@"----------------------------------------");
             //NSLog(@" player y=%f", playerPosition.y);
 
-            bool below = manifold.normal.y >0;
+            bool below = manifold.normal.y > 0;
 
             //NSLog(@"----------------------------------------");
             NSNumber *passedValue = [NSNumber numberWithBool:below];
@@ -31,7 +31,6 @@ void setIsOnGround(b2Contact *contact, b2Body *bodyToCheck, CCNode *nodeToCheck)
                 }
             }
 
-            
             [nodeToCheck performSelector:@selector(setIsOnGround:) withObject:passedValue];
         }
     }
@@ -44,15 +43,15 @@ void ContactListener::BeginContact(b2Contact *contact) {
     CCNode *nodeB = (__bridge CCNode *) bodyB->GetUserData();
 
     if (nodeA != NULL) {
-        setIsOnGround(contact, bodyA, nodeA);
+        setPlayerJustLanded(contact, bodyA, nodeA);
     }
 
     if (nodeB != NULL) {
-        setIsOnGround(contact, bodyB, nodeB);
+        setPlayerJustLanded(contact, bodyB, nodeB);
     }
 }
 
-void ContactListener::EndContact(b2Contact *contact) {
+void ContactListener::EndContact (b2Contact *contact) {
     b2Body *bodyA = contact->GetFixtureA()->GetBody();
     b2Body *bodyB = contact->GetFixtureB()->GetBody();
     CCNode *spriteA = (__bridge CCNode *) bodyA->GetUserData();
