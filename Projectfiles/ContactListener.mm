@@ -45,7 +45,9 @@ void ContactListener::BeginContact(b2Contact *contact) {
 
     if (nodeA != NULL) {
         setIsOnGround(contact, bodyA, nodeA);
-    } else if (nodeB != NULL) {
+    }
+
+    if (nodeB != NULL) {
         setIsOnGround(contact, bodyB, nodeB);
     }
 }
