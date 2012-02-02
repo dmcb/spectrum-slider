@@ -10,7 +10,7 @@
 #import "Level.h"
 #import "Player.h"
 #import "GameWorldLayer.h"
-#import "ColorDimension.h"
+#import "Domain/PrimaryColourDimension.h"
 
 
 @implementation HUDLayer {

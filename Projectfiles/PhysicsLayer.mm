@@ -11,8 +11,9 @@
 #import "Player.h"
 #import "GameWorldLayer.h"
 #import "HUDLayer.h"
-#import "ColorDimension.h"
+#import "Domain/PrimaryColourDimension.h"
 #import "PlayerLayer.h"
+#import "CombinationColourDimension.h"
 
 
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
@@ -58,6 +59,10 @@ const float PTM_RATIO = 32.0f;
         [self addChild:gameWorldLayer.blueDimension.spriteLayer];
         [self addChild:gameWorldLayer.yellowDimension.spriteLayer];
 
+        [self addChild:gameWorldLayer.orangeDimension.spriteLayer];
+        [self addChild:gameWorldLayer.greenDimension.spriteLayer];
+        [self addChild:gameWorldLayer.purpleDimension.spriteLayer];
+
         [currentLevel initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_ALL" collisionGroupId:0xF];
         [currentLevel initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_RED" collisionGroupId:0xF0];
         [currentLevel initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_BLUE" collisionGroupId:0xF00];
@@ -73,7 +78,7 @@ const float PTM_RATIO = 32.0f;
         player.position = ccp(100, 100);
 
         [player spawn];
-        
+
         [self addChild:hudLayer];
 
 //        [self enableBox2dDebugDrawing];
@@ -86,26 +91,24 @@ const float PTM_RATIO = 32.0f;
 }
 
 
--(void) enableBox2dDebugDrawing
-{
-	float debugDrawScaleFactor = 1.0f;
+- (void)enableBox2dDebugDrawing {
+    float debugDrawScaleFactor = 1.0f;
 #if KK_PLATFORM_IOS
-	debugDrawScaleFactor = [[CCDirector sharedDirector] contentScaleFactor];
+    debugDrawScaleFactor = [[CCDirector sharedDirector] contentScaleFactor];
 #endif
-	debugDrawScaleFactor *= PTM_RATIO;
+    debugDrawScaleFactor *= PTM_RATIO;
 
-	debugDraw = new GLESDebugDraw(debugDrawScaleFactor);
+    debugDraw = new GLESDebugDraw(debugDrawScaleFactor);
 
-	if (debugDraw)
-	{
-		UInt32 debugDrawFlags = 0;
-		debugDrawFlags += b2Draw::e_shapeBit;
-		debugDrawFlags += b2Draw::e_jointBit;
-		//debugDrawFlags += b2Draw::e_aabbBit;
-		//debugDrawFlags += b2Draw::e_pairBit;
-		//debugDrawFlags += b2Draw::e_centerOfMassBit;
+    if (debugDraw) {
+        UInt32 debugDrawFlags = 0;
+        debugDrawFlags += b2Draw::e_shapeBit;
+        debugDrawFlags += b2Draw::e_jointBit;
+        //debugDrawFlags += b2Draw::e_aabbBit;
+        //debugDrawFlags += b2Draw::e_pairBit;
+        //debugDrawFlags += b2Draw::e_centerOfMassBit;
 
-		debugDraw->SetFlags(debugDrawFlags);
+        debugDraw->SetFlags(debugDrawFlags);
         [[[GameContext sharedContext] currentLevel] enableDebugDraw:debugDraw];
     }
 }
@@ -130,21 +133,20 @@ const float PTM_RATIO = 32.0f;
 #if DEBUG
 - (void)draw {
 
-	if (debugDraw)
-	{
-		// these GL states must be disabled/enabled otherwise drawing debug data will not render and may even crash
-		glDisable(GL_TEXTURE_2D);
-		glDisableClientState(GL_COLOR_ARRAY);
-		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-		glEnableClientState(GL_VERTEX_ARRAY);
+    if (debugDraw) {
+        // these GL states must be disabled/enabled otherwise drawing debug data will not render and may even crash
+        glDisable(GL_TEXTURE_2D);
+        glDisableClientState(GL_COLOR_ARRAY);
+        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+        glEnableClientState(GL_VERTEX_ARRAY);
 
         [[[GameContext sharedContext] currentLevel] drawDebugData];
 
         glDisableClientState(GL_VERTEX_ARRAY);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		glEnableClientState(GL_COLOR_ARRAY);
-		glEnable(GL_TEXTURE_2D);
-	}
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        glEnableClientState(GL_COLOR_ARRAY);
+        glEnable(GL_TEXTURE_2D);
+    }
 
     [super draw];
 }

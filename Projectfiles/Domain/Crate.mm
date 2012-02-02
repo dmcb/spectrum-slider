@@ -13,7 +13,8 @@
 @implementation Crate
 
 
-- (id)initWithHeight:(float32)aHeight width:(float32)aWidth {
+- (id)initWithHeight:(float32)aHeight width:(float32)aWidth
+{
     self = [super init];
     if (self) {
         height = aHeight;
@@ -24,9 +25,12 @@
 //To change the template use AppCode | Preferences | File Templates.
 }
 
-- (void)spawn {
+- (void)spawn
+{
+    sprite = [CCSprite spriteWithFile:@"test_crate_sprite.png"];
 
-    sprite = [CCSprite spriteWithFile:@"test_circle_sprite.png"];
+    [sprite setScaleX:width / sprite.contentSize.width];
+    [sprite setScaleY:height / sprite.contentSize.height];
 
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;

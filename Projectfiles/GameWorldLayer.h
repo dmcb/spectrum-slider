@@ -7,16 +7,18 @@
 
 #import <Foundation/Foundation.h>
 
-@class ColorDimension;
-
+@class PrimaryColourDimension;
+@class CombinationColourDimension;
 
 @interface GameWorldLayer : CCLayer {
 
-    ColorDimension *currentLayer;
+    PrimaryColourDimension *redDimension;
+    PrimaryColourDimension *blueDimension;
+    PrimaryColourDimension *yellowDimension;
 
-    ColorDimension *redDimension;
-    ColorDimension *blueDimension;
-    ColorDimension *yellowDimension;
+    CombinationColourDimension *orangeDimension;
+    CombinationColourDimension *greenDimension;
+    CombinationColourDimension *purpleDimension;
 
     CCTMXTiledMap *tiledMap;
 
@@ -24,16 +26,20 @@
 }
 
 @property(nonatomic, retain) CCTMXTiledMap *tiledMap;
-@property(nonatomic, strong) ColorDimension *yellowDimension;
-@property(nonatomic, strong) ColorDimension *blueDimension;
-@property(nonatomic, strong) ColorDimension *redDimension;
 
+@property(nonatomic, strong) PrimaryColourDimension *yellowDimension;
+@property(nonatomic, strong) PrimaryColourDimension *blueDimension;
+@property(nonatomic, strong) PrimaryColourDimension *redDimension;
 
 @property(nonatomic, retain) CCLayer *playerLayer;
 
+@property(nonatomic, strong) CombinationColourDimension *orangeDimension;
+@property(nonatomic, strong) CombinationColourDimension *greenDimension;
+@property(nonatomic, strong) CombinationColourDimension *purpleDimension;
+
 - (id)initWithTileMap:(NSString *)tileMapString;
 
-- (void)addObjectToGame:(CCNode *)node;
+- (void)addObjectToGame:(CCNode *)node collisionLayer:(uint16)collisionID;
 
 - (void)loadTileMap:(NSString *)tmxFileName;
 

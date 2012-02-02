@@ -5,15 +5,14 @@
 //
 
 
-#import "ColorDimension.h"
+#import "PrimaryColourDimension.h"
 #import "GameContext.h"
 #import "Level.h"
 #import "Player.h"
 #import "HUDLayer.h"
-#import "CollisionVolume.h"
+#import "CombinationColourDimension.h"
 
-
-@implementation ColorDimension {
+@implementation PrimaryColourDimension {
 
 }
 
@@ -22,30 +21,50 @@
 @synthesize tiledLayer;
 @synthesize colour;
 
-- (id)initWithColour:(NSString *)aColour {
+
+- (id)initWithColour:(NSString *) aColour
+{
     self = [super init];
-    if (self) {
+    if (self)
+    {
         colour = aColour;
+        childDimensions = [NSMutableArray new];
     }
     return self;
 }
 
+- (void) addChildDimension:(CombinationColourDimension *)child
+{
+    [childDimensions addObject:child];
+}
 
-- (void)activate {
+- (void)activate
+{
     Level *currentLevel = [[GameContext sharedContext] currentLevel];
 
     [[currentLevel hudLayer] slideToColour:colour];
-    
+
     [spriteLayer setVisible:true];
 
     [tiledLayer setVisible:true];
 
     [currentLevel changeCollisionGroupForLevel:collisionGroupId];
+
+    for (id dimension in childDimensions)
+    {
+        [dimension activate];
+    }
 }
 
-- (void)deactivate {
+- (void)deactivate
+{
     [spriteLayer setVisible:false];
     [tiledLayer setVisible:false];
+
+    for (id dimension in childDimensions)
+    {
+        [dimension deactivate];
+    }
 }
 
 @end

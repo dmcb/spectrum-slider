@@ -19,8 +19,8 @@
 
 - (void)update:(ccTime)delta {
     b2Vec2 position = body->GetPosition();
-    self.position = ccp(position.x * PTM_RATIO, position.y * PTM_RATIO);
-    self.rotation = -1 * CC_RADIANS_TO_DEGREES(body->GetAngle());
+    sprite.position = ccp(position.x * PTM_RATIO, position.y * PTM_RATIO);
+    sprite.rotation = -1 * CC_RADIANS_TO_DEGREES(body->GetAngle());
 }
 
 - (void)setCollisionGroupId:(uint16)newCollisionGroup {
@@ -43,7 +43,7 @@
 }
 
 - (void)spawn {
-    [[[GameContext sharedContext] currentLevel] spawn:self];
+    [[[GameContext sharedContext] currentLevel] addObjectToPlay:self];
 }
 
 - (CCSprite *)display {

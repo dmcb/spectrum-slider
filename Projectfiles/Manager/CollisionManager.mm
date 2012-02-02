@@ -10,6 +10,9 @@
 #import "NSString+HexValue.h"
 #import "Ball.h"
 #import "Crate.h"
+#import "GameContext.h"
+#import "Level.h"
+#import "GameWorldLayer.h"
 
 @implementation CollisionManager {
 
@@ -91,6 +94,8 @@
 
 - (void)initMovingObjects:(CCTMXTiledMap *)map {
 
+    Level *level = [[GameContext sharedContext] currentLevel];
+
     CCTMXObjectGroup *collisionGroup = [map objectGroupNamed:@"Objects"];
 
         if (collisionGroup) {
@@ -117,6 +122,8 @@
 
                     [ball setCollisionGroupId:cid];
 
+                    [[level gameWorldLayer] addObjectToGame:ball.display collisionLayer:cid];
+
                 } else if ([typeKey isEqualToString:@"Crate"]) {
 
                     Crate *crate = [[Crate alloc] initWithHeight:height width:width];
@@ -126,6 +133,9 @@
                     [crate spawn];
 
                     [crate setCollisionGroupId:cid];
+
+                    [[level gameWorldLayer] addObjectToGame:crate.display collisionLayer:cid];
+
                 }
 
             }

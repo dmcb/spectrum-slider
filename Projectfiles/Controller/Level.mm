@@ -14,7 +14,8 @@
 #import "HUDLayer.h"
 
 
-@implementation Level {
+@implementation Level
+{
 
 }
 
@@ -23,32 +24,44 @@
 @synthesize dimension;
 
 
-- (GameWorldLayer *)gameWorldLayer {
+- (GameWorldLayer *)gameWorldLayer
+{
     return gameWorldLayer;
 }
 
-- (b2Body *)initBody:(b2BodyDef *)fixture {
+- (b2Body *)initBody:(b2BodyDef *)fixture
+{
     return [collisionManager initBody:fixture];
 }
 
-- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(uint16)collisionGroupId {
+- (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(uint16)collisionGroupId
+{
     return [collisionManager initStaticBodies:map collisionLayer:clLayer collisionGroupId:collisionGroupId];
 }
 
-- (void)initMovingObjects:(CCTMXTiledMap *)map {
+- (void)initMovingObjects:(CCTMXTiledMap *)map
+{
     [collisionManager initMovingObjects:map];
 }
 
-- (void) changeCollisionGroupForLevel:(uint16) newCollisionGroup {
+- (void)changeCollisionGroupForLevel:(uint16)newCollisionGroup
+{
     [objectManager changeCollisionGroupIds:newCollisionGroup];
 }
 
-- (void)spawn:(id <Updateable, Displayable>)objectToSpawn {
+- (void)spawn:(id <Updateable, Displayable>)objectToSpawn
+{
     [[gameWorldLayer playerLayer] addChild:[objectToSpawn display]];
     [objectManager addObjectToPlay:objectToSpawn];
 }
 
-- (id)init {
+- (void)addObjectToPlay:(id <Updateable>)objectToAdd
+{
+    [objectManager addObjectToPlay:objectToAdd];
+}
+
+- (id)init
+{
     self = [super init];
     if (self) {
         collisionManager = [CollisionManager new];
@@ -59,44 +72,45 @@
     return self;
 }
 
-- (void)update:(ccTime)delta {
+- (void)update:(ccTime)delta
+{
     [hudLayer update:delta];
     [collisionManager update:delta];
     [objectManager update:delta];
 }
 
--(void) drawDebugData {
+- (void)drawDebugData
+{
     [collisionManager draw];
 }
 
-- (void)enableDebugDraw:(GLESDebugDraw *)draw {
+- (void)enableDebugDraw:(GLESDebugDraw *)draw
+{
     [collisionManager world]->SetDebugDraw(draw);
 }
 
 
-- (void)setDimension:(ColorDimension *)aDimension {
-    
+- (void)setDimension:(PrimaryColourDimension *)aDimension
+{
+
     dimension = aDimension;
-    
-    if ([aDimension.colour isEqualToString:@"red"])
-    {
+
+    if ([aDimension.colour isEqualToString:@"red"]) {
+        [[gameWorldLayer yellowDimension] deactivate];
+        [[gameWorldLayer blueDimension] deactivate];
         [[gameWorldLayer redDimension] activate];
-        [[gameWorldLayer yellowDimension] deactivate];    
-        [[gameWorldLayer blueDimension] deactivate];
-        
+
     }
-    else if ([aDimension.colour isEqualToString:@"yellow"])
-    {
+    else if ([aDimension.colour isEqualToString:@"yellow"]) {
         [[gameWorldLayer redDimension] deactivate];
-        [[gameWorldLayer yellowDimension] activate];  
         [[gameWorldLayer blueDimension] deactivate];
+        [[gameWorldLayer yellowDimension] activate];
     }
-    else
-    {
+    else {
         [[gameWorldLayer redDimension] deactivate];
-        [[gameWorldLayer yellowDimension] deactivate]; 
+        [[gameWorldLayer yellowDimension] deactivate];
         [[gameWorldLayer blueDimension] activate];
-        
+
     }
 }
 @end

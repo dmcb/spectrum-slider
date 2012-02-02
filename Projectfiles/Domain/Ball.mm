@@ -13,7 +13,8 @@
 @implementation Ball
 
 
-- (id)initWithRadius:(float32)aRadius height:(float32)aHeight width:(float32)aWidth {
+- (id)initWithRadius:(float32)aRadius height:(float32)aHeight width:(float32)aWidth
+{
     self = [super init];
     if (self) {
         radius = aRadius;
@@ -24,9 +25,13 @@
     return self;
 }
 
-- (void)spawn {
+- (void)spawn
+{
 
-    sprite = [CCSprite spriteWithFile:@"test_crate_sprite.png"];
+    sprite = [CCSprite spriteWithFile:@"test_circle_sprite.png"];
+
+    [sprite setScaleX:radius * PTM_RATIO * 2 / sprite.contentSize.width];
+    [sprite setScaleY:radius * PTM_RATIO * 2 / sprite.contentSize.width];
 
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
