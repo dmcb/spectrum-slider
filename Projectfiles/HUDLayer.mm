@@ -10,7 +10,6 @@
 #import "Level.h"
 #import "Player.h"
 #import "GameWorldLayer.h"
-#import "Domain/PrimaryColourDimension.h"
 
 
 @implementation HUDLayer
@@ -33,15 +32,15 @@
         // If you update dpad's anchor point make sure to update that logic.
         dpad = [CCSprite spriteWithSpriteFrameName:@"button_dpad.png"];
         dpad.position = CGPointMake(screenSize.width * 0.11, screenSize.height * 0.09);
-        [self addChild:dpad];
+        [self addChild:dpad z:1];
 
         jump = [CCSprite spriteWithSpriteFrameName:@"button_jump.png"];
         jump.position = CGPointMake(screenSize.width * 0.92, screenSize.height * 0.09);
-        [self addChild:jump];
+        [self addChild:jump z:1];
 
         menu = [CCSprite spriteWithSpriteFrameName:@"button_menu.png"];
         menu.position = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.09);
-        [self addChild:menu];
+        [self addChild:menu z:1];
 
         // Add sliding bands
         topband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
@@ -68,9 +67,20 @@
         rightbandFx = [CCParticleSystemQuad particleWithFile:@"band.plist"]; 
         rightbandFx.position = CGPointMake(10 + screenSize.width - rightband.contentSize.width / 2, rightband.contentSize.height / 2);
         [self addChild:rightbandFx]; 
+        
+        // Add slide effect
+        leftSlide = [CCParticleSystemQuad particleWithFile:@"slide.plist"]; 
+        leftSlide.position = CGPointMake(leftband.contentSize.width / 2, screenSize.height / 2);
+        leftSlide.rotation = 180;
+        [self addChild:leftSlide]; 
+        
+        rightSlide = [CCParticleSystemQuad particleWithFile:@"slide.plist"]; 
+        rightSlide.position = CGPointMake(screenSize.width - rightband.contentSize.width / 2, screenSize.height / 2);
+        [self addChild:rightSlide]; 
 
         // Set sliding transition time
         dimensionTransition = [NSDate date];
+        dimensionTransitionDelay = 0.225;
         dimensionTransitionDuration = 0.5;
 
         // Enable touch and updating
@@ -94,38 +104,57 @@
     // Detect swipe for colour slide, ensure enough time has passed between slides
     if (input.gestureSwipeRecognizedThisFrame && fabs([dimensionTransition timeIntervalSinceNow]) > dimensionTransitionDuration) {
         KKSwipeGestureDirection dir = input.gestureSwipeDirection;
-        switch (dir) {
-            case KKSwipeGestureDirectionLeft:
-                dimensionTransition = [NSDate date];
+        if (dir == KKSwipeGestureDirectionLeft || dir == KKSwipeGestureDirectionRight)
+        {
+            // Start slide
+            dimensionTransition = [NSDate date];
+
+            if (dir == KKSwipeGestureDirectionLeft)
+            {
                 if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
-                    [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension]];
+                    dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension];
+                    [rightSlide setStartColor:(ccc4f(1, 1, 0, 0.32))];
+                    [rightSlide setEndColor:(ccc4f(1, 1, 0, 0))];
                 }
                 else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
-                    [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension]];
+                    dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension];
+                    [rightSlide setStartColor:(ccc4f(0, 0, 1, 0.32))];
+                    [rightSlide setEndColor:(ccc4f(0, 0, 1, 0))];
                 }
                 else {
-                    [[[GameContext sharedContext] currentLevel] setDimension:([[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension])];
+                    dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension];
+                    [rightSlide setStartColor:(ccc4f(1, 0, 0, 0.32))];
+                    [rightSlide setEndColor:(ccc4f(1, 0, 0, 0))];
                 }
-                break;
-            case KKSwipeGestureDirectionRight:
+                [rightSlide resetSystem];
+            }
+            else
+            {
                 dimensionTransition = [NSDate date];
                 if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
-                    [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension]];
+                    dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension];
+                    [leftSlide setStartColor:(ccc4f(0, 0, 1, 0.32))];
+                    [leftSlide setEndColor:(ccc4f(0, 0, 1, 0))];
                 }
                 else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
-                    [[[GameContext sharedContext] currentLevel] setDimension:[[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension]];
+                    dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension];
+                    [leftSlide setStartColor:(ccc4f(1, 0, 0, 0.32))];
+                    [leftSlide setEndColor:(ccc4f(1, 0, 0, 0))];
                 }
                 else {
-                    [[[GameContext sharedContext] currentLevel] setDimension:([[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension])];
+                    dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension];
+                    [leftSlide setStartColor:(ccc4f(1, 1, 0, 0.32))];
+                    [leftSlide setEndColor:(ccc4f(1, 1, 0, 0))];
                 }
-                break;
-            case KKSwipeGestureDirectionUp:
-                // direction-specific code here
-                break;
-            case KKSwipeGestureDirectionDown:
-                // direction-specific code here
-                break;
+                [leftSlide resetSystem];
+            }
         }
+    }
+    
+    // Midway through slide, change colours
+    if (dimensionSlidingTo != NULL && fabs([dimensionTransition timeIntervalSinceNow]) > dimensionTransitionDelay) {
+        [[[GameContext sharedContext] currentLevel] setDimension:dimensionSlidingTo];
+        dimensionSlidingTo = NULL;  
     }
 
     // Player can't jump or move in mid air
@@ -167,7 +196,6 @@
 
 - (void)slideToColour:(NSString *)colour
 {
-
     if ([colour isEqualToString:@"red"]) {
         [topband setColor:(ccc3(255, 0, 0))];
         [topbandFx setStartColor:(ccc4f(1, 0, 0, 0.2))];

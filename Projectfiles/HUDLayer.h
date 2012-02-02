@@ -11,6 +11,7 @@
 #import "SneakyJoystickSkinnedBase.h"
 #import "ColoredCircleSprite.h"
 #import "Updateable.h"
+#import "Domain/PrimaryColourDimension.h"
 
 @interface HUDLayer : CCLayer <Updateable> {
     CCSprite *dpad;
@@ -25,9 +26,14 @@
     CCParticleSystem *leftbandFx;
     CCParticleSystem *rightbandFx;
     
+    CCParticleSystem *leftSlide;
+    CCParticleSystem *rightSlide;
+    
     int direction;
     
+    PrimaryColourDimension *dimensionSlidingTo;
     NSDate *dimensionTransition;
+    double dimensionTransitionDelay;
     double dimensionTransitionDuration;
 }
 
