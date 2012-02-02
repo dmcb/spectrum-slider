@@ -21,6 +21,10 @@
     CCSprite *leftband;
     CCSprite *rightband;
     
+    CCParticleSystem *topbandFx;
+    CCParticleSystem *leftbandFx;
+    CCParticleSystem *rightbandFx;
+    
     int direction;
     
     NSDate *dimensionTransition;

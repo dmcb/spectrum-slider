@@ -48,15 +48,26 @@
         topband.position = CGPointMake(topband.contentSize.height / 2, screenSize.height - topband.contentSize.width / 2);
         topband.rotation = -90;
         [self addChild:topband];
+        topbandFx = [CCParticleSystemQuad particleWithFile:@"band.plist"]; 
+        topbandFx.position = CGPointMake(topband.contentSize.height / 2, 10 + screenSize.height - topband.contentSize.width / 2);
+        topbandFx.rotation = -90;
+        [self addChild:topbandFx]; 
 
         leftband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
         leftband.position = CGPointMake(leftband.contentSize.width / 2, leftband.contentSize.height / 2);
         leftband.rotation = 180;
         [self addChild:leftband];
+        leftbandFx = [CCParticleSystemQuad particleWithFile:@"band.plist"]; 
+        leftbandFx.position = CGPointMake(leftband.contentSize.width / 2 - 10, leftband.contentSize.height / 2);
+        leftbandFx.rotation = 180;
+        [self addChild:leftbandFx]; 
 
         rightband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
         rightband.position = CGPointMake(screenSize.width - rightband.contentSize.width / 2, rightband.contentSize.height / 2);
         [self addChild:rightband];
+        rightbandFx = [CCParticleSystemQuad particleWithFile:@"band.plist"]; 
+        rightbandFx.position = CGPointMake(10 + screenSize.width - rightband.contentSize.width / 2, rightband.contentSize.height / 2);
+        [self addChild:rightbandFx]; 
 
         // Set sliding transition time
         dimensionTransition = [NSDate date];
@@ -159,18 +170,42 @@
 
     if ([colour isEqualToString:@"red"]) {
         [topband setColor:(ccc3(255, 0, 0))];
+        [topbandFx setStartColor:(ccc4f(1, 0, 0, 0.2))];
+        [topbandFx setEndColor:(ccc4f(1, 0, 0, 0.1))];
+        
         [leftband setColor:(ccc3(0, 0, 255))];
+        [leftbandFx setStartColor:(ccc4f(0, 0, 1, 0.2))];
+        [leftbandFx setEndColor:(ccc4f(0, 0, 1, 0.1))];
+        
         [rightband setColor:(ccc3(255, 255, 0))];
+        [rightbandFx setStartColor:(ccc4f(1, 1, 0, 0.2))];
+        [rightbandFx setEndColor:(ccc4f(1, 1, 0, 0.1))];
     }
     else if ([colour isEqualToString:@"yellow"]) {
         [topband setColor:(ccc3(255, 255, 0))];
+        [topbandFx setStartColor:(ccc4f(1, 1, 0, 0.2))];
+        [topbandFx setEndColor:(ccc4f(1, 1, 0, 0.1))];
+        
         [leftband setColor:(ccc3(255, 0, 0))];
+        [leftbandFx setStartColor:(ccc4f(1, 0, 0, 0.2))];
+        [leftbandFx setEndColor:(ccc4f(1, 0, 0, 0.1))];
+        
         [rightband setColor:(ccc3(0, 0, 255))];
+        [rightbandFx setStartColor:(ccc4f(0, 0, 1, 0.2))];
+        [rightbandFx setEndColor:(ccc4f(0, 0, 1, 0.1))];
     }
     else {
         [topband setColor:(ccc3(0, 0, 255))];
+        [topbandFx setStartColor:(ccc4f(0, 0, 1, 0.2))];
+        [topbandFx setEndColor:(ccc4f(0, 0, 1, 0.1))];
+        
         [leftband setColor:(ccc3(255, 255, 0))];
+        [leftbandFx setStartColor:(ccc4f(1, 1, 0, 0.2))];
+        [leftbandFx setEndColor:(ccc4f(1, 1, 0, 0.1))];
+        
         [rightband setColor:(ccc3(255, 0, 0))];
+        [rightbandFx setStartColor:(ccc4f(1, 0, 0, 0.2))];
+        [rightbandFx setEndColor:(ccc4f(1, 0, 0, 0.1))];
     }
 }
 
