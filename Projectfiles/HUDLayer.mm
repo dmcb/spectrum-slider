@@ -95,6 +95,13 @@
 
 - (void)update:(ccTime)delta
 {
+    
+    CCArray* touches = [KKInput sharedInput].touches;
+    KKTouch* touch;
+    CCARRAY_FOREACH(touches, touch)
+    {
+        NSLog(@"Touch: %u", touch.touchID);
+    }
 
     Player *player = [[[GameContext sharedContext] currentLevel] player];
 
