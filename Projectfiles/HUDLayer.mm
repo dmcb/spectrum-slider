@@ -25,7 +25,7 @@
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
 
         // Add screen buttons
-        CCSpriteFrameCache *frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
+        frameCache = [CCSpriteFrameCache sharedSpriteFrameCache];
         [frameCache addSpriteFramesWithFile:@"hud.plist"];
 
         // Note : I'm using the position of this dpad to build the overflow touch boxes
@@ -157,7 +157,7 @@
         dimensionSlidingTo = NULL;  
     }
 
-    // Player can't jump or move in mid air
+    // D-Pad
     if ([input isAnyTouchOnNode:dpad touchPhase:KKTouchPhaseAny]) {
 
         CGPoint vector = [dpad convertToNodeSpaceAR:[input locationOfAnyTouchInPhase:KKTouchPhaseAny]];
@@ -166,31 +166,52 @@
         // Most likely we'll have to use CGRects or something
         if (vector.x < [[CCDirector sharedDirector] screenCenter].x) {
 
-            if ([player isOnGround]) {
-                if (vector.x < 0) {
+            if (vector.x < 0) {
+                [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad_pushed_left.png"]];
+                // Player can't jump or move in mid air
+                if ([player isOnGround]) {
                     [player moveInDirection:ccp(-1, 0)];
-                } else if (vector.x > 0) {
-                    [player moveInDirection:ccp(1, 0)];
                 }
+                else {
+                    [player moveInDirectionWhileInAir:ccp(-1, 0)];
+                }
+                
             }
             else {
-                if (vector.x < 0) {
-                    [player moveInDirectionWhileInAir:ccp(-1, 0)];
-                } else if (vector.x > 0) {
+                [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad_pushed_right.png"]];
+                if ([player isOnGround]) {
+                    [player moveInDirection:ccp(1, 0)];
+                }
+                else {
+                
                     [player moveInDirectionWhileInAir:ccp(1, 0)];
                 }
             }
-
         }
-    } else if ([player isOnGround]) {
-        [player frictionizeMotion];
+    } else {
+        [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad.png"]];
+        if ([player isOnGround]) {
+            [player frictionizeMotion];
+        }
     }
 
-    if ([player isOnGround]) {
-        if ([input isAnyTouchOnNode:jump touchPhase:KKTouchPhaseBegan]) {
+    // Jump button
+    if ([input isAnyTouchOnNode:jump touchPhase:KKTouchPhaseAny]) {
+        [jump setDisplayFrame:[frameCache spriteFrameByName:@"button_jump_pushed.png"]];
+        if ([player isOnGround] && [input isAnyTouchOnNode:jump touchPhase:KKTouchPhaseBegan]) {
             [player jump];
         }
-
+    }
+    else {
+        [jump setDisplayFrame:[frameCache spriteFrameByName:@"button_jump.png"]];
+    }
+    
+    // Pause button
+    if ([input isAnyTouchOnNode:menu touchPhase:KKTouchPhaseAny]) {
+        [menu setDisplayFrame:[frameCache spriteFrameByName:@"button_menu_pushed.png"]];
+    }
+    else {
+        [menu setDisplayFrame:[frameCache spriteFrameByName:@"button_menu.png"]];
     }
 }
 

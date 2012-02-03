@@ -14,6 +14,7 @@
 #import "Domain/PrimaryColourDimension.h"
 
 @interface HUDLayer : CCLayer <Updateable> {
+    CCSpriteFrameCache *frameCache;
     CCSprite *dpad;
     CCSprite *jump;
     CCSprite *menu;
