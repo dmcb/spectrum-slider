@@ -70,8 +70,6 @@ const float PTM_RATIO = 32.0f;
 
         [currentLevel initMovingObjects:gameWorldLayer.tiledMap];
 
-        // Level starts with red dimension
-        [currentLevel setDimension:[gameWorldLayer redDimension]];
 
         Player *player = [[Player alloc] init];
 
@@ -83,6 +81,9 @@ const float PTM_RATIO = 32.0f;
 
 //        [self enableBox2dDebugDrawing];
 
+        // Level starts with red dimension
+        [currentLevel setDimension:[gameWorldLayer redDimension]];
+        
         [self scheduleUpdate];
 
     }
