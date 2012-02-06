@@ -10,6 +10,7 @@
 #import "GameContext.h"
 #import "Level.h"
 #import "CombinationColourDimension.h"
+#import "DynamicallyColourable.h"
 
 
 
@@ -47,25 +48,39 @@
     return self;
 }
 
+- (void)setColourIfDynamicallyColoured:(CCNode *)node1 colour:(ccColor3B)colour
+{
+    if ([node1 respondsToSelector:@selector(setColor:)]) {
+        [((CCSprite *) node1) setColor:colour];
+    }
+
+}
+
 - (void)addObjectToGame:(CCNode *)node collisionLayer:(uint16)collisionID {
     switch (collisionID) {
         case 0xF0:
             [redDimension.spriteLayer addChild:node];
+            [self setColourIfDynamicallyColoured:node colour:ccc3(255, 0, 0)];
             break;
         case 0xF00:
             [blueDimension.spriteLayer addChild:node];
+            [self setColourIfDynamicallyColoured:node colour:ccc3(0, 0, 255)];
             break;
         case 0xF000:
             [yellowDimension.spriteLayer addChild:node];
+            [self setColourIfDynamicallyColoured:node colour:ccc3(255, 255, 0)];
             break;
         case 0xF0F0:
             [orangeDimension.spriteLayer addChild:node];
+            [self setColourIfDynamicallyColoured:node colour:ccc3(255, 102, 51)];
             break;
         case 0xFF00:
             [greenDimension.spriteLayer addChild:node];
+            [self setColourIfDynamicallyColoured:node colour:ccc3(0, 255, 0)];
             break;
         case 0x0FF0:
             [purpleDimension.spriteLayer addChild:node];
+            [self setColourIfDynamicallyColoured:node colour:ccc3(102, 0, 153)];
             break;
     }
 

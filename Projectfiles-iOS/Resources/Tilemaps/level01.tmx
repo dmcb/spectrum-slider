@@ -88,5 +88,13 @@
     <property name="object_width" value="30"/>
    </properties>
   </object>
+  <object type="Axe" x="608" y="224" width="32" height="32">
+   <properties>
+    <property name="object_axe_height" value="90"/>
+    <property name="object_cid" value="0x00F0"/>
+    <property name="object_height" value="32"/>
+    <property name="object_width" value="15"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

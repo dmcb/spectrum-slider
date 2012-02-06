@@ -34,6 +34,11 @@
     return [collisionManager initBody:fixture];
 }
 
+- (b2Joint *)initJoint:(b2JointDef *)jointDef
+{
+    return [collisionManager initJoint:jointDef];
+}
+
 - (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(uint16)collisionGroupId
 {
     return [collisionManager initStaticBodies:map collisionLayer:clLayer collisionGroupId:collisionGroupId];

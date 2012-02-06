@@ -25,4 +25,6 @@
 - (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(uint16)collisionGroupId;
 
 - (void)initMovingObjects:(CCTMXTiledMap *)map;
+
+- (b2Joint *)initJoint:(b2JointDef *)def;
 @end

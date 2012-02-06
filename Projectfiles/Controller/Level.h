@@ -38,6 +38,8 @@
 
 - (b2Body *)initBody:(b2BodyDef *)fixture;
 
+-(b2Joint *) initJoint:(b2JointDef *)jointDef;
+
 - (void)initStaticBodies:(CCTMXTiledMap *)map collisionLayer:(NSString *)clLayer collisionGroupId:(uint16)collisionGroupId;
 
 - (void)initMovingObjects:(CCTMXTiledMap *)map;

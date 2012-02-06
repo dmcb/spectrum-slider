@@ -13,6 +13,7 @@
 #import "GameContext.h"
 #import "Level.h"
 #import "GameWorldLayer.h"
+#import "Axe.h"
 
 @implementation CollisionManager {
 
@@ -136,10 +137,28 @@
 
                     [[level gameWorldLayer] addObjectToGame:crate.display collisionLayer:cid];
 
+                } else if ([typeKey isEqualToString:@"Axe"]) {
+
+                    float axeHeight = [[object valueForKey:@"object_axe_height"] floatValue];
+
+                    Axe *axe = [[Axe alloc] initWithWidth:width height:height axeHeight:axeHeight];
+
+                    [axe setPosition:ccp(x, y)];
+
+                    [axe spawn];
+
+                    [axe setCollisionGroupId:cid];
+
+                    [[level gameWorldLayer] addObjectToGame:axe.display collisionLayer:cid];
+
                 }
 
             }
         }
 }
 
+- (b2Joint *)initJoint:(b2JointDef *)def
+{
+    return world->CreateJoint(def);
+}
 @end

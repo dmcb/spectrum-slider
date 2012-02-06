@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="24" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="blocks" tilewidth="32" tileheight="32">
+  <image source="../../Projectfiles-iOS/Resources/Tilemaps/blocks.png" width="64" height="128"/>
+ </tileset>
+ <tileset firstgid="9" name="conceptbackground" tilewidth="281" tileheight="230">
+  <image source="../../Projectfiles-iOS/Resources/Tilemaps/conceptbackground.png" width="281" height="230"/>
+ </tileset>
+ <layer name="concept background" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBIBJxFipPKJlRsFo2CkA0ryFjXkR8HIBgCvrwBk
+  </data>
+ </layer>
+ <objectgroup name="Collision_ALL" width="32" height="24">
+  <object x="-32" y="0" width="32" height="640"/>
+  <object x="1024" y="0" width="32" height="640"/>
+  <object x="-32" y="-32" width="1088" height="32"/>
+  <object x="-32" y="640" width="1088" height="128"/>
+ </objectgroup>
+ <objectgroup name="Collision_RED" width="32" height="24">
+  <object x="0" y="704" width="1024" height="64"/>
+  <object x="-32" y="0" width="32" height="704"/>
+  <object x="1024" y="0" width="32" height="704"/>
+ </objectgroup>
+ <objectgroup name="Collision_BLUE" width="32" height="24">
+  <object x="1024" y="0" width="32" height="704"/>
+  <object x="-32" y="0" width="32" height="704"/>
+  <object x="0" y="704" width="1024" height="64"/>
+ </objectgroup>
+ <objectgroup name="Collision_YELLOW" width="32" height="24">
+  <object x="0" y="704" width="1024" height="64"/>
+  <object x="-32" y="0" width="32" height="704"/>
+  <object x="1024" y="0" width="32" height="704"/>
+ </objectgroup>
+ <layer name="Yellow" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAAC8GDAAAAQ==
+  </data>
+ </layer>
+ <layer name="Red" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAAC8GDAAAAQ==
+  </data>
+ </layer>
+ <layer name="Blue" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAAC8GDAAAAQ==
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="32" height="24"/>
+</map>

@@ -50,5 +50,10 @@
     return sprite;
 }
 
+- (void)setDynamicColour:(ccColor3B)colour
+{
+    sprite.color = colour;
+}
+
 
 @end

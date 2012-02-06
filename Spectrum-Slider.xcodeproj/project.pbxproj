@@ -18,6 +18,10 @@
 		33AF911A14D7AA78007338D7 /* NSString+HexValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 33AF911914D7AA78007338D7 /* NSString+HexValue.m */; };
 		33AF913114D7BF6F007338D7 /* test_circle_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 33AF912F14D7BF6F007338D7 /* test_circle_sprite.png */; };
 		33AF913214D7BF6F007338D7 /* test_crate_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 33AF913014D7BF6F007338D7 /* test_crate_sprite.png */; };
+		33AFAF7A14DDBEA70093E8C8 /* Bridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AFAF7914DDBEA70093E8C8 /* Bridge.mm */; };
+		33AFAF9114DDBEBA0093E8C8 /* Axe.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AFAF9014DDBEBA0093E8C8 /* Axe.mm */; };
+		33AFAF9414DDBEE40093E8C8 /* Elevator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AFAF9314DDBEE40093E8C8 /* Elevator.mm */; };
+		33AFAF9714DDC03A0093E8C8 /* Button.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AFAF9614DDC03A0093E8C8 /* Button.mm */; };
 		7404D55814DA39560053E546 /* band.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7404D55714DA39560053E546 /* band.plist */; };
 		7404D56014DA547E0053E546 /* slide.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7404D55F14DA547E0053E546 /* slide.plist */; };
 		74B38E4414D48AAD0063B3C9 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B38E4214D48AAD0063B3C9 /* player.png */; };
@@ -240,6 +244,14 @@
 		33AF911914D7AA78007338D7 /* NSString+HexValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HexValue.m"; sourceTree = "<group>"; };
 		33AF912F14D7BF6F007338D7 /* test_circle_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_circle_sprite.png; sourceTree = "<group>"; };
 		33AF913014D7BF6F007338D7 /* test_crate_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_crate_sprite.png; sourceTree = "<group>"; };
+		33AFAF7814DDBEA70093E8C8 /* Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		33AFAF7914DDBEA70093E8C8 /* Bridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bridge.mm; sourceTree = "<group>"; };
+		33AFAF8F14DDBEBA0093E8C8 /* Axe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Axe.h; sourceTree = "<group>"; };
+		33AFAF9014DDBEBA0093E8C8 /* Axe.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Axe.mm; sourceTree = "<group>"; };
+		33AFAF9214DDBEE40093E8C8 /* Elevator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Elevator.h; sourceTree = "<group>"; };
+		33AFAF9314DDBEE40093E8C8 /* Elevator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Elevator.mm; sourceTree = "<group>"; };
+		33AFAF9514DDC03A0093E8C8 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
+		33AFAF9614DDC03A0093E8C8 /* Button.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Button.mm; sourceTree = "<group>"; };
 		7404D55714DA39560053E546 /* band.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = band.plist; sourceTree = "<group>"; };
 		7404D55F14DA547E0053E546 /* slide.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = slide.plist; sourceTree = "<group>"; };
 		74B38E4214D48AAD0063B3C9 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
@@ -329,6 +341,7 @@
 		DCFA90F013B4F811009DD390 /* JumpAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JumpAction.h; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD391 /* hud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hud.png; sourceTree = "<group>"; };
 		DCFA90F013B4F811009DD393 /* conceptbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conceptbackground.png; sourceTree = "<group>"; };
+		DCFA90F013B4F811009DD395 /* DynamicallyColourable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicallyColourable.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,6 +442,14 @@
 				338E1BBD14DA1F3400676061 /* CombinationColourDimension.mm */,
 				338E1C0314DA47E500676061 /* MoveInAirAction.h */,
 				338E1C0414DA47E500676061 /* MoveInAirAction.mm */,
+				33AFAF7814DDBEA70093E8C8 /* Bridge.h */,
+				33AFAF7914DDBEA70093E8C8 /* Bridge.mm */,
+				33AFAF8F14DDBEBA0093E8C8 /* Axe.h */,
+				33AFAF9014DDBEBA0093E8C8 /* Axe.mm */,
+				33AFAF9214DDBEE40093E8C8 /* Elevator.h */,
+				33AFAF9314DDBEE40093E8C8 /* Elevator.mm */,
+				33AFAF9514DDC03A0093E8C8 /* Button.h */,
+				33AFAF9614DDC03A0093E8C8 /* Button.mm */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -447,6 +468,7 @@
 		84B414E514D3E980001AE794 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				DCFA90F013B4F811009DD395 /* DynamicallyColourable.h */,
 				DCFA90F013B4F811009DD38A /* Displayable.h */,
 				84B414E614D3E980001AE794 /* PlayerAction.h */,
 				84B414E714D3E980001AE794 /* Updateable.h */,
@@ -928,6 +950,10 @@
 				33AF911A14D7AA78007338D7 /* NSString+HexValue.m in Sources */,
 				338E1BBE14DA1F3400676061 /* CombinationColourDimension.mm in Sources */,
 				338E1C0514DA47E500676061 /* MoveInAirAction.mm in Sources */,
+				33AFAF7A14DDBEA70093E8C8 /* Bridge.mm in Sources */,
+				33AFAF9114DDBEBA0093E8C8 /* Axe.mm in Sources */,
+				33AFAF9414DDBEE40093E8C8 /* Elevator.mm in Sources */,
+				33AFAF9714DDC03A0093E8C8 /* Button.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

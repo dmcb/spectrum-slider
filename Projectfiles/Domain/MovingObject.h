@@ -9,10 +9,11 @@
 #import "CCNode.h"
 #import "Updateable.h"
 #import "Displayable.h"
+#import "DynamicallyColourable.h"
 
 const float PTM_RATIO = 32.0f;
 
-@interface MovingObject : CCNode <Updateable, Displayable> {
+@interface MovingObject : CCNode <Updateable, Displayable, DynamicallyColourable> {
 
     CCSprite *sprite;
 
