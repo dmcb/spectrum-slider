@@ -34,10 +34,6 @@
 
         contactListener = new ContactListener();
         world->SetContactListener(contactListener);
-
-        // for the screenBorder body we'll need these values
-        CGSize screenSize = [CCDirector sharedDirector].winSize;
-
     }
     return self;
 }
