@@ -59,7 +59,7 @@
 		DC65616713A969B600A7AC53 /* libwax-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC65615B13A969B600A7AC53 /* libwax-ios.a */; };
 		DC979E3E13B35F8800656CB9 /* libcocos2d-extensions-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC979E3D13B35F8800656CB9 /* libcocos2d-extensions-mac.a */; };
 		DC979E5A13B3607E00656CB9 /* libchipmunk-spacemanager-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC979E5913B3607E00656CB9 /* libchipmunk-spacemanager-mac.a */; };
-		DCC1A0FA13A94ED5005BD75D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DCC1A0F913A94ED5005BD75D /* Default.png */; };
+		DCC1A0FA13A94ED5005BD75D /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = DCC1A0F913A94ED5005BD75D /* Default-Landscape.png */; };
 		DCC1A0FC13A94ED5005BD75D /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = DCC1A0FB13A94ED5005BD75D /* fps_images.png */; };
 		DCC1A0FE13A94ED5005BD75D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = DCC1A0FD13A94ED5005BD75D /* Icon-72.png */; };
 		DCC1A10013A94ED5005BD75D /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = DCC1A0FF13A94ED5005BD75D /* Icon-Small-50.png */; };
@@ -306,7 +306,7 @@
 		DC9C33E813B5024400931BF2 /* BuildSettings-Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Mac.xcconfig"; sourceTree = "<group>"; };
 		DC9C33E913B5024400931BF2 /* BuildSettings-Release-Mac.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "BuildSettings-Release-Mac.xcconfig"; sourceTree = "<group>"; };
 		DCC1A0E313A94ED5005BD75D /* Spectrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrum.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCC1A0F913A94ED5005BD75D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Resources/Default.png; sourceTree = "<group>"; };
+		DCC1A0F913A94ED5005BD75D /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "Resources/Default-Landscape.png"; sourceTree = "<group>"; };
 		DCC1A0FB13A94ED5005BD75D /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fps_images.png; path = Resources/fps_images.png; sourceTree = "<group>"; };
 		DCC1A0FD13A94ED5005BD75D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Resources/Icon-72.png"; sourceTree = "<group>"; };
 		DCC1A0FF13A94ED5005BD75D /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Resources/Icon-Small-50.png"; sourceTree = "<group>"; };
@@ -541,7 +541,7 @@
 				74B38E4114D48AAD0063B3C9 /* Sprites */,
 				84B4151714D3F588001AE794 /* Fonts */,
 				84B4150F14D3F075001AE794 /* Tilemaps */,
-				DCC1A0F913A94ED5005BD75D /* Default.png */,
+				DCC1A0F913A94ED5005BD75D /* Default-Landscape.png */,
 				DCC1A0FB13A94ED5005BD75D /* fps_images.png */,
 				DCC1A0FD13A94ED5005BD75D /* Icon-72.png */,
 				DCC1A0FF13A94ED5005BD75D /* Icon-Small-50.png */,
@@ -880,7 +880,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCC1A0FA13A94ED5005BD75D /* Default.png in Resources */,
+				DCC1A0FA13A94ED5005BD75D /* Default-Landscape.png in Resources */,
 				DCC1A0FC13A94ED5005BD75D /* fps_images.png in Resources */,
 				DCC1A0FE13A94ED5005BD75D /* Icon-72.png in Resources */,
 				DCC1A10013A94ED5005BD75D /* Icon-Small-50.png in Resources */,
