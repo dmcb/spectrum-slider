@@ -241,57 +241,6 @@
         [[[GameContext sharedContext] currentLevel] setDimension:dimensionSlidingTo];
         dimensionSlidingTo = NULL;  
     }
-
-    /*
-    // D-Pad
-    if ([input isAnyTouchOnNode:dpad touchPhase:KKTouchPhaseAny]) {
-
-        CGPoint vector = [dpad convertToNodeSpaceAR:[input locationOfAnyTouchInPhase:KKTouchPhaseAny]];
-
-        // we're grabbing a the jump touch location. I'm not sure how to get the correct one.
-        // Most likely we'll have to use CGRects or something
-        if (vector.x < [[CCDirector sharedDirector] screenCenter].x) {
-
-            if (vector.x < 0) {
-                [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad_pushed_left.png"]];
-                // Player can't jump or move in mid air
-                if ([player isOnGround]) {
-                    [player moveInDirection:ccp(-1, 0)];
-                }
-                else {
-                    [player moveInDirectionWhileInAir:ccp(-1, 0)];
-                }
-                
-            }
-            else {
-                [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad_pushed_right.png"]];
-                if ([player isOnGround]) {
-                    [player moveInDirection:ccp(1, 0)];
-                }
-                else {
-                
-                    [player moveInDirectionWhileInAir:ccp(1, 0)];
-                }
-            }
-        }
-    } else {
-        [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad.png"]];
-        if ([player isOnGround]) {
-            [player frictionizeMotion];
-        }
-    }
-
-    // Jump button
-    if ([input isAnyTouchOnNode:jump touchPhase:KKTouchPhaseAny]) {
-        [jump setDisplayFrame:[frameCache spriteFrameByName:@"button_jump_pushed.png"]];
-        if ([player isOnGround] && [input isAnyTouchOnNode:jump touchPhase:KKTouchPhaseBegan]) {
-            [player jump];
-        }
-    }
-    else {
-        [jump setDisplayFrame:[frameCache spriteFrameByName:@"button_jump.png"]];
-    }
-    */
     
     // Pause button
     if ([input isAnyTouchOnNode:menu touchPhase:KKTouchPhaseAny]) {
