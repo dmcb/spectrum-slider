@@ -32,6 +32,9 @@
     
     int direction;
     
+    NSUInteger touchDpad;
+    NSUInteger touchJump;
+    
     PrimaryColourDimension *dimensionSlidingTo;
     NSDate *dimensionTransition;
     double dimensionTransitionDelay;

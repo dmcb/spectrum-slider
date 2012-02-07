@@ -25,7 +25,7 @@
 
 - (void)setCollisionGroupId:(uint16)newCollisionGroup {
 
-    if (cid == nil) {
+    if (cid == 0) {
         cid = newCollisionGroup;
     }
 
