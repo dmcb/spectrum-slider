@@ -103,7 +103,7 @@
     bool dpadSatisfied = false;
     bool jumpSatisfied = false;
     
-    NSLog(@"Dpad touch: %u. Jump touch: %u.", touchDpad, touchJump);
+    //NSLog(@"Dpad touch: %u. Jump touch: %u.", touchDpad, touchJump);
     
     // Keep track of all touches, and remember what touches are on what buttons
     CCARRAY_FOREACH(touches, touch)

@@ -1,6 +1,7 @@
 #import "PlayerActionContext.h"
 #import "PlayerAction.h"
 #import "MoveAction.h"
+#import "objc/runtime.h"
 
 @implementation PlayerActionContext {
 
@@ -67,22 +68,30 @@
 }
 
 - (void)doAction:(float)delta {
+    NSLog(@"Do action %s", class_getName([action class]));
     if (action != nil) {
         if ([action isDone]) {
+            action = nil;
             if (queuedActions != nil && [queuedActions count] > 0) {
                 action = [queuedActions objectAtIndex:0];
                 [queuedActions removeObjectAtIndex:0];
-
+                [action doAction:self delta:delta];
+                
                 if ([queuedActions count] == 0) {
                     queuedActions = nil;
                 }
             }
         } else {
-            if (action != nil) {
-                [action doAction:self delta:delta];
-            }
+            [action doAction:self delta:delta];
         }
-
+    } else if (queuedActions != nil && [queuedActions count] > 0) {
+        action = [queuedActions objectAtIndex:0];
+        [queuedActions removeObjectAtIndex:0];
+        [action doAction:self delta:delta];
+        
+        if ([queuedActions count] == 0) {
+            queuedActions = nil;
+        }
     }
 }
 

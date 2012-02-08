@@ -52,12 +52,19 @@
 
 - (void)moveInDirection:(CGPoint)directionVector
 {
-    [actionContext setAction:[[MoveAction alloc] initWithDirection:directionVector]];
+
+    if (![actionContext isNextActionType:[MoveAction class]])
+    {
+        [actionContext queueAction:[[MoveAction alloc] initWithDirection:directionVector]];
+    }
 }
 
 - (void)moveInDirectionWhileInAir:(CGPoint)directionVector
 {
-    [actionContext setAction:[[MoveInAirAction alloc] initWithDirection:directionVector]];
+    if (![actionContext isNextActionType:[MoveInAirAction class]])
+    {
+        [actionContext queueAction:[[MoveInAirAction alloc] initWithDirection:directionVector]];
+    }
 }
 
 - (bool)isMoving
@@ -79,7 +86,7 @@
 
 - (void)jump
 {
-    [actionContext setAction:[[JumpAction alloc] init]];
+    [actionContext queueAction:[[JumpAction alloc] init]];
 }
 
 - (void)setIsOnGround:(NSNumber *)value
