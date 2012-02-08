@@ -68,7 +68,9 @@
 }
 
 - (void)doAction:(float)delta {
-    NSLog(@"Do action %s", class_getName([action class]));
+    
+    //NSLog(@"Do action %s", class_getName([action class]));
+    
     if (action != nil) {
         if ([action isDone]) {
             action = nil;

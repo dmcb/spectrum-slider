@@ -103,14 +103,17 @@
     bool dpadSatisfied = false;
     bool jumpSatisfied = false;
     
-    //NSLog(@"Dpad touch: %u. Jump touch: %u.", touchDpad, touchJump);
+    NSLog(@"Dpad touch: %u. Jump touch: %u.", touchDpad, touchJump);
     
     // Keep track of all touches, and remember what touches are on what buttons
     CCARRAY_FOREACH(touches, touch)
     {
         if ((touchDpad == 0 || touchDpad == touch.touchID) &&
-                sqrt((touch.location.x - dpad.position.x)*(touch.location.x - dpad.position.x) + (touch.location.y - dpad.position.y)*(touch.location.y - dpad.position.y)) < 
-                    dpad.contentSize.width * 0.7)
+            touch.phase != KKTouchPhaseCancelled &&
+            touch.phase != KKTouchPhaseEnded &&
+            touch.phase != KKTouchPhaseLifted &&
+            sqrt((touch.location.x - dpad.position.x)*(touch.location.x - dpad.position.x) + (touch.location.y - dpad.position.y)*(touch.location.y - dpad.position.y)) < 
+                dpad.contentSize.width * 0.7)
         {
             // Dpad button has just started - or continues to be - touched
             dpadSatisfied = true;
@@ -142,13 +145,13 @@
                     [player moveInDirectionWhileInAir:ccp(1, 0)];
                 }
             }
-            
-            // Remove touch so it can't be considered for swiping
-            //[[KKInput sharedInput] removeTouch:touch];
         }
         if ((touchJump == 0 || touchJump == touch.touchID) &&
-                 sqrt((touch.location.x - jump.position.x)*(touch.location.x - jump.position.x) + (touch.location.y - jump.position.y)*(touch.location.y - jump.position.y)) < 
-                    jump.contentSize.width * 0.7)
+            touch.phase != KKTouchPhaseCancelled &&
+            touch.phase != KKTouchPhaseEnded &&
+            touch.phase != KKTouchPhaseLifted &&
+            sqrt((touch.location.x - jump.position.x)*(touch.location.x - jump.position.x) + (touch.location.y - jump.position.y)*(touch.location.y - jump.position.y)) < 
+                jump.contentSize.width * 0.7)
         {
             // Jump button has just started - or continues to be - touched
             jumpSatisfied = true;
@@ -161,9 +164,6 @@
                     [player jump];
                 }
             }
-                
-            // Remove touch so it can't be considered for swiping
-            //[[KKInput sharedInput] removeTouch:touch];
         }
     }
     
