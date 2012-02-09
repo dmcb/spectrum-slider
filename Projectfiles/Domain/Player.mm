@@ -158,6 +158,6 @@
 
 - (BOOL)canJump
 {
-    return isOnGround && !collisionVolume.isHeadCollidingWithAnything && ![actionContext actionQueueContainsType:[JumpAction class]];
+    return isOnGround && !collisionVolume.isHeadCollidingWithAnything && !([actionContext actionQueueContainsType:[JumpAction class]] || [actionContext isCurrentActionType:[JumpAction class]]);
 }
 @end

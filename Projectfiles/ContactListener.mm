@@ -12,10 +12,9 @@
 #import "Domain/PlayerCollisionVolume.h"
 #import "HeadSensor.h"
 
-void setPlayerJustLanded (b2Contact *contact, b2Body *bodyToCheck, CCNode *nodeToCheck) {
+void setPlayerJustLanded (b2Contact *contact, NSObject *nodeToCheck) {
     if ([nodeToCheck respondsToSelector:@selector(setIsOnGround:)]) {
         if ([[nodeToCheck performSelector:@selector(isOnGroundObjectReturnValue)] boolValue] == false) {
-            b2Vec2 playerPosition = bodyToCheck->GetPosition();
 
             b2WorldManifold manifold;
             contact->GetWorldManifold(&manifold);
@@ -41,17 +40,15 @@ void setPlayerJustLanded (b2Contact *contact, b2Body *bodyToCheck, CCNode *nodeT
 }
 
 void ContactListener::BeginContact (b2Contact *contact) {
-    b2Body *bodyA = contact->GetFixtureA()->GetBody();
-    b2Body *bodyB = contact->GetFixtureB()->GetBody();
-    CCNode *nodeA = (__bridge CCNode *) bodyA->GetUserData();
-    CCNode *nodeB = (__bridge CCNode *) bodyB->GetUserData();
+    NSObject *nodeA = (__bridge NSObject *) contact->GetFixtureA()->GetUserData();
+    NSObject *nodeB = (__bridge NSObject *) contact->GetFixtureB()->GetUserData();
 
     if (nodeA != NULL) {
-        setPlayerJustLanded(contact, bodyA, nodeA);
+        setPlayerJustLanded(contact, nodeA);
     }
 
     if (nodeB != NULL) {
-        setPlayerJustLanded(contact, bodyB, nodeB);
+        setPlayerJustLanded(contact, nodeB);
     }
 
     if ([nodeA conformsToProtocol:@protocol(Triggerable)]) {
@@ -62,14 +59,14 @@ void ContactListener::BeginContact (b2Contact *contact) {
         [((id <Triggerable>) nodeB) performTrigger];
     }
 
-    NSObject *fixtureAColliding = (__bridge NSObject *) contact->GetFixtureA()->GetUserData();
-    if ([fixtureAColliding respondsToSelector:@selector(setIsCollidingWithSomething:)]) {
-        [((id) fixtureAColliding) setIsCollidingWithSomething:true];
+
+    if ([nodeA respondsToSelector:@selector(setIsCollidingWithSomething:)]) {
+        [((id) nodeA) setIsCollidingWithSomething:true];
     }
 
-    NSObject *fixtureBColliding = (__bridge NSObject *) contact->GetFixtureB()->GetUserData();
-    if ([fixtureBColliding respondsToSelector:@selector(setIsCollidingWithSomething:)]) {
-        [((id) fixtureBColliding) setIsCollidingWithSomething:true];
+
+    if ([nodeB respondsToSelector:@selector(setIsCollidingWithSomething:)]) {
+        [((id) nodeB) setIsCollidingWithSomething:true];
     }
 }
 
