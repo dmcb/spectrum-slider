@@ -25,12 +25,12 @@
         circleShape.m_p.Set(0, aHeight / PTM_RATIO * 0.5);
         circleShape.m_radius = aWidth / PTM_RATIO * 0.5;
 
-        b2FixtureDef footSensorDef;
-        footSensorDef.isSensor = true;
-        footSensorDef.shape = &circleShape;
-        footSensorDef.userData = (__bridge void *) self;
+        b2FixtureDef headSensorDef;
+        headSensorDef.isSensor = true;
+        headSensorDef.shape = &circleShape;
+        headSensorDef.userData = (__bridge void *) self;
 
-        headFixture = body->CreateFixture(&footSensorDef);
+        headFixture = body->CreateFixture(&headSensorDef);
     }
 
     return self;
