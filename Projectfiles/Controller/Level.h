@@ -44,6 +44,8 @@
 
 - (void)initMovingObjects:(CCTMXTiledMap *)map;
 
+- (void) deleteBody:(b2Body *) bodyToDelete;
+
 - (void)changeCollisionGroupForLevel:(uint16)newCollisionGroup;
 
 - (void)spawn:(id <Updateable, Displayable>)objectToSpawn;

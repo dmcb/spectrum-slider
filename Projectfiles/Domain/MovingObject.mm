@@ -17,6 +17,16 @@
 @synthesize fixture;
 @synthesize body;
 
+- (id)initWithTriggerName:(NSString *)aTriggerName
+{
+    self = [super init];
+    if (self) {
+        triggerName = aTriggerName;
+    }
+
+    return self;
+}
+
 - (void)update:(ccTime)delta {
     b2Vec2 position = body->GetPosition();
     sprite.position = ccp(position.x * PTM_RATIO, position.y * PTM_RATIO);
@@ -42,8 +52,16 @@
     fixture->SetFilterData(myFilterData);
 }
 
+-(void) trigger {
+
+}
+
 - (void)spawn {
     [[[GameContext sharedContext] currentLevel] addObjectToPlay:self];
+
+    if (triggerName != nil) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(trigger) name:triggerName object:nil];
+    }
 }
 
 - (CCSprite *)display {

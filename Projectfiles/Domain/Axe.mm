@@ -36,8 +36,6 @@
     body->ApplyAngularImpulse(currentVelocity);
 
     [super update:delta];
-
-    sprite.rotation +=90;
 }
 
 
@@ -47,8 +45,8 @@
     sprite = [CCSprite spriteWithFile:@"test_crate_sprite.png"];
 
 
-    [sprite setScaleX:width / sprite.contentSize.width];
-    [sprite setScaleY:axeHeight / sprite.contentSize.height];
+    [sprite setScaleX:axeHeight / sprite.contentSize.width];
+    [sprite setScaleY:height / sprite.contentSize.height];
 
     b2BodyDef pivotBodyDef;
     pivotBodyDef.type = b2_staticBody;
@@ -59,11 +57,12 @@
     pivotBody = [currentLevel initBody:&pivotBodyDef];
 
     b2CircleShape pivotShape;
-    pivotShape.m_p.Set(0.2f / PTM_RATIO, 0.2f / PTM_RATIO);
-    pivotShape.m_radius = 1.0f;
+    pivotShape.m_p.Set(0.01f / PTM_RATIO, 0.01f / PTM_RATIO);
+    pivotShape.m_radius = 0.2f;
 
     b2FixtureDef shapeDef;
     shapeDef.shape = &pivotShape;
+    shapeDef.isSensor = true;
 
     pivotBody->CreateFixture(&shapeDef);
 

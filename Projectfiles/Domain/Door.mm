@@ -1,24 +1,23 @@
 //
-//  Button.m
+//  Door.m
 //  Spectrum-Slider
 //
-//  Created by Kyle Reczek on 12-02-04.
+//  Created by Kyle Reczek on 12-02-06.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Button.h"
+#import "Door.h"
 #import "GameContext.h"
 #import "Level.h"
 
-@implementation Button
+@implementation Door
 
-- (id)initWithTrigger:(NSString *)aTrigger width:(float32)aWidth height:(float32)aHeight
+- (id)initWithHeight:(float32)aHeight width:(float32)aWidth triggerName:(NSString *)aTriggerName
 {
-    self = [super init];
+    self = [super initWithTriggerName:aTriggerName];
     if (self) {
-        trigger = aTrigger;
-        width = aWidth;
         height = aHeight;
+        width = aWidth;
     }
 
     return self;
@@ -26,17 +25,17 @@
 
 - (void)spawn
 {
-    sprite = [CCSprite spriteWithFile:@"test_crappy_button_sprite.png"];
+    sprite = [CCSprite spriteWithFile:@"test_crappy_door_sprite.png"];
 
     [sprite setScaleX:width / sprite.contentSize.width];
     [sprite setScaleY:height / sprite.contentSize.height];
 
     b2BodyDef bodyDef;
     bodyDef.type = b2_staticBody;
-    bodyDef.position.Set((self.position.x + width * 0.5) / PTM_RATIO, (self.position.y + height * 0.5) / PTM_RATIO);
+    bodyDef.position.Set((self.position.x + width *0.5) / PTM_RATIO, (self.position.y + height *0.5) / PTM_RATIO);
     bodyDef.bullet = true;
 
-    bodyDef.userData = (__bridge void *) self;
+    bodyDef.userData = (__bridge void *) sprite;
 
     body = [[[GameContext sharedContext] currentLevel] initBody:&bodyDef];
 
@@ -48,18 +47,26 @@
     shapeDef.shape = &collisionShape;
     shapeDef.density = 2.0f;
     shapeDef.restitution = 0.0f;
-    shapeDef.userData = (__bridge void *) self;
-    shapeDef.isSensor = true;
+    shapeDef.userData = (__bridge void *) sprite;
 
     fixture = body->CreateFixture(&shapeDef);
 
     [super spawn];
 }
 
-- (void) performTrigger
+- (void) trigger
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:trigger object:nil];
+    // todo
+    CCFadeOut *fadeOut = [CCFadeOut actionWithDuration:2.0f];
+
+    [sprite runAction:fadeOut];
+
+    b2Filter filter = fixture->GetFilterData();
+
+    filter.categoryBits = 0;
+    filter.maskBits = 0;
 }
+
 
 
 @end

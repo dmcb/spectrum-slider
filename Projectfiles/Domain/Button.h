@@ -7,7 +7,20 @@
 //
 
 #import "MovingObject.h"
+#import "Triggerable.h"
 
-@interface Button : MovingObject
+@interface Button : MovingObject <Triggerable>
+{
+    NSString *trigger;
+
+    float32 width;
+    float32 height;
+
+}
+
+- (id)initWithTrigger:(NSString *)aTrigger width:(float32)aWidth height:(float32)aHeight;
+
+- (void)spawn;
+
 
 @end

@@ -49,6 +49,11 @@
     [collisionManager initMovingObjects:map];
 }
 
+- (void)deleteBody:(b2Body *)bodyToDelete
+{
+    [collisionManager deleteBody:bodyToDelete];
+}
+
 - (void)changeCollisionGroupForLevel:(uint16)newCollisionGroup
 {
     [objectManager changeCollisionGroupIds:newCollisionGroup];

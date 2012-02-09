@@ -8,6 +8,7 @@
 #import "ContactListener.h"
 #import "cocos2d.h"
 #import "Player.h"
+#import "Triggerable.h"
 
 void setPlayerJustLanded (b2Contact *contact, b2Body *bodyToCheck, CCNode *nodeToCheck) {
     if ([nodeToCheck respondsToSelector:@selector(setIsOnGround:)]) {
@@ -48,6 +49,14 @@ void ContactListener::BeginContact(b2Contact *contact) {
 
     if (nodeB != NULL) {
         setPlayerJustLanded(contact, bodyB, nodeB);
+    }
+
+    if ([nodeA conformsToProtocol:@protocol(Triggerable)]) {
+        [((id<Triggerable>) nodeA) performTrigger];
+    }
+
+    if ([nodeB conformsToProtocol:@protocol(Triggerable)]) {
+        [((id<Triggerable>) nodeB) performTrigger];
     }
 }
 

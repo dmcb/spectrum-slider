@@ -21,12 +21,18 @@ const float PTM_RATIO = 32.0f;
     b2Fixture *fixture;
 
     uint16 cid;
+
+    NSString *triggerName;
 }
 
 @property(nonatomic) b2Fixture *fixture;
 @property(nonatomic) b2Body *body;
 
+- (id)initWithTriggerName:(NSString *)aTriggerName;
+
 - (void)setCollisionGroupId:(uint16)newCollisionGroup;
+
+- (void)trigger;
 
 - (void)spawn;
 

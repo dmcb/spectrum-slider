@@ -14,6 +14,8 @@
 #import "Level.h"
 #import "GameWorldLayer.h"
 #import "Axe.h"
+#import "Door.h"
+#import "Button.h"
 
 @implementation CollisionManager {
 
@@ -111,6 +113,9 @@
                 uint16 cid = (uint16) [[object valueForKey:@"object_cid"] hexValue];
 
                 id typeKey = [object valueForKey:@"type"];
+
+                NSLog(@"Creating Object %s { width:%f height:%f x:%f y:%f cid:%i }", typeKey, width, height, x, y, cid);
+
                 if ([typeKey isEqualToString:@"Ball"]) {
                     
                     float radius = [[object valueForKey:@"object_radius"] floatValue];
@@ -151,6 +156,34 @@
 
                     [[level gameWorldLayer] addObjectToGame:axe.display collisionLayer:cid];
 
+                } else if ([typeKey isEqualToString:@"Door"]) {
+
+                    NSString *trigger = [object valueForKey:@"object_trigger"];
+
+                    Door *door = [[Door alloc] initWithHeight:height width:width triggerName:trigger];
+
+                    [door setPosition:ccp(x, y)];
+
+                    [door spawn];
+
+                    [door setCollisionGroupId:cid];
+
+                    [[level gameWorldLayer] addObjectToGame:door.display collisionLayer:cid];
+
+                } else if ([typeKey isEqualToString:@"Button"]) {
+
+                    NSString *trigger = [object valueForKey:@"object_trigger"];
+
+                    Button *button = [[Button alloc] initWithTrigger:trigger width:width height:height];
+
+                    [button setPosition:ccp(x, y)];
+
+                    [button spawn];
+
+                    [button setCollisionGroupId:cid];
+
+                    [[level gameWorldLayer] addObjectToGame:button.display collisionLayer:cid];
+
                 }
 
             }
@@ -161,4 +194,10 @@
 {
     return world->CreateJoint(def);
 }
+
+- (void)deleteBody:(b2Body *)bodyToDelete
+{
+    world->DestroyBody(bodyToDelete);
+}
+
 @end

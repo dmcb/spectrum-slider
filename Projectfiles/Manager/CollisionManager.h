@@ -11,12 +11,13 @@
 #import "Updateable.h"
 
 
-@interface CollisionManager : NSObject <Updateable> {
+@interface CollisionManager : NSObject <Updateable>
+{
     b2World *world;
     ContactListener *contactListener;
 }
 
-@property(nonatomic) b2World *world;
+@property (nonatomic) b2World *world;
 
 - (b2Body *)initBody:(b2BodyDef *)def;
 
@@ -27,4 +28,7 @@
 - (void)initMovingObjects:(CCTMXTiledMap *)map;
 
 - (b2Joint *)initJoint:(b2JointDef *)def;
+
+- (void)deleteBody:(b2Body *)bodyToDelete;
+
 @end
