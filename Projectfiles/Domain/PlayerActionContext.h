@@ -26,6 +26,8 @@
 
 - (id <PlayerAction>)getCurrentAction;
 
+- (bool)actionQueueContainsType:(Class)playerActionToCheckQueueFor;
+
 - (bool)isNextActionType:(Class)nextActionsClass;
 
 - (bool)isCurrentActionType:(Class)nextActionsClass;

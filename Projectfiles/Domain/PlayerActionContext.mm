@@ -29,7 +29,6 @@
     [queuedActions insertObject:actionToQueue atIndex:index];
 }
 
-
 - (void)removeActionsFromQueueWithType:(Class)typeToRemove {
     NSMutableArray *objectsToRemove = [NSMutableArray new];
 
@@ -48,6 +47,17 @@
 - (id <PlayerAction>)getCurrentAction {
     return action;
 }
+
+- (bool)actionQueueContainsType:(Class)playerActionTypeToCheckQueueFor
+{
+    for ( id queuedAction in queuedActions ) {
+        if ([queuedAction isKindOfClass:playerActionTypeToCheckQueueFor]) {
+            return true;       
+        }
+    }
+    return false;
+}
+
 
 - (bool)isNextActionType:(Class)nextActionsClass {
     if (queuedActions.count <= 0) {
