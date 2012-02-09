@@ -13,6 +13,6 @@
 
 }
 
-- (id)goToGameplay:(id)sender;
+- (void)goToGameplay:(id)sender;
 
 @end
