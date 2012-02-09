@@ -98,7 +98,6 @@
     Player *player = [[[GameContext sharedContext] currentLevel] player];
     
     CCArray* touches = [KKInput sharedInput].touches;
-    KKTouch* touch;
     
     bool dpadSatisfied = false;
     bool jumpSatisfied = false;
@@ -106,8 +105,7 @@
     NSLog(@"Dpad touch: %u. Jump touch: %u.", touchDpad, touchJump);
     
     // Keep track of all touches, and remember what touches are on what buttons
-    CCARRAY_FOREACH(touches, touch)
-    {
+    for ( KKTouch *touch in touches ) {
         if ((touchDpad == 0 || touchDpad == touch.touchID) &&
             touch.phase != KKTouchPhaseCancelled &&
             touch.phase != KKTouchPhaseEnded &&
