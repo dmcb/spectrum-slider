@@ -9,6 +9,8 @@
 #import "cocos2d.h"
 #import "Player.h"
 #import "Triggerable.h"
+#import "Domain/PlayerCollisionVolume.h"
+#import "HeadSensor.h"
 
 void setPlayerJustLanded (b2Contact *contact, b2Body *bodyToCheck, CCNode *nodeToCheck) {
     if ([nodeToCheck respondsToSelector:@selector(setIsOnGround:)]) {
@@ -21,7 +23,8 @@ void setPlayerJustLanded (b2Contact *contact, b2Body *bodyToCheck, CCNode *nodeT
             //NSLog(@"----------------------------------------");
             //NSLog(@" player y=%f", playerPosition.y);
 
-            bool below = manifold.normal.y > 0;
+            float32 value = manifold.normal.y;
+            bool below = value > 0.0f || (value < 0.0f && value > -1.0f);
 
             //NSLog(@"----------------------------------------");
             NSNumber *passedValue = [NSNumber numberWithBool:below];
@@ -30,14 +33,14 @@ void setPlayerJustLanded (b2Contact *contact, b2Body *bodyToCheck, CCNode *nodeT
                 if ([nodeToCheck respondsToSelector:@selector(giveASlightBoost)]) {
                     [nodeToCheck performSelector:@selector(giveASlightBoost)];
                 }
+                [nodeToCheck performSelector:@selector(setIsOnGround:) withObject:passedValue];
             }
 
-            [nodeToCheck performSelector:@selector(setIsOnGround:) withObject:passedValue];
         }
     }
 }
 
-void ContactListener::BeginContact(b2Contact *contact) {
+void ContactListener::BeginContact (b2Contact *contact) {
     b2Body *bodyA = contact->GetFixtureA()->GetBody();
     b2Body *bodyB = contact->GetFixtureB()->GetBody();
     CCNode *nodeA = (__bridge CCNode *) bodyA->GetUserData();
@@ -52,11 +55,21 @@ void ContactListener::BeginContact(b2Contact *contact) {
     }
 
     if ([nodeA conformsToProtocol:@protocol(Triggerable)]) {
-        [((id<Triggerable>) nodeA) performTrigger];
+        [((id <Triggerable>) nodeA) performTrigger];
     }
 
     if ([nodeB conformsToProtocol:@protocol(Triggerable)]) {
-        [((id<Triggerable>) nodeB) performTrigger];
+        [((id <Triggerable>) nodeB) performTrigger];
+    }
+
+    NSObject *fixtureAColliding = (__bridge NSObject *) contact->GetFixtureA()->GetUserData();
+    if ([fixtureAColliding respondsToSelector:@selector(setIsCollidingWithSomething:)]) {
+        [((id) fixtureAColliding) setIsCollidingWithSomething:true];
+    }
+
+    NSObject *fixtureBColliding = (__bridge NSObject *) contact->GetFixtureB()->GetUserData();
+    if ([fixtureBColliding respondsToSelector:@selector(setIsCollidingWithSomething:)]) {
+        [((id) fixtureBColliding) setIsCollidingWithSomething:true];
     }
 }
 
@@ -66,7 +79,13 @@ void ContactListener::EndContact (b2Contact *contact) {
     CCNode *spriteA = (__bridge CCNode *) bodyA->GetUserData();
     CCNode *spriteB = (__bridge CCNode *) bodyB->GetUserData();
 
-    if (spriteA != NULL && spriteB != NULL) {
+    NSObject *fixtureAColliding = (__bridge NSObject *) contact->GetFixtureA()->GetUserData();
+    if ([fixtureAColliding respondsToSelector:@selector(setIsCollidingWithSomething:)]) {
+        [((id) fixtureAColliding) setIsCollidingWithSomething:false];
+    }
 
+    NSObject *fixtureBColliding = (__bridge NSObject *) contact->GetFixtureB()->GetUserData();
+    if ([fixtureBColliding respondsToSelector:@selector(setIsCollidingWithSomething:)]) {
+        [((id) fixtureBColliding) setIsCollidingWithSomething:false];
     }
 }

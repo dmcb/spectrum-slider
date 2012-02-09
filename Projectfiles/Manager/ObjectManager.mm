@@ -7,7 +7,7 @@
 
 #import "ObjectManager.h"
 #import "Player.h"
-#import "CollisionVolume.h"
+#import "../Domain/PlayerCollisionVolume.h"
 #import "MovingObject.h"
 
 @implementation ObjectManager {

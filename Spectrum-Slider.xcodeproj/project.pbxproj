@@ -10,6 +10,7 @@
 		330810D314D4783700DBBBDC /* HUDLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 330810D214D4783700DBBBDC /* HUDLayer.mm */; };
 		3323B13714D46ADF009A20C2 /* MoveAction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3323B13614D46ADF009A20C2 /* MoveAction.mm */; };
 		33397EF514D4B73B003FAF35 /* PrimaryColourDimension.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33397EF414D4B73B003FAF35 /* PrimaryColourDimension.mm */; };
+		335457BA14E3A21A007C0E76 /* HeadSensor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 335457B914E3A21A007C0E76 /* HeadSensor.mm */; };
 		338667E714E0CA5600997BE4 /* Door.mm in Sources */ = {isa = PBXBuildFile; fileRef = 338667E614E0CA5600997BE4 /* Door.mm */; };
 		338667FD14E0D06B00997BE4 /* test_crappy_door_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 338667FC14E0D06B00997BE4 /* test_crappy_door_sprite.png */; };
 		338E1BBE14DA1F3400676061 /* CombinationColourDimension.mm in Sources */ = {isa = PBXBuildFile; fileRef = 338E1BBD14DA1F3400676061 /* CombinationColourDimension.mm */; };
@@ -32,7 +33,7 @@
 		84B414E914D3E980001AE794 /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414CF14D3E980001AE794 /* ContactListener.mm */; };
 		84B414EA14D3E980001AE794 /* GameContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414D214D3E980001AE794 /* GameContext.mm */; };
 		84B414EB14D3E980001AE794 /* Level.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414D414D3E980001AE794 /* Level.mm */; };
-		84B414EC14D3E980001AE794 /* CollisionVolume.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414D714D3E980001AE794 /* CollisionVolume.mm */; };
+		84B414EC14D3E980001AE794 /* PlayerCollisionVolume.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414D714D3E980001AE794 /* PlayerCollisionVolume.mm */; };
 		84B414ED14D3E980001AE794 /* Player.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414D914D3E980001AE794 /* Player.mm */; };
 		84B414EE14D3E980001AE794 /* PlayerActionContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414DB14D3E980001AE794 /* PlayerActionContext.mm */; };
 		84B414EF14D3E980001AE794 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414DD14D3E980001AE794 /* GLES-Render.mm */; };
@@ -232,6 +233,8 @@
 		3323B13614D46ADF009A20C2 /* MoveAction.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MoveAction.mm; sourceTree = "<group>"; };
 		33397EF314D4B73B003FAF35 /* PrimaryColourDimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimaryColourDimension.h; sourceTree = "<group>"; };
 		33397EF414D4B73B003FAF35 /* PrimaryColourDimension.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PrimaryColourDimension.mm; sourceTree = "<group>"; };
+		335457B814E3A21A007C0E76 /* HeadSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadSensor.h; sourceTree = "<group>"; };
+		335457B914E3A21A007C0E76 /* HeadSensor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HeadSensor.mm; sourceTree = "<group>"; };
 		338667E514E0CA5600997BE4 /* Door.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Door.h; sourceTree = "<group>"; };
 		338667E614E0CA5600997BE4 /* Door.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Door.mm; sourceTree = "<group>"; };
 		338667FC14E0D06B00997BE4 /* test_crappy_door_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_crappy_door_sprite.png; sourceTree = "<group>"; };
@@ -270,8 +273,8 @@
 		84B414D214D3E980001AE794 /* GameContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameContext.mm; sourceTree = "<group>"; };
 		84B414D314D3E980001AE794 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		84B414D414D3E980001AE794 /* Level.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Level.mm; sourceTree = "<group>"; };
-		84B414D614D3E980001AE794 /* CollisionVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollisionVolume.h; sourceTree = "<group>"; };
-		84B414D714D3E980001AE794 /* CollisionVolume.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CollisionVolume.mm; sourceTree = "<group>"; };
+		84B414D614D3E980001AE794 /* PlayerCollisionVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCollisionVolume.h; sourceTree = "<group>"; };
+		84B414D714D3E980001AE794 /* PlayerCollisionVolume.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerCollisionVolume.mm; sourceTree = "<group>"; };
 		84B414D814D3E980001AE794 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		84B414D914D3E980001AE794 /* Player.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Player.mm; sourceTree = "<group>"; };
 		84B414DA14D3E980001AE794 /* PlayerActionContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerActionContext.h; sourceTree = "<group>"; };
@@ -433,8 +436,8 @@
 				33397EF414D4B73B003FAF35 /* PrimaryColourDimension.mm */,
 				3323B13514D46ADF009A20C2 /* MoveAction.h */,
 				3323B13614D46ADF009A20C2 /* MoveAction.mm */,
-				84B414D614D3E980001AE794 /* CollisionVolume.h */,
-				84B414D714D3E980001AE794 /* CollisionVolume.mm */,
+				84B414D614D3E980001AE794 /* PlayerCollisionVolume.h */,
+				84B414D714D3E980001AE794 /* PlayerCollisionVolume.mm */,
 				84B414D814D3E980001AE794 /* Player.h */,
 				84B414D914D3E980001AE794 /* Player.mm */,
 				84B414DA14D3E980001AE794 /* PlayerActionContext.h */,
@@ -461,6 +464,8 @@
 				33AFAF9614DDC03A0093E8C8 /* Button.mm */,
 				338667E514E0CA5600997BE4 /* Door.h */,
 				338667E614E0CA5600997BE4 /* Door.mm */,
+				335457B814E3A21A007C0E76 /* HeadSensor.h */,
+				335457B914E3A21A007C0E76 /* HeadSensor.mm */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -945,7 +950,7 @@
 				84B414E914D3E980001AE794 /* ContactListener.mm in Sources */,
 				84B414EA14D3E980001AE794 /* GameContext.mm in Sources */,
 				84B414EB14D3E980001AE794 /* Level.mm in Sources */,
-				84B414EC14D3E980001AE794 /* CollisionVolume.mm in Sources */,
+				84B414EC14D3E980001AE794 /* PlayerCollisionVolume.mm in Sources */,
 				84B414ED14D3E980001AE794 /* Player.mm in Sources */,
 				84B414EE14D3E980001AE794 /* PlayerActionContext.mm in Sources */,
 				84B414EF14D3E980001AE794 /* GLES-Render.mm in Sources */,
@@ -970,6 +975,7 @@
 				33AFAF9414DDBEE40093E8C8 /* Elevator.mm in Sources */,
 				33AFAF9714DDC03A0093E8C8 /* Button.mm in Sources */,
 				338667E714E0CA5600997BE4 /* Door.mm in Sources */,
+				335457BA14E3A21A007C0E76 /* HeadSensor.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 #import "JumpAction.h"
 #import "Player.h"
 #import "PlayerActionContext.h"
-#import "CollisionVolume.h"
+#import "PlayerCollisionVolume.h"
 
 
 @implementation JumpAction {

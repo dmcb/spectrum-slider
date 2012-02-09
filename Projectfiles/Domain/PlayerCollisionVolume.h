@@ -8,13 +8,16 @@
 #import <Foundation/Foundation.h>
 #import "Updateable.h"
 
-@interface CollisionVolume : NSObject <Updateable> {
+@class HeadSensor;
+
+@interface PlayerCollisionVolume : NSObject <Updateable> {
 
     CCNode *gameObject;
 
     b2Body *body;
     b2Fixture *fixture;
 
+    HeadSensor *headSensor;
 }
 @property(nonatomic, assign) b2Body *body;
 @property(nonatomic, assign) b2Fixture *fixture;
@@ -23,5 +26,7 @@
 - (id)initWithGameObject:(CCNode *)aGameObject collisionGroupId:(int)collisionId width:(float)width height:(float)height;
 
 - (void)setCollisionGroupId:(uint16)newCollisionGroup;
+
+- (bool) isHeadCollidingWithAnything;
 
 @end

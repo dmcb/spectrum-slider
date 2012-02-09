@@ -10,17 +10,17 @@
 #import "Displayable.h"
 
 @class PlayerActionContext;
-@class CollisionVolume;
+@class PlayerCollisionVolume;
 
 
 @interface Player : CCNode <Updateable, Displayable> {
     PlayerActionContext *actionContext;
-    CollisionVolume *collisionVolume;
+    PlayerCollisionVolume *collisionVolume;
     CCSprite *sprite;
     bool isOnGround;
 }
 
-@property(nonatomic, strong) CollisionVolume *collisionVolume;
+@property(nonatomic, strong) PlayerCollisionVolume *collisionVolume;
 
 - (void)spawn;
 
@@ -52,4 +52,5 @@
 
 - (float)jumpVelocity;
 
+- (BOOL)canJump;
 @end

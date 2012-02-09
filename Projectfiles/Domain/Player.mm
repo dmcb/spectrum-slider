@@ -7,7 +7,7 @@
 
 #import "Player.h"
 #import "PlayerActionContext.h"
-#import "CollisionVolume.h"
+#import "PlayerCollisionVolume.h"
 #import "GameContext.h"
 #import "Level.h"
 #import "MoveAction.h"
@@ -45,7 +45,7 @@
 
 - (void)spawn
 {
-    collisionVolume = [[CollisionVolume alloc] initWithGameObject:self collisionGroupId:0 width:sprite.contentSize.width height:sprite.contentSize.height];
+    collisionVolume = [[PlayerCollisionVolume alloc] initWithGameObject:self collisionGroupId:0 width:sprite.contentSize.width height:sprite.contentSize.height];
     [[[GameContext sharedContext] currentLevel] spawn:self];
     [[[GameContext sharedContext] currentLevel] setPlayer:self];
 }
@@ -156,4 +156,8 @@
     return 260;
 }
 
+- (BOOL)canJump
+{
+    return isOnGround && !collisionVolume.isHeadCollidingWithAnything;
+}
 @end

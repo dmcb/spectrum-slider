@@ -9,7 +9,7 @@
 #import "MoveInAirAction.h"
 #import "PlayerActionContext.h"
 #import "Player.h"
-#import "CollisionVolume.h"
+#import "PlayerCollisionVolume.h"
 
 @implementation MoveInAirAction
 
@@ -28,12 +28,7 @@
 
 - (void)doAction:(PlayerActionContext *)actionContext delta:(float)delta
 {
-    // What's this about Kyle? Hacky stuff here
-    if (actionContext.player.collisionVolume.body->GetLinearVelocity().y > 2.0f) {
-        [super doAction:actionContext delta:delta];
-    } else {
-        [actionContext.player setIsOnGroundWithBool:true];
-    }
+    [super doAction:actionContext delta:delta];
     
     done = true;
 }

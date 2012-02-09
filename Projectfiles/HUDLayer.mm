@@ -47,36 +47,36 @@
         topband.position = CGPointMake(topband.contentSize.height / 2, screenSize.height - topband.contentSize.width / 2);
         topband.rotation = -90;
         [self addChild:topband];
-        topbandFx = [CCParticleSystemQuad particleWithFile:@"band.plist"]; 
+        topbandFx = [CCParticleSystemQuad particleWithFile:@"band.plist"];
         topbandFx.position = CGPointMake(topband.contentSize.height / 2, 10 + screenSize.height - topband.contentSize.width / 2);
         topbandFx.rotation = -90;
-        [self addChild:topbandFx]; 
+        [self addChild:topbandFx];
 
         leftband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
         leftband.position = CGPointMake(leftband.contentSize.width / 2, leftband.contentSize.height / 2);
         leftband.rotation = 180;
         [self addChild:leftband];
-        leftbandFx = [CCParticleSystemQuad particleWithFile:@"band.plist"]; 
+        leftbandFx = [CCParticleSystemQuad particleWithFile:@"band.plist"];
         leftbandFx.position = CGPointMake(leftband.contentSize.width / 2 - 10, leftband.contentSize.height / 2);
         leftbandFx.rotation = 180;
-        [self addChild:leftbandFx]; 
+        [self addChild:leftbandFx];
 
         rightband = [CCSprite spriteWithSpriteFrameName:@"band.png"];
         rightband.position = CGPointMake(screenSize.width - rightband.contentSize.width / 2, rightband.contentSize.height / 2);
         [self addChild:rightband];
-        rightbandFx = [CCParticleSystemQuad particleWithFile:@"band.plist"]; 
+        rightbandFx = [CCParticleSystemQuad particleWithFile:@"band.plist"];
         rightbandFx.position = CGPointMake(10 + screenSize.width - rightband.contentSize.width / 2, rightband.contentSize.height / 2);
-        [self addChild:rightbandFx]; 
-        
+        [self addChild:rightbandFx];
+
         // Add slide effect
-        leftSlide = [CCParticleSystemQuad particleWithFile:@"slide.plist"]; 
+        leftSlide = [CCParticleSystemQuad particleWithFile:@"slide.plist"];
         leftSlide.position = CGPointMake(leftband.contentSize.width / 2, screenSize.height / 2);
         leftSlide.rotation = 180;
-        [self addChild:leftSlide]; 
-        
-        rightSlide = [CCParticleSystemQuad particleWithFile:@"slide.plist"]; 
+        [self addChild:leftSlide];
+
+        rightSlide = [CCParticleSystemQuad particleWithFile:@"slide.plist"];
         rightSlide.position = CGPointMake(screenSize.width - rightband.contentSize.width / 2, screenSize.height / 2);
-        [self addChild:rightSlide]; 
+        [self addChild:rightSlide];
 
         // Set sliding transition time
         dimensionTransition = [NSDate date];
@@ -96,31 +96,31 @@
 - (void)update:(ccTime)delta
 {
     Player *player = [[[GameContext sharedContext] currentLevel] player];
-    
+
     CCArray* touches = [KKInput sharedInput].touches;
-    
+
     bool dpadSatisfied = false;
     bool jumpSatisfied = false;
-    
-    NSLog(@"Dpad touch: %u. Jump touch: %u.", touchDpad, touchJump);
-    
+
+//    NSLog(@"Dpad touch: %u. Jump touch: %u.", touchDpad, touchJump);
+
     // Keep track of all touches, and remember what touches are on what buttons
     for ( KKTouch *touch in touches ) {
         if ((touchDpad == 0 || touchDpad == touch.touchID) &&
             touch.phase != KKTouchPhaseCancelled &&
             touch.phase != KKTouchPhaseEnded &&
             touch.phase != KKTouchPhaseLifted &&
-            sqrt((touch.location.x - dpad.position.x)*(touch.location.x - dpad.position.x) + (touch.location.y - dpad.position.y)*(touch.location.y - dpad.position.y)) < 
+            sqrt((touch.location.x - dpad.position.x)*(touch.location.x - dpad.position.x) + (touch.location.y - dpad.position.y)*(touch.location.y - dpad.position.y)) <
                 dpad.contentSize.width * 0.7)
         {
             // Dpad button has just started - or continues to be - touched
             dpadSatisfied = true;
-            
+
             // If this is a new dpad press, assign the touch id to the dpad button
             if (touchDpad == 0) {
                 touchDpad = touch.touchID;
             }
-            
+
             // Determine movement direction
             if (touch.location.x - dpad.position.x < 0) {
                 [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad_pushed_left.png"]];
@@ -131,7 +131,7 @@
                 else {
                     [player moveInDirectionWhileInAir:ccp(-1, 0)];
                 }
-                
+
             }
             else {
                 [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad_pushed_right.png"]];
@@ -139,7 +139,7 @@
                     [player moveInDirection:ccp(1, 0)];
                 }
                 else {
-                    
+
                     [player moveInDirectionWhileInAir:ccp(1, 0)];
                 }
             }
@@ -148,23 +148,23 @@
             touch.phase != KKTouchPhaseCancelled &&
             touch.phase != KKTouchPhaseEnded &&
             touch.phase != KKTouchPhaseLifted &&
-            sqrt((touch.location.x - jump.position.x)*(touch.location.x - jump.position.x) + (touch.location.y - jump.position.y)*(touch.location.y - jump.position.y)) < 
+            sqrt((touch.location.x - jump.position.x)*(touch.location.x - jump.position.x) + (touch.location.y - jump.position.y)*(touch.location.y - jump.position.y)) <
                 jump.contentSize.width * 0.7)
         {
             // Jump button has just started - or continues to be - touched
             jumpSatisfied = true;
-            
+
             // If this is a new jump, start the jump and assign the touch id to the jump button
             if (touchJump == 0) {
                 touchJump = touch.touchID;
                 [jump setDisplayFrame:[frameCache spriteFrameByName:@"button_jump_pushed.png"]];
-                if ([player isOnGround]) {
+                if ([player canJump]) {
                     [player jump];
                 }
             }
         }
     }
-    
+
     // If buttons that used to be pressed are no longer, unpress them
     if (touchDpad != 0 && !dpadSatisfied)
     {
@@ -186,7 +186,7 @@
     // Detect swipe for colour slide, ensure enough time has passed between slides
     if (input.gestureSwipeRecognizedThisFrame && fabs([dimensionTransition timeIntervalSinceNow]) > dimensionTransitionDuration) {
         KKSwipeGestureDirection dir = input.gestureSwipeDirection;
-        
+
         if (dir == KKSwipeGestureDirectionLeft || dir == KKSwipeGestureDirectionRight)
         {
             // Start slide
@@ -233,13 +233,13 @@
             }
         }
     }
-    
+
     // Midway through slide, change colours
     if (dimensionSlidingTo != NULL && fabs([dimensionTransition timeIntervalSinceNow]) > dimensionTransitionDelay) {
         [[[GameContext sharedContext] currentLevel] setDimension:dimensionSlidingTo];
-        dimensionSlidingTo = NULL;  
+        dimensionSlidingTo = NULL;
     }
-    
+
     // Pause button
     if ([input isAnyTouchOnNode:menu touchPhase:KKTouchPhaseAny]) {
         [menu setDisplayFrame:[frameCache spriteFrameByName:@"button_menu_pushed.png"]];
@@ -255,11 +255,11 @@
         [topband setColor:(ccc3(255, 0, 0))];
         [topbandFx setStartColor:(ccc4f(1, 0, 0, 0.2))];
         [topbandFx setEndColor:(ccc4f(1, 0, 0, 0.1))];
-        
+
         [leftband setColor:(ccc3(0, 0, 255))];
         [leftbandFx setStartColor:(ccc4f(0, 0, 1, 0.2))];
         [leftbandFx setEndColor:(ccc4f(0, 0, 1, 0.1))];
-        
+
         [rightband setColor:(ccc3(255, 255, 0))];
         [rightbandFx setStartColor:(ccc4f(1, 1, 0, 0.2))];
         [rightbandFx setEndColor:(ccc4f(1, 1, 0, 0.1))];
@@ -268,11 +268,11 @@
         [topband setColor:(ccc3(255, 255, 0))];
         [topbandFx setStartColor:(ccc4f(1, 1, 0, 0.2))];
         [topbandFx setEndColor:(ccc4f(1, 1, 0, 0.1))];
-        
+
         [leftband setColor:(ccc3(255, 0, 0))];
         [leftbandFx setStartColor:(ccc4f(1, 0, 0, 0.2))];
         [leftbandFx setEndColor:(ccc4f(1, 0, 0, 0.1))];
-        
+
         [rightband setColor:(ccc3(0, 0, 255))];
         [rightbandFx setStartColor:(ccc4f(0, 0, 1, 0.2))];
         [rightbandFx setEndColor:(ccc4f(0, 0, 1, 0.1))];
@@ -281,11 +281,11 @@
         [topband setColor:(ccc3(0, 0, 255))];
         [topbandFx setStartColor:(ccc4f(0, 0, 1, 0.2))];
         [topbandFx setEndColor:(ccc4f(0, 0, 1, 0.1))];
-        
+
         [leftband setColor:(ccc3(255, 255, 0))];
         [leftbandFx setStartColor:(ccc4f(1, 1, 0, 0.2))];
         [leftbandFx setEndColor:(ccc4f(1, 1, 0, 0.1))];
-        
+
         [rightband setColor:(ccc3(255, 0, 0))];
         [rightbandFx setStartColor:(ccc4f(1, 0, 0, 0.2))];
         [rightbandFx setEndColor:(ccc4f(1, 0, 0, 0.1))];

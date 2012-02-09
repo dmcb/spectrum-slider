@@ -5,13 +5,15 @@
 //
 
 
-#import "CollisionVolume.h"
+#import "PlayerCollisionVolume.h"
 #import "GameContext.h"
 #import "Level.h"
+#import "HeadSensor.h"
 
 const float PTM_RATIO = 32.0f;
 
-@implementation CollisionVolume {
+@implementation PlayerCollisionVolume
+{
 
 }
 
@@ -49,6 +51,8 @@ const float PTM_RATIO = 32.0f;
 
         fixture = body->CreateFixture(&shapeDef);
 
+        headSensor = [[HeadSensor alloc] initWithBody:body width:width height:height];
+
         fixture->SetFriction(0.26f);
 
     }
@@ -64,11 +68,21 @@ const float PTM_RATIO = 32.0f;
 
 - (void)setCollisionGroupId:(uint16)newCollisionGroup {
     b2Filter myFilterData = fixture->GetFilterData();
+    b2Filter myHeadFilterData = headSensor.headFixture->GetFilterData();
 
     newCollisionGroup |= 0xf;
 
     myFilterData.maskBits = newCollisionGroup;
+    myHeadFilterData.maskBits = newCollisionGroup;
 
     fixture->SetFilterData(myFilterData);
+
+    headSensor.headFixture->SetFilterData(myHeadFilterData);
 }
+
+- (bool)isHeadCollidingWithAnything
+{
+    return headSensor.isCollidingWithSomething;
+}
+
 @end
