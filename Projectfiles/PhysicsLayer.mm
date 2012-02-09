@@ -79,7 +79,7 @@ const float PTM_RATIO = 32.0f;
 
         [self addChild:hudLayer];
 
-        [self enableBox2dDebugDrawing];
+//        [self enableBox2dDebugDrawing];
 
         // Level starts with red dimension
         [currentLevel setDimension:[gameWorldLayer redDimension]];
