@@ -9,16 +9,25 @@
 #import "MovingObject.h"
 #import "Triggerable.h"
 
-@interface Button : MovingObject <Triggerable>
+@class Trigger;
+
+@interface Button : MovingObject
 {
-    NSString *trigger;
+    Trigger *trigger;
 
     float32 width;
     float32 height;
 
+    float density;
+
+    b2Body *triggerPlateBody;
+    b2Fixture *triggerPlateFixture;
+    b2PrismaticJoint *triggerJoint;
+
+    bool isTriggered;
 }
 
-- (id)initWithTrigger:(NSString *)aTrigger width:(float32)aWidth height:(float32)aHeight;
+- (id)initWithTrigger:(Trigger *)aTrigger width:(float32)aWidth height:(float32)aHeight density:(float)aDensity;
 
 - (void)spawn;
 

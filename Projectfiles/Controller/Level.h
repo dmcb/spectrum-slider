@@ -17,12 +17,15 @@
 @class GameWorldLayer;
 @class Player;
 @class HUDLayer;
+@class TriggerManager;
+@class Trigger;
 
 
 @interface Level : NSObject <Updateable> {
 
     CollisionManager *collisionManager;
     ObjectManager *objectManager;
+    TriggerManager *triggerManager;
 
     HUDLayer *hudLayer;
     GameWorldLayer *gameWorldLayer;
@@ -51,6 +54,8 @@
 - (void)spawn:(id <Updateable, Displayable>)objectToSpawn;
 
 - (void)addObjectToPlay:(id <Updateable>)objectToAdd;
+
+- (Trigger *)createOrAddTrigger:(NSString *)triggerKey;
 
 - (void)drawDebugData;
 

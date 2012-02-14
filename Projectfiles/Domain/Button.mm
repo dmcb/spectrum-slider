@@ -9,16 +9,18 @@
 #import "Button.h"
 #import "GameContext.h"
 #import "Level.h"
+#import "Trigger.h"
 
 @implementation Button
 
-- (id)initWithTrigger:(NSString *)aTrigger width:(float32)aWidth height:(float32)aHeight
+- (id)initWithTrigger:(Trigger *)aTrigger width:(float32)aWidth height:(float32)aHeight density:(float)aDensity
 {
     self = [super init];
     if (self) {
         trigger = aTrigger;
         width = aWidth;
         height = aHeight;
+        density = aDensity;
     }
 
     return self;
@@ -31,34 +33,81 @@
     [sprite setScaleX:width / sprite.contentSize.width];
     [sprite setScaleY:height / sprite.contentSize.height];
 
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_staticBody;
-    bodyDef.position.Set((self.position.x + width * 0.5) / PTM_RATIO, (self.position.y + height * 0.5) / PTM_RATIO);
-    bodyDef.bullet = true;
+    b2BodyDef triggerPlateBodyDef;
+    triggerPlateBodyDef.type= b2_staticBody;
+    triggerPlateBodyDef.position.Set((self.position.x + width * 0.5) / PTM_RATIO, (self.position.y) / PTM_RATIO);
 
-    bodyDef.userData = (__bridge void *) self;
+    b2PolygonShape triggerPlateShape;
+    triggerPlateShape.SetAsBox(1/ PTM_RATIO, 1 /PTM_RATIO);
 
-    body = [[[GameContext sharedContext] currentLevel] initBody:&bodyDef];
+    b2FixtureDef triggerPlateFixtureDef;
+    triggerPlateFixtureDef.shape = &triggerPlateShape;
 
-    b2PolygonShape collisionShape;
-    collisionShape.SetAsBox(width / PTM_RATIO * 0.5, height / PTM_RATIO * 0.5);
-    // todo make these parameters. (density and such)
+    triggerPlateBody = [[[GameContext sharedContext] currentLevel] initBody:&triggerPlateBodyDef];
 
-    b2FixtureDef shapeDef;
-    shapeDef.shape = &collisionShape;
-    shapeDef.density = 2.0f;
-    shapeDef.restitution = 0.0f;
-    shapeDef.userData = (__bridge void *) self;
-    shapeDef.isSensor = true;
+    triggerPlateFixture = triggerPlateBody->CreateFixture(&triggerPlateFixtureDef);
 
-    fixture = body->CreateFixture(&shapeDef);
+    b2Filter filter;
+    filter.categoryBits = 0;
+    filter.maskBits = 0;
+
+    triggerPlateFixture->SetFilterData(filter);
+
+    b2BodyDef buttonPlateBodyDef;
+    buttonPlateBodyDef.type = b2_dynamicBody;
+    buttonPlateBodyDef.fixedRotation = true;
+    buttonPlateBodyDef.position.Set((self.position.x + width * 0.5) / PTM_RATIO, (self.position.y + height *0.5) / PTM_RATIO);
+
+    b2PolygonShape buttonShape;
+    buttonShape.SetAsBox(width / PTM_RATIO, height / 5.0 / PTM_RATIO);
+
+    b2FixtureDef buttonFixtureDef;
+    buttonFixtureDef.density = density;
+    buttonFixtureDef.friction = 0.2f;
+    buttonFixtureDef.shape = &buttonShape;
+    buttonFixtureDef.userData = (__bridge void *) self;
+
+    body = [[[GameContext sharedContext] currentLevel] initBody:&buttonPlateBodyDef];
+
+    fixture = body->CreateFixture(&buttonFixtureDef);
+
+    b2Vec2 vec2;
+    vec2.x = 0;
+    vec2.y = 1;
+
+    b2PrismaticJointDef jointDef;
+    jointDef.Initialize(triggerPlateBody, body, triggerPlateBody->GetLocalCenter(), vec2);
+    jointDef.lowerTranslation = 0.3;
+    jointDef.localAnchorA = triggerPlateBody->GetLocalCenter();
+    jointDef.localAnchorB = body->GetLocalCenter();
+    jointDef.upperTranslation = 0.8f;
+    jointDef.enableLimit = true;
+    jointDef.maxMotorForce = 100;
+    jointDef.motorSpeed = 4.0f;
+    jointDef.enableMotor = true;
+
+    triggerJoint = (b2PrismaticJoint *) [[[GameContext sharedContext] currentLevel] initJoint:&jointDef];
 
     [super spawn];
 }
 
-- (void) performTrigger
+- (void)update:(ccTime)delta
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:trigger object:nil];
+    [super update:delta];
+
+    bool atLowerLimit = triggerJoint->GetJointTranslation() <= triggerJoint->GetLowerLimit();
+    bool atUpperLimit = triggerJoint->GetJointTranslation() >= triggerJoint->GetUpperLimit();
+    
+    if (atLowerLimit && !isTriggered) {
+        [trigger doTrigger];
+        isTriggered = true;
+    }
+
+    if (atUpperLimit && isTriggered) {
+        [trigger undoTrigger];
+        isTriggered = false;
+    }
+
 }
 
 

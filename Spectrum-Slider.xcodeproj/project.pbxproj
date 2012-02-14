@@ -11,6 +11,8 @@
 		3323B13714D46ADF009A20C2 /* MoveAction.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3323B13614D46ADF009A20C2 /* MoveAction.mm */; };
 		33397EF514D4B73B003FAF35 /* PrimaryColourDimension.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33397EF414D4B73B003FAF35 /* PrimaryColourDimension.mm */; };
 		335457BA14E3A21A007C0E76 /* HeadSensor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 335457B914E3A21A007C0E76 /* HeadSensor.mm */; };
+		3354BE9014EA12CE00BEDB8C /* TriggerManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3354BE8F14EA12CE00BEDB8C /* TriggerManager.mm */; };
+		3354BE9314EA131900BEDB8C /* Trigger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3354BE9214EA131900BEDB8C /* Trigger.mm */; };
 		338667E714E0CA5600997BE4 /* Door.mm in Sources */ = {isa = PBXBuildFile; fileRef = 338667E614E0CA5600997BE4 /* Door.mm */; };
 		338667FD14E0D06B00997BE4 /* test_crappy_door_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 338667FC14E0D06B00997BE4 /* test_crappy_door_sprite.png */; };
 		338E1BBE14DA1F3400676061 /* CombinationColourDimension.mm in Sources */ = {isa = PBXBuildFile; fileRef = 338E1BBD14DA1F3400676061 /* CombinationColourDimension.mm */; };
@@ -235,6 +237,10 @@
 		33397EF414D4B73B003FAF35 /* PrimaryColourDimension.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PrimaryColourDimension.mm; sourceTree = "<group>"; };
 		335457B814E3A21A007C0E76 /* HeadSensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadSensor.h; sourceTree = "<group>"; };
 		335457B914E3A21A007C0E76 /* HeadSensor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HeadSensor.mm; sourceTree = "<group>"; };
+		3354BE8E14EA12CE00BEDB8C /* TriggerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriggerManager.h; sourceTree = "<group>"; };
+		3354BE8F14EA12CE00BEDB8C /* TriggerManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TriggerManager.mm; sourceTree = "<group>"; };
+		3354BE9114EA131900BEDB8C /* Trigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trigger.h; sourceTree = "<group>"; };
+		3354BE9214EA131900BEDB8C /* Trigger.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Trigger.mm; sourceTree = "<group>"; };
 		338667E514E0CA5600997BE4 /* Door.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Door.h; sourceTree = "<group>"; };
 		338667E614E0CA5600997BE4 /* Door.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Door.mm; sourceTree = "<group>"; };
 		338667FC14E0D06B00997BE4 /* test_crappy_door_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_crappy_door_sprite.png; sourceTree = "<group>"; };
@@ -466,6 +472,8 @@
 				338667E614E0CA5600997BE4 /* Door.mm */,
 				335457B814E3A21A007C0E76 /* HeadSensor.h */,
 				335457B914E3A21A007C0E76 /* HeadSensor.mm */,
+				3354BE9114EA131900BEDB8C /* Trigger.h */,
+				3354BE9214EA131900BEDB8C /* Trigger.mm */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -474,6 +482,8 @@
 			isa = PBXGroup;
 			children = (
 				84B414DF14D3E980001AE794 /* CollisionManager.h */,
+				3354BE8E14EA12CE00BEDB8C /* TriggerManager.h */,
+				3354BE8F14EA12CE00BEDB8C /* TriggerManager.mm */,
 				84B414E014D3E980001AE794 /* CollisionManager.mm */,
 				84B414E114D3E980001AE794 /* ObjectManager.h */,
 				84B414E214D3E980001AE794 /* ObjectManager.mm */,
@@ -976,6 +986,8 @@
 				33AFAF9714DDC03A0093E8C8 /* Button.mm in Sources */,
 				338667E714E0CA5600997BE4 /* Door.mm in Sources */,
 				335457BA14E3A21A007C0E76 /* HeadSensor.mm in Sources */,
+				3354BE9014EA12CE00BEDB8C /* TriggerManager.mm in Sources */,
+				3354BE9314EA131900BEDB8C /* Trigger.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

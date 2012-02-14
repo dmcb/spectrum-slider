@@ -16,6 +16,7 @@
 #import "Axe.h"
 #import "Door.h"
 #import "Button.h"
+#import "Trigger.h"
 
 @implementation CollisionManager {
 
@@ -110,6 +111,13 @@
 
                 id typeKey = [object valueForKey:@"type"];
 
+                NSString *triggerKey = [object valueForKey:@"object_trigger"];
+
+                Trigger *trigger;
+                if (triggerKey) {
+                    trigger = [level createOrAddTrigger:triggerKey];
+                }
+
                 NSLog(@"Creating Object %s { width:%f height:%f x:%f y:%f cid:%i }", typeKey, width, height, x, y, cid);
 
                 if ([typeKey isEqualToString:@"Ball"]) {
@@ -154,9 +162,9 @@
 
                 } else if ([typeKey isEqualToString:@"Door"]) {
 
-                    NSString *trigger = [object valueForKey:@"object_trigger"];
+                    NSString *closeIfNotTriggered = [object valueForKey:@"object_closeIfNotTriggered"];
 
-                    Door *door = [[Door alloc] initWithHeight:height width:width triggerName:trigger];
+                    Door *door = [[Door alloc] initWithHeight:height width:width closeIfNotTriggered:[closeIfNotTriggered boolValue]];
 
                     [door setPosition:ccp(x, y)];
 
@@ -166,11 +174,13 @@
 
                     [[level gameWorldLayer] addObjectToGame:door.display collisionLayer:cid];
 
+                    [trigger addListener:door];
+
                 } else if ([typeKey isEqualToString:@"Button"]) {
 
-                    NSString *trigger = [object valueForKey:@"object_trigger"];
+                    assert(trigger != nil);
 
-                    Button *button = [[Button alloc] initWithTrigger:trigger width:width height:height];
+                    Button *button = [[Button alloc] initWithTrigger:trigger width:width height:height density:0];
 
                     [button setPosition:ccp(x, y)];
 

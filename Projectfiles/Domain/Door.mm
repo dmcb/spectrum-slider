@@ -2,9 +2,6 @@
 //  Door.m
 //  Spectrum-Slider
 //
-//  Created by Kyle Reczek on 12-02-06.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
 
 #import "Door.h"
 #import "GameContext.h"
@@ -12,12 +9,13 @@
 
 @implementation Door
 
-- (id)initWithHeight:(float32)aHeight width:(float32)aWidth triggerName:(NSString *)aTriggerName
+- (id)initWithHeight:(float32)aHeight width:(float32)aWidth closeIfNotTriggered:(bool)aCloseIfNotTriggered
 {
-    self = [super initWithTriggerName:aTriggerName];
+    self = [super init];
     if (self) {
         height = aHeight;
         width = aWidth;
+        closeIfNotTriggered = aCloseIfNotTriggered;
     }
 
     return self;
@@ -32,7 +30,7 @@
 
     b2BodyDef bodyDef;
     bodyDef.type = b2_staticBody;
-    bodyDef.position.Set((self.position.x + width *0.5) / PTM_RATIO, (self.position.y + height *0.5) / PTM_RATIO);
+    bodyDef.position.Set((self.position.x + width * 0.5) / PTM_RATIO, (self.position.y + height * 0.5) / PTM_RATIO);
     bodyDef.bullet = true;
 
     bodyDef.userData = (__bridge void *) sprite;
@@ -54,19 +52,30 @@
     [super spawn];
 }
 
-- (void) trigger
+- (void)doAction
 {
-    // todo
     CCFadeOut *fadeOut = [CCFadeOut actionWithDuration:2.0f];
 
     [sprite runAction:fadeOut];
 
-    b2Filter filter = fixture->GetFilterData();
+    b2Filter filter;
 
     filter.categoryBits = 0;
     filter.maskBits = 0;
+
+    fixture->SetFilterData(filter);
 }
 
+- (void)undoAction
+{
+    if (closeIfNotTriggered) {
+        CCFadeIn *fadeIn = [CCFadeIn actionWithDuration:2.0f];
+
+        [sprite runAction:fadeIn];
+
+        [self setCollisionGroupId:cid];
+    }
+}
 
 
 @end

@@ -7,6 +7,8 @@
 
 @protocol Triggerable
 
-- (void) performTrigger;
+- (void)doAction;
+
+- (void)undoAction;
 
 @end

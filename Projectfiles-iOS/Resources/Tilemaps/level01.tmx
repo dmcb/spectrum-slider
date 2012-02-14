@@ -88,7 +88,7 @@
     <property name="object_width" value="30"/>
    </properties>
   </object>
-  <object type="Axe" x="416" y="608" width="32" height="32">
+  <object type="Axe" x="608" y="224" width="32" height="32">
    <properties>
     <property name="object_axe_height" value="90"/>
     <property name="object_cid" value="0x00F0"/>
@@ -96,7 +96,7 @@
     <property name="object_width" value="15"/>
    </properties>
   </object>
-  <object type="Button" x="64" y="128" width="32" height="32">
+  <object type="Button" x="448" y="608" width="32" height="32">
    <properties>
     <property name="object_cid" value="0xF0F0"/>
     <property name="object_height" value="32"/>
@@ -106,7 +106,8 @@
   </object>
   <object type="Door" x="736" y="0" width="32" height="160">
    <properties>
-    <property name="object_action" value="OpenDoorAction"/>
+    <property name="object_cid" value="0xF00"/>
+    <property name="object_closeIfNotTriggered" value="false"/>
     <property name="object_height" value="160"/>
     <property name="object_trigger" value="1"/>
     <property name="object_width" value="32"/>

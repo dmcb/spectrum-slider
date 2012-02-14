@@ -12,6 +12,9 @@
 #import "Displayable.h"
 #import "Player.h"
 #import "HUDLayer.h"
+#import "TriggerManager.h"
+#import "Trigger.h"
+#import "Triggerable.h"
 
 
 @implementation Level
@@ -70,12 +73,23 @@
     [objectManager addObjectToPlay:objectToAdd];
 }
 
+- (Trigger *) createOrAddTrigger:(NSString *) triggerKey
+{
+    if ([triggerManager doesTriggerExist:triggerKey]) {
+        return [triggerManager triggerForKey:triggerKey];
+    } else {
+        [triggerManager createTrigger:triggerKey];
+        return [triggerManager triggerForKey:triggerKey];
+    }
+}
+
 - (id)init
 {
     self = [super init];
     if (self) {
         collisionManager = [CollisionManager new];
         objectManager = [ObjectManager new];
+        triggerManager = [TriggerManager new];
         gameWorldLayer = [[GameWorldLayer alloc] initWithTileMap:@"level01.tmx"];
     }
 

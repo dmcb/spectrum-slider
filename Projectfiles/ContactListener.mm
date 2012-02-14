@@ -51,15 +51,6 @@ void ContactListener::BeginContact (b2Contact *contact) {
         setPlayerJustLanded(contact, nodeB);
     }
 
-    if ([nodeA conformsToProtocol:@protocol(Triggerable)]) {
-        [((id <Triggerable>) nodeA) performTrigger];
-    }
-
-    if ([nodeB conformsToProtocol:@protocol(Triggerable)]) {
-        [((id <Triggerable>) nodeB) performTrigger];
-    }
-
-
     if ([nodeA respondsToSelector:@selector(setIsCollidingWithSomething:)]) {
         [((id) nodeA) setIsCollidingWithSomething:true];
     }
