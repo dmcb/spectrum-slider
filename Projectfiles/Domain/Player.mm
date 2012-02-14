@@ -53,7 +53,7 @@
 - (void)moveInDirection:(CGPoint)directionVector
 {
 
-    if (![actionContext isNextActionType:[MoveAction class]])
+    if (![actionContext isNextActionType:[MoveAction class]] && ![actionContext actionQueueContainsType:[MoveAction class]])
     {
         [actionContext queueAction:[[MoveAction alloc] initWithDirection:directionVector]];
     }
@@ -61,7 +61,7 @@
 
 - (void)moveInDirectionWhileInAir:(CGPoint)directionVector
 {
-    if (![actionContext isNextActionType:[MoveInAirAction class]])
+    if (![actionContext isNextActionType:[MoveInAirAction class]]&& ![actionContext actionQueueContainsType:[MoveAction class]])
     {
         [actionContext queueAction:[[MoveInAirAction alloc] initWithDirection:directionVector]];
     }
