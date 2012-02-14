@@ -69,7 +69,7 @@
 
 - (bool)isMoving
 {
-    return [actionContext isCurrentActionType:[MoveAction class]];
+    return [actionContext isCurrentActionType:[MoveAction class]] || fabsf(collisionVolume.body->GetLinearVelocity().x) > 0;
 }
 
 - (CCSprite *)display
