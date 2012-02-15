@@ -29,9 +29,8 @@
     [sprite setScaleY:height / sprite.contentSize.height];
 
     b2BodyDef bodyDef;
-    bodyDef.type = b2_staticBody;
+    bodyDef.type = b2_dynamicBody;
     bodyDef.position.Set((self.position.x + width * 0.5) / PTM_RATIO, (self.position.y + height * 0.5) / PTM_RATIO);
-    bodyDef.bullet = true;
 
     bodyDef.userData = (__bridge void *) sprite;
 
@@ -43,7 +42,7 @@
 
     b2FixtureDef shapeDef;
     shapeDef.shape = &collisionShape;
-    shapeDef.density = 2.0f;
+    shapeDef.density = 1000.0f;
     shapeDef.restitution = 0.0f;
     shapeDef.userData = (__bridge void *) sprite;
 
@@ -60,8 +59,9 @@
 
     b2Filter filter;
 
-    filter.categoryBits = 0;
-    filter.maskBits = 0;
+    filter.maskBits = 0x0;
+    filter.groupIndex = 0x0;
+    filter.categoryBits = 0x0;
 
     fixture->SetFilterData(filter);
 }
