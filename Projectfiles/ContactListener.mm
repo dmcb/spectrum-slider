@@ -11,6 +11,9 @@
 #import "Triggerable.h"
 #import "Domain/PlayerCollisionVolume.h"
 #import "HeadSensor.h"
+#import "Goal.h"
+#import "GameContext.h"
+#import "Level.h"
 
 void setPlayerJustLanded (b2Contact *contact, NSObject *nodeToCheck) {
     if ([nodeToCheck respondsToSelector:@selector(setIsOnGround:)]) {
@@ -55,6 +58,10 @@ void ContactListener::BeginContact (b2Contact *contact) {
         [((id) nodeA) setIsCollidingWithSomething:true];
     }
 
+    if ([nodeA isKindOfClass:[Player class]] && [nodeB isKindOfClass:[Goal class]]
+            || [nodeB isKindOfClass:[Player class]] && [nodeA isKindOfClass:[Goal class]]) {
+        [[[GameContext sharedContext] currentLevel] completeLevel];
+    }
 
     if ([nodeB respondsToSelector:@selector(setIsCollidingWithSomething:)]) {
         [((id) nodeB) setIsCollidingWithSomething:true];

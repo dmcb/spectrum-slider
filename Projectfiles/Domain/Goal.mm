@@ -1,25 +1,24 @@
 //
-//  Ball.m
+//  Goal.m
 //  Spectrum-Slider
 //
-//  Created by Kyle Reczek on 12-01-30.
+//  Created by Kyle Reczek on 12-02-20.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Ball.h"
+#import "Goal.h"
+#import "b2Body.h"
 #import "GameContext.h"
 #import "Level.h"
+#import "b2CircleShape.h"
 
-@implementation Ball
+@implementation Goal
 
-
-- (id)initWithRadius:(float32)aRadius height:(float32)aHeight width:(float32)aWidth
+- (id)init
 {
     self = [super init];
     if (self) {
-        radius = aRadius;
-        height = aHeight;
-        width = aWidth;
+
     }
 
     return self;
@@ -27,11 +26,7 @@
 
 - (void)spawn
 {
-
-    sprite = [CCSprite spriteWithFile:@"test_circle_sprite.png"];
-
-    [sprite setScaleX:radius * PTM_RATIO * 2 / sprite.contentSize.width];
-    [sprite setScaleY:radius * PTM_RATIO * 2 / sprite.contentSize.width];
+    sprite = [CCSprite spriteWithFile:@"goal_sprite.png"];
 
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
@@ -42,17 +37,16 @@
 
     body = [[[GameContext sharedContext] currentLevel] initBody:&bodyDef];
 
-    b2CircleShape collisionShape;
-    collisionShape.m_p.Set(width / PTM_RATIO * 0.5, height / PTM_RATIO * 0.5);
-    collisionShape.m_radius = radius;
+    b2PolygonShape collisionShape;
+    collisionShape.SetAsBox(sprite.contentSize.width / PTM_RATIO * 0.5, sprite.contentSize.height / PTM_RATIO * 0.5);
 
     // todo make these parameters. (density and such)
 
     b2FixtureDef shapeDef;
     shapeDef.shape = &collisionShape;
-    shapeDef.density = 2.0f;
+    shapeDef.density = 300.0f;
     shapeDef.restitution = 0.0f;
-    shapeDef.userData = (__bridge void *) sprite;
+    shapeDef.userData = (__bridge void *) self;
 
     fixture = body->CreateFixture(&shapeDef);
 
@@ -60,7 +54,5 @@
 
     [super spawn];
 }
-
-
 
 @end

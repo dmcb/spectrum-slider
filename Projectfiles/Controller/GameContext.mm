@@ -14,6 +14,8 @@
 }
 
 @synthesize currentLevel;
+@synthesize mainScene;
+
 
 + (GameContext *)sharedContext {
 
@@ -30,5 +32,13 @@
 - (void)update:(float)delta {
     [[[GameContext sharedContext] currentLevel] update:delta];
 }
+
+- (void)changeLevels:(NSString *)tmxMapToSwitchTo
+{
+    [mainScene removeAllChildrenWithCleanup:true];
+
+    [[Level alloc] initWithScene:mainScene tmxLevelId:tmxMapToSwitchTo];
+}
+
 
 @end

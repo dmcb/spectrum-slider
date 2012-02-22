@@ -31,11 +31,15 @@
     GameWorldLayer *gameWorldLayer;
     Player *player;
     PrimaryColourDimension *dimension;
+
+    NSString *tmxLevelId;
 }
 
 @property(nonatomic, strong) HUDLayer *hudLayer;
 @property(nonatomic, strong) Player *player;
 @property(nonatomic, strong) PrimaryColourDimension *dimension;
+
+- (id)initWithScene:(CCScene *)scene tmxLevelId:(NSString *)aTmxLevelId;
 
 - (GameWorldLayer *)gameWorldLayer;
 
@@ -60,4 +64,7 @@
 - (void)drawDebugData;
 
 - (void)enableDebugDraw:(GLESDebugDraw *)draw;
+
+- (void)completeLevel;
+
 @end

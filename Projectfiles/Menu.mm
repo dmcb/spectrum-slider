@@ -7,7 +7,7 @@
 //
 
 #import "Menu.h"
-#import "PhysicsLayer.h"
+#import "GameScene.h"
 
 
 @implementation Menu
@@ -64,7 +64,7 @@
     [[CCDirector sharedDirector]
             replaceScene:[CCTransitionFade
                                  transitionWithDuration:0.5
-                                                  scene:[PhysicsLayer node]]];
+                                                  scene:[GameScene node]]];
 }
 
 @end

@@ -113,5 +113,10 @@
     <property name="object_width" value="32"/>
    </properties>
   </object>
+  <object type="Goal" x="896" y="128" width="32" height="32">
+   <properties>
+    <property name="object_cid" value="0xFF00"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -15,6 +15,10 @@
 #import "TriggerManager.h"
 #import "Trigger.h"
 #import "Triggerable.h"
+#import "WinLayer.h"
+#import "CDAudioManager.h"
+#import "GameContext.h"
+#import "CombinationColourDimension.h"
 
 
 @implementation Level
@@ -26,6 +30,59 @@
 @synthesize player;
 @synthesize dimension;
 
+
+- (id)initWithScene:(CCScene *)scene tmxLevelId:(NSString *)aTmxLevelId
+{
+    self = [super init];
+    if (self) {
+        
+        CCLayer *mainLayer = [[CCLayer alloc] init];
+        
+        [scene addChild:mainLayer];
+
+        collisionManager = [CollisionManager new];
+        objectManager = [ObjectManager new];
+        triggerManager = [TriggerManager new];
+        gameWorldLayer = [[GameWorldLayer alloc] initWithTileMap:aTmxLevelId];
+
+        [[GameContext sharedContext] setCurrentLevel:self];
+
+        hudLayer = [HUDLayer new];
+
+        [mainLayer addChild:gameWorldLayer.tiledMap];
+        [mainLayer addChild:gameWorldLayer.playerLayer];
+
+        [mainLayer addChild:gameWorldLayer.redDimension.spriteLayer];
+        [mainLayer addChild:gameWorldLayer.blueDimension.spriteLayer];
+        [mainLayer addChild:gameWorldLayer.yellowDimension.spriteLayer];
+
+        [mainLayer addChild:gameWorldLayer.orangeDimension.spriteLayer];
+        [mainLayer addChild:gameWorldLayer.greenDimension.spriteLayer];
+        [mainLayer addChild:gameWorldLayer.purpleDimension.spriteLayer];
+
+        [self initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_ALL" collisionGroupId:0xF];
+        [self initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_RED" collisionGroupId:0xF0];
+        [self initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_BLUE" collisionGroupId:0xF00];
+        [self initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_YELLOW" collisionGroupId:0xF000];
+
+        [self initMovingObjects:gameWorldLayer.tiledMap];
+
+        player = [[Player alloc] init];
+
+        player.position = ccp(100, 100);
+
+        [player spawn];
+
+        [mainLayer addChild:hudLayer];
+
+//        [scene enableBox2dDebugDrawing];
+
+        // Level starts with red dimension
+        [self setDimension:[gameWorldLayer redDimension]];
+        tmxLevelId = aTmxLevelId;
+    }
+    return self;
+}
 
 - (GameWorldLayer *)gameWorldLayer
 {
@@ -73,7 +130,7 @@
     [objectManager addObjectToPlay:objectToAdd];
 }
 
-- (Trigger *) createOrAddTrigger:(NSString *) triggerKey
+- (Trigger *)createOrAddTrigger:(NSString *)triggerKey
 {
     if ([triggerManager doesTriggerExist:triggerKey]) {
         return [triggerManager triggerForKey:triggerKey];
@@ -81,19 +138,6 @@
         [triggerManager createTrigger:triggerKey];
         return [triggerManager triggerForKey:triggerKey];
     }
-}
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        collisionManager = [CollisionManager new];
-        objectManager = [ObjectManager new];
-        triggerManager = [TriggerManager new];
-        gameWorldLayer = [[GameWorldLayer alloc] initWithTileMap:@"level01.tmx"];
-    }
-
-    return self;
 }
 
 - (void)update:(ccTime)delta
@@ -137,4 +181,18 @@
 
     }
 }
+
+- (void)completeLevel
+{
+    [hudLayer setIgnoreInput:true];
+
+    WinLayer *layer = [WinLayer new];
+
+    layer.position = ccp(hudLayer.position.x + hudLayer.contentSize.width / 2, hudLayer.position.y + hudLayer.contentSize.height / 2);
+
+    [hudLayer addChild:layer z:0];
+
+    [[GameContext sharedContext] changeLevels:@"level02.tmx"];
+}
+
 @end

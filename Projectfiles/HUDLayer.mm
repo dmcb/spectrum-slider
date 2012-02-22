@@ -17,10 +17,17 @@
 
 }
 
+
+
+@synthesize ignoreInput;
+
 - (id)init
 {
     self = [super init];
     if (self) {
+
+        ignoreInput = false;
+
         // Get dimensions
         CGSize screenSize = [[CCDirector sharedDirector] winSize];
 
@@ -95,157 +102,159 @@
 
 - (void)update:(ccTime)delta
 {
-    Player *player = [[[GameContext sharedContext] currentLevel] player];
+    if (!ignoreInput) {
+        Player *player = [[[GameContext sharedContext] currentLevel] player];
 
-    CCArray* touches = [KKInput sharedInput].touches;
+        CCArray* touches = [KKInput sharedInput].touches;
 
-    bool dpadSatisfied = false;
-    bool jumpSatisfied = false;
+        bool dpadSatisfied = false;
+        bool jumpSatisfied = false;
 
 //    NSLog(@"Dpad touch: %u. Jump touch: %u.", touchDpad, touchJump);
 
-    // Keep track of all touches, and remember what touches are on what buttons
-    for ( KKTouch *touch in touches ) {
-        if ((touchDpad == 0 || touchDpad == touch.touchID) &&
-            touch.phase != KKTouchPhaseCancelled &&
-            touch.phase != KKTouchPhaseEnded &&
-            touch.phase != KKTouchPhaseLifted &&
-            sqrt((touch.location.x - dpad.position.x)*(touch.location.x - dpad.position.x) + (touch.location.y - dpad.position.y)*(touch.location.y - dpad.position.y)) <
-                dpad.contentSize.width * 0.7)
-        {
-            // Dpad button has just started - or continues to be - touched
-            dpadSatisfied = true;
-
-            // If this is a new dpad press, assign the touch id to the dpad button
-            if (touchDpad == 0) {
-                touchDpad = touch.touchID;
-            }
-
-            // Determine movement direction
-            if (touch.location.x - dpad.position.x < 0) {
-                [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad_pushed_left.png"]];
-                // Player can't jump or move in mid air
-                if ([player isOnGround]) {
-                    [player moveInDirection:ccp(-1, 0)];
-                }
-                else {
-                    [player moveInDirectionWhileInAir:ccp(-1, 0)];
-                }
-
-            }
-            else {
-                [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad_pushed_right.png"]];
-                if ([player isOnGround]) {
-                    [player moveInDirection:ccp(1, 0)];
-                }
-                else {
-
-                    [player moveInDirectionWhileInAir:ccp(1, 0)];
-                }
-            }
-        }
-        if ((touchJump == 0 || touchJump == touch.touchID) &&
-            touch.phase != KKTouchPhaseCancelled &&
-            touch.phase != KKTouchPhaseEnded &&
-            touch.phase != KKTouchPhaseLifted &&
-            sqrt((touch.location.x - jump.position.x)*(touch.location.x - jump.position.x) + (touch.location.y - jump.position.y)*(touch.location.y - jump.position.y)) <
-                jump.contentSize.width * 0.7)
-        {
-            // Jump button has just started - or continues to be - touched
-            jumpSatisfied = true;
-
-            // If this is a new jump, start the jump and assign the touch id to the jump button
-            if (touchJump == 0) {
-                touchJump = touch.touchID;
-                [jump setDisplayFrame:[frameCache spriteFrameByName:@"button_jump_pushed.png"]];
-                if ([player canJump]) {
-                    [player jump];
-                }
-            }
-        }
-    }
-
-    // If buttons that used to be pressed are no longer, unpress them
-    if (touchDpad != 0 && !dpadSatisfied)
-    {
-        touchDpad = 0;
-        [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad.png"]];
-        if ([player isOnGround]) {
-            [player frictionizeMotion];
-        }
-    }
-    if (touchJump != 0 && !jumpSatisfied)
-    {
-        touchJump = 0;
-        [jump setDisplayFrame:[frameCache spriteFrameByName:@"button_jump.png"]];
-    }
-
-    KKInput *input = [KKInput sharedInput];
-    input.gestureSwipeEnabled = YES;
-
-    // Detect swipe for colour slide, ensure enough time has passed between slides
-    if (input.gestureSwipeRecognizedThisFrame && fabs([dimensionTransition timeIntervalSinceNow]) > dimensionTransitionDuration) {
-        KKSwipeGestureDirection dir = input.gestureSwipeDirection;
-
-        if (dir == KKSwipeGestureDirectionLeft || dir == KKSwipeGestureDirectionRight)
-        {
-            // Start slide
-            dimensionTransition = [NSDate date];
-
-            if (dir == KKSwipeGestureDirectionLeft)
+        // Keep track of all touches, and remember what touches are on what buttons
+        for ( KKTouch *touch in touches ) {
+            if ((touchDpad == 0 || touchDpad == touch.touchID) &&
+                    touch.phase != KKTouchPhaseCancelled &&
+                    touch.phase != KKTouchPhaseEnded &&
+                    touch.phase != KKTouchPhaseLifted &&
+                    sqrt((touch.location.x - dpad.position.x)*(touch.location.x - dpad.position.x) + (touch.location.y - dpad.position.y)*(touch.location.y - dpad.position.y)) <
+                            dpad.contentSize.width * 0.7)
             {
-                if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
-                    dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension];
-                    [rightSlide setStartColor:(ccc4f(1, 1, 0, 0.32))];
-                    [rightSlide setEndColor:(ccc4f(1, 1, 0, 0))];
+                // Dpad button has just started - or continues to be - touched
+                dpadSatisfied = true;
+
+                // If this is a new dpad press, assign the touch id to the dpad button
+                if (touchDpad == 0) {
+                    touchDpad = touch.touchID;
                 }
-                else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
-                    dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension];
-                    [rightSlide setStartColor:(ccc4f(0, 0, 1, 0.32))];
-                    [rightSlide setEndColor:(ccc4f(0, 0, 1, 0))];
+
+                // Determine movement direction
+                if (touch.location.x - dpad.position.x < 0) {
+                    [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad_pushed_left.png"]];
+                    // Player can't jump or move in mid air
+                    if ([player isOnGround]) {
+                        [player moveInDirection:ccp(-1, 0)];
+                    }
+                    else {
+                        [player moveInDirectionWhileInAir:ccp(-1, 0)];
+                    }
+
                 }
                 else {
-                    dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension];
-                    [rightSlide setStartColor:(ccc4f(1, 0, 0, 0.32))];
-                    [rightSlide setEndColor:(ccc4f(1, 0, 0, 0))];
+                    [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad_pushed_right.png"]];
+                    if ([player isOnGround]) {
+                        [player moveInDirection:ccp(1, 0)];
+                    }
+                    else {
+
+                        [player moveInDirectionWhileInAir:ccp(1, 0)];
+                    }
                 }
-                [rightSlide resetSystem];
             }
-            else
+            if ((touchJump == 0 || touchJump == touch.touchID) &&
+                    touch.phase != KKTouchPhaseCancelled &&
+                    touch.phase != KKTouchPhaseEnded &&
+                    touch.phase != KKTouchPhaseLifted &&
+                    sqrt((touch.location.x - jump.position.x)*(touch.location.x - jump.position.x) + (touch.location.y - jump.position.y)*(touch.location.y - jump.position.y)) <
+                            jump.contentSize.width * 0.7)
             {
+                // Jump button has just started - or continues to be - touched
+                jumpSatisfied = true;
+
+                // If this is a new jump, start the jump and assign the touch id to the jump button
+                if (touchJump == 0) {
+                    touchJump = touch.touchID;
+                    [jump setDisplayFrame:[frameCache spriteFrameByName:@"button_jump_pushed.png"]];
+                    if ([player canJump]) {
+                        [player jump];
+                    }
+                }
+            }
+        }
+
+        // If buttons that used to be pressed are no longer, unpress them
+        if (touchDpad != 0 && !dpadSatisfied)
+        {
+            touchDpad = 0;
+            [dpad setDisplayFrame:[frameCache spriteFrameByName:@"button_dpad.png"]];
+            if ([player isOnGround]) {
+                [player frictionizeMotion];
+            }
+        }
+        if (touchJump != 0 && !jumpSatisfied)
+        {
+            touchJump = 0;
+            [jump setDisplayFrame:[frameCache spriteFrameByName:@"button_jump.png"]];
+        }
+
+        KKInput *input = [KKInput sharedInput];
+        input.gestureSwipeEnabled = YES;
+
+        // Detect swipe for colour slide, ensure enough time has passed between slides
+        if (input.gestureSwipeRecognizedThisFrame && fabs([dimensionTransition timeIntervalSinceNow]) > dimensionTransitionDuration) {
+            KKSwipeGestureDirection dir = input.gestureSwipeDirection;
+
+            if (dir == KKSwipeGestureDirectionLeft || dir == KKSwipeGestureDirectionRight)
+            {
+                // Start slide
                 dimensionTransition = [NSDate date];
-                if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
-                    dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension];
-                    [leftSlide setStartColor:(ccc4f(0, 0, 1, 0.32))];
-                    [leftSlide setEndColor:(ccc4f(0, 0, 1, 0))];
+
+                if (dir == KKSwipeGestureDirectionLeft)
+                {
+                    if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
+                        dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension];
+                        [rightSlide setStartColor:(ccc4f(1, 1, 0, 0.32))];
+                        [rightSlide setEndColor:(ccc4f(1, 1, 0, 0))];
+                    }
+                    else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
+                        dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension];
+                        [rightSlide setStartColor:(ccc4f(0, 0, 1, 0.32))];
+                        [rightSlide setEndColor:(ccc4f(0, 0, 1, 0))];
+                    }
+                    else {
+                        dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension];
+                        [rightSlide setStartColor:(ccc4f(1, 0, 0, 0.32))];
+                        [rightSlide setEndColor:(ccc4f(1, 0, 0, 0))];
+                    }
+                    [rightSlide resetSystem];
                 }
-                else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
-                    dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension];
-                    [leftSlide setStartColor:(ccc4f(1, 0, 0, 0.32))];
-                    [leftSlide setEndColor:(ccc4f(1, 0, 0, 0))];
+                else
+                {
+                    dimensionTransition = [NSDate date];
+                    if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"red"]) {
+                        dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] blueDimension];
+                        [leftSlide setStartColor:(ccc4f(0, 0, 1, 0.32))];
+                        [leftSlide setEndColor:(ccc4f(0, 0, 1, 0))];
+                    }
+                    else if ([[[[[GameContext sharedContext] currentLevel] dimension] colour] isEqualToString:@"yellow"]) {
+                        dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] redDimension];
+                        [leftSlide setStartColor:(ccc4f(1, 0, 0, 0.32))];
+                        [leftSlide setEndColor:(ccc4f(1, 0, 0, 0))];
+                    }
+                    else {
+                        dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension];
+                        [leftSlide setStartColor:(ccc4f(1, 1, 0, 0.32))];
+                        [leftSlide setEndColor:(ccc4f(1, 1, 0, 0))];
+                    }
+                    [leftSlide resetSystem];
                 }
-                else {
-                    dimensionSlidingTo = [[[[GameContext sharedContext] currentLevel] gameWorldLayer] yellowDimension];
-                    [leftSlide setStartColor:(ccc4f(1, 1, 0, 0.32))];
-                    [leftSlide setEndColor:(ccc4f(1, 1, 0, 0))];
-                }
-                [leftSlide resetSystem];
             }
         }
-    }
 
-    // Midway through slide, change colours
-    if (dimensionSlidingTo != NULL && fabs([dimensionTransition timeIntervalSinceNow]) > dimensionTransitionDelay) {
-        [[[GameContext sharedContext] currentLevel] setDimension:dimensionSlidingTo];
-        dimensionSlidingTo = NULL;
-    }
+        // Midway through slide, change colours
+        if (dimensionSlidingTo != NULL && fabs([dimensionTransition timeIntervalSinceNow]) > dimensionTransitionDelay) {
+            [[[GameContext sharedContext] currentLevel] setDimension:dimensionSlidingTo];
+            dimensionSlidingTo = NULL;
+        }
 
-    // Pause button
-    if ([input isAnyTouchOnNode:menu touchPhase:KKTouchPhaseAny]) {
-        [menu setDisplayFrame:[frameCache spriteFrameByName:@"button_menu_pushed.png"]];
-    }
-    else {
-        [menu setDisplayFrame:[frameCache spriteFrameByName:@"button_menu.png"]];
+        // Pause button
+        if ([input isAnyTouchOnNode:menu touchPhase:KKTouchPhaseAny]) {
+            [menu setDisplayFrame:[frameCache spriteFrameByName:@"button_menu_pushed.png"]];
+        }
+        else {
+            [menu setDisplayFrame:[frameCache spriteFrameByName:@"button_menu.png"]];
+        }
     }
 }
 

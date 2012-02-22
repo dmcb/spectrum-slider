@@ -12,12 +12,16 @@
 
 @interface GameContext : NSObject {
     Level *currentLevel;
+    CCScene *mainScene;
 }
 
 @property(nonatomic, strong) Level *currentLevel;
+@property (nonatomic, strong) CCScene *mainScene;
 
 + (GameContext *)sharedContext;
 
 - (void)update:(float)delta;
+
+- (void)changeLevels:(NSString *) tmxMapToSwitchTo;
 
 @end

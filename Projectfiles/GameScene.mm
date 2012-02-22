@@ -5,7 +5,7 @@
  * Released under MIT License in Germany (LICENSE-Kobold2D.txt).
  */
 
-#import "PhysicsLayer.h"
+#import "GameScene.h"
 #import "Level.h"
 #import "GameContext.h"
 #import "Player.h"
@@ -22,19 +22,19 @@
 //to define the ratio so that your most common object type is 1x1 metre.
 const float PTM_RATIO = 32.0f;
 
-@interface PhysicsLayer (PrivateMethods)
+@interface GameScene (PrivateMethods)
 //-(void) enableBox2dDebugDrawing;
 - (b2Vec2)toMeters:(CGPoint)point;
 
 - (CGPoint)toPixels:(b2Vec2)vec;
 @end
 
-@interface PhysicsLayer ()
+@interface GameScene ()
 - (void)enableBox2dDebugDrawing;
 
 @end
 
-@implementation PhysicsLayer
+@implementation GameScene
 
 - (id)init {
     if ((self = [super init])) {
@@ -42,50 +42,11 @@ const float PTM_RATIO = 32.0f;
 
         glClearColor(0.1f, 0.0f, 0.2f, 1.0f);
 
-        Level *level = [[Level alloc] init];
+        [[Level alloc] initWithScene:self tmxLevelId:@"level01.tmx"];
 
-        [[GameContext sharedContext] setCurrentLevel:level];
+        [[GameContext sharedContext] setMainScene:self];
 
-        HUDLayer *hudLayer = [HUDLayer new];
-
-        Level *currentLevel = [[GameContext sharedContext] currentLevel];
-        GameWorldLayer *gameWorldLayer = [currentLevel gameWorldLayer];
-        [currentLevel setHudLayer:hudLayer];
-
-        [self addChild:gameWorldLayer.tiledMap];
-        [self addChild:gameWorldLayer.playerLayer];
-
-        [self addChild:gameWorldLayer.redDimension.spriteLayer];
-        [self addChild:gameWorldLayer.blueDimension.spriteLayer];
-        [self addChild:gameWorldLayer.yellowDimension.spriteLayer];
-
-        [self addChild:gameWorldLayer.orangeDimension.spriteLayer];
-        [self addChild:gameWorldLayer.greenDimension.spriteLayer];
-        [self addChild:gameWorldLayer.purpleDimension.spriteLayer];
-
-        [currentLevel initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_ALL" collisionGroupId:0xF];
-        [currentLevel initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_RED" collisionGroupId:0xF0];
-        [currentLevel initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_BLUE" collisionGroupId:0xF00];
-        [currentLevel initStaticBodies:gameWorldLayer.tiledMap collisionLayer:@"Collision_YELLOW" collisionGroupId:0xF000];
-
-        [currentLevel initMovingObjects:gameWorldLayer.tiledMap];
-
-
-        Player *player = [[Player alloc] init];
-
-        player.position = ccp(100, 100);
-
-        [player spawn];
-
-        [self addChild:hudLayer];
-
-//        [self enableBox2dDebugDrawing];
-
-        // Level starts with red dimension
-        [currentLevel setDimension:[gameWorldLayer redDimension]];
-        
         [self scheduleUpdate];
-
     }
 
     return self;

@@ -39,7 +39,11 @@
     NSDate *dimensionTransition;
     double dimensionTransitionDelay;
     double dimensionTransitionDuration;
+
+    bool ignoreInput;
 }
+
+@property (nonatomic) bool ignoreInput;
 
 - (void)slideToColour:(NSString *)colour;
 

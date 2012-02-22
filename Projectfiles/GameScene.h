@@ -15,7 +15,7 @@ enum {
     kTagBatchNode,
 };
 
-@interface PhysicsLayer : CCLayer {
+@interface GameScene : CCScene {
     GLESDebugDraw *debugDraw;
 }
 

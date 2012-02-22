@@ -17,6 +17,7 @@
 #import "Door.h"
 #import "Button.h"
 #import "Trigger.h"
+#import "Goal.h"
 
 @implementation CollisionManager {
 
@@ -189,6 +190,18 @@
                     [button setCollisionGroupId:cid];
 
                     [[level gameWorldLayer] addObjectToGame:button.display collisionLayer:cid];
+
+                } else if ([typeKey isEqualToString:@"Goal"]) {
+
+                    Goal *goal = [[Goal alloc] init];
+
+                    [goal setPosition:ccp(x, y)];
+
+                    [goal spawn];
+
+                    [goal setCollisionGroupId:cid];
+
+                    [[level gameWorldLayer] addObjectToGame:goal.display collisionLayer:cid];
 
                 }
 

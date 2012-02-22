@@ -27,6 +27,10 @@
 		33AFAF9114DDBEBA0093E8C8 /* Axe.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AFAF9014DDBEBA0093E8C8 /* Axe.mm */; };
 		33AFAF9414DDBEE40093E8C8 /* Elevator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AFAF9314DDBEE40093E8C8 /* Elevator.mm */; };
 		33AFAF9714DDC03A0093E8C8 /* Button.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33AFAF9614DDC03A0093E8C8 /* Button.mm */; };
+		33CEE1F314F34FC600629CC4 /* Goal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 33CEE1F214F34FC600629CC4 /* Goal.mm */; };
+		33CEE1F614F363A400629CC4 /* WinLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CEE1F514F363A400629CC4 /* WinLayer.m */; };
+		33CEE1F814F3657300629CC4 /* win_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 33CEE1F714F3657300629CC4 /* win_screen.png */; };
+		33CEE1FA14F365BD00629CC4 /* goal_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 33CEE1F914F365BD00629CC4 /* goal_sprite.png */; };
 		7404D55814DA39560053E546 /* band.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7404D55714DA39560053E546 /* band.plist */; };
 		7404D56014DA547E0053E546 /* slide.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7404D55F14DA547E0053E546 /* slide.plist */; };
 		74B38E4414D48AAD0063B3C9 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B38E4214D48AAD0063B3C9 /* player.png */; };
@@ -41,7 +45,7 @@
 		84B414EF14D3E980001AE794 /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414DD14D3E980001AE794 /* GLES-Render.mm */; };
 		84B414F014D3E980001AE794 /* CollisionManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414E014D3E980001AE794 /* CollisionManager.mm */; };
 		84B414F114D3E980001AE794 /* ObjectManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414E214D3E980001AE794 /* ObjectManager.mm */; };
-		84B414F214D3E980001AE794 /* PhysicsLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414E414D3E980001AE794 /* PhysicsLayer.mm */; };
+		84B414F214D3E980001AE794 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B414E414D3E980001AE794 /* GameScene.mm */; };
 		84B4151214D3F075001AE794 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B4151014D3F075001AE794 /* blocks.png */; };
 		84B4151314D3F075001AE794 /* level01.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 84B4151114D3F075001AE794 /* level01.tmx */; };
 		84B4151614D3F49F001AE794 /* Menu.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84B4151514D3F49E001AE794 /* Menu.mm */; };
@@ -267,6 +271,12 @@
 		33AFAF9314DDBEE40093E8C8 /* Elevator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Elevator.mm; sourceTree = "<group>"; };
 		33AFAF9514DDC03A0093E8C8 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
 		33AFAF9614DDC03A0093E8C8 /* Button.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Button.mm; sourceTree = "<group>"; };
+		33CEE1F114F34FC600629CC4 /* Goal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goal.h; sourceTree = "<group>"; };
+		33CEE1F214F34FC600629CC4 /* Goal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Goal.mm; sourceTree = "<group>"; };
+		33CEE1F414F363A400629CC4 /* WinLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinLayer.h; sourceTree = "<group>"; };
+		33CEE1F514F363A400629CC4 /* WinLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WinLayer.m; sourceTree = "<group>"; };
+		33CEE1F714F3657300629CC4 /* win_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = win_screen.png; sourceTree = "<group>"; };
+		33CEE1F914F365BD00629CC4 /* goal_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goal_sprite.png; sourceTree = "<group>"; };
 		7404D55714DA39560053E546 /* band.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = band.plist; sourceTree = "<group>"; };
 		7404D55F14DA547E0053E546 /* slide.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = slide.plist; sourceTree = "<group>"; };
 		74B38E4214D48AAD0063B3C9 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
@@ -291,8 +301,8 @@
 		84B414E014D3E980001AE794 /* CollisionManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CollisionManager.mm; sourceTree = "<group>"; };
 		84B414E114D3E980001AE794 /* ObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectManager.h; sourceTree = "<group>"; };
 		84B414E214D3E980001AE794 /* ObjectManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ObjectManager.mm; sourceTree = "<group>"; };
-		84B414E314D3E980001AE794 /* PhysicsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsLayer.h; sourceTree = "<group>"; };
-		84B414E414D3E980001AE794 /* PhysicsLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PhysicsLayer.mm; sourceTree = "<group>"; };
+		84B414E314D3E980001AE794 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		84B414E414D3E980001AE794 /* GameScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScene.mm; sourceTree = "<group>"; };
 		84B414E614D3E980001AE794 /* PlayerAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerAction.h; sourceTree = "<group>"; };
 		84B414E714D3E980001AE794 /* Updateable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Updateable.h; sourceTree = "<group>"; };
 		84B4151014D3F075001AE794 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blocks.png; sourceTree = "<group>"; };
@@ -411,6 +421,8 @@
 		74B38E4114D48AAD0063B3C9 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				33CEE1F914F365BD00629CC4 /* goal_sprite.png */,
+				33CEE1F714F3657300629CC4 /* win_screen.png */,
 				338667FC14E0D06B00997BE4 /* test_crappy_door_sprite.png */,
 				33AF912F14D7BF6F007338D7 /* test_circle_sprite.png */,
 				33AF913014D7BF6F007338D7 /* test_crate_sprite.png */,
@@ -436,6 +448,8 @@
 		84B414D514D3E980001AE794 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				33CEE1F114F34FC600629CC4 /* Goal.h */,
+				33CEE1F214F34FC600629CC4 /* Goal.mm */,
 				DCFA90F013B4F811009DD390 /* JumpAction.h */,
 				DCFA90F013B4F811009DD38E /* JumpAction.mm */,
 				33397EF314D4B73B003FAF35 /* PrimaryColourDimension.h */,
@@ -629,13 +643,15 @@
 				84B414DC14D3E980001AE794 /* GLES-Render.h */,
 				84B414DD14D3E980001AE794 /* GLES-Render.mm */,
 				84B414DE14D3E980001AE794 /* Manager */,
-				84B414E314D3E980001AE794 /* PhysicsLayer.h */,
-				84B414E414D3E980001AE794 /* PhysicsLayer.mm */,
+				84B414E314D3E980001AE794 /* GameScene.h */,
+				84B414E414D3E980001AE794 /* GameScene.mm */,
 				84B414E514D3E980001AE794 /* Protocol */,
 				DCC1A39413A94F1A005BD75D /* Resources */,
 				DCC1A3CF13A94F2C005BD75D /* Supporting Files */,
 				84B4151414D3F49D001AE794 /* Menu.h */,
 				84B4151514D3F49E001AE794 /* Menu.mm */,
+				33CEE1F414F363A400629CC4 /* WinLayer.h */,
+				33CEE1F514F363A400629CC4 /* WinLayer.m */,
 			);
 			path = Projectfiles;
 			sourceTree = "<group>";
@@ -933,6 +949,8 @@
 				7404D56014DA547E0053E546 /* slide.plist in Resources */,
 				338667FD14E0D06B00997BE4 /* test_crappy_door_sprite.png in Resources */,
 				DCFA90F013B4F811009DD398 /* test_crappy_button_sprite.png in Resources */,
+				33CEE1F814F3657300629CC4 /* win_screen.png in Resources */,
+				33CEE1FA14F365BD00629CC4 /* goal_sprite.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -966,7 +984,7 @@
 				84B414EF14D3E980001AE794 /* GLES-Render.mm in Sources */,
 				84B414F014D3E980001AE794 /* CollisionManager.mm in Sources */,
 				84B414F114D3E980001AE794 /* ObjectManager.mm in Sources */,
-				84B414F214D3E980001AE794 /* PhysicsLayer.mm in Sources */,
+				84B414F214D3E980001AE794 /* GameScene.mm in Sources */,
 				84B4151614D3F49F001AE794 /* Menu.mm in Sources */,
 				DCFA90F013B4F811009DD386 /* GameWorldLayer.mm in Sources */,
 				3323B13714D46ADF009A20C2 /* MoveAction.mm in Sources */,
@@ -988,6 +1006,8 @@
 				335457BA14E3A21A007C0E76 /* HeadSensor.mm in Sources */,
 				3354BE9014EA12CE00BEDB8C /* TriggerManager.mm in Sources */,
 				3354BE9314EA131900BEDB8C /* Trigger.mm in Sources */,
+				33CEE1F314F34FC600629CC4 /* Goal.mm in Sources */,
+				33CEE1F614F363A400629CC4 /* WinLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1068,7 +1088,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../__Kobold2D__/libs/GoogleAdMobAdsSDK\"",
 				);
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(KOBOLD2D) $(CHIPSPACE) $(COCOS2D) $(COCOS2D_REST) $COCOS2D_EXTENSIONS $(COCOS3D) $(COCOSDENSHION) $(CHIPMUNK) $(OBJECTAL) $(VTPG) $(WAX) $(SNEAKYINPUT) $(ADMOB) $(FONTLABEL) \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/**";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(KOBOLD2D) $(CHIPSPACE) $(COCOS2D) $(COCOS2D_REST) $COCOS2D_EXTENSIONS $(COCOS3D) $(COCOSDENSHION) $(CHIPMUNK) $(OBJECTAL) $(VTPG) $(WAX) $(SNEAKYINPUT) $(ADMOB) $(FONTLABEL) \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/** \"${PROJECT_DIR}/../__Kobold2D__/**";
 			};
 			name = Debug;
 		};
